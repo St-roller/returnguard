@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -79,3 +80,22 @@ class OpenAIExtractor:
             input_tokens=getattr(usage, "input_tokens", None),
             output_tokens=getattr(usage, "output_tokens", None),
         )
+
+
+class OpenRouterExtractor(OpenAIExtractor):
+    """The same one-call extraction contract through OpenRouter's API gateway."""
+
+    def __init__(
+        self,
+        model: str = "openai/gpt-5.6-luna",
+        prompt_path: Path | str = DEFAULT_PROMPT_PATH,
+        client: object | None = None,
+    ):
+        if client is None:
+            from openai import OpenAI
+
+            key = os.environ.get("OPENROUTER_API_KEY")
+            if not key:
+                raise ValueError("Set OPENROUTER_API_KEY before using OpenRouter.")
+            client = OpenAI(api_key=key, base_url="https://openrouter.ai/api/v1")
+        super().__init__(model=model, prompt_path=prompt_path, client=client)

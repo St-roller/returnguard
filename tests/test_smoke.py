@@ -3,7 +3,7 @@ from types import SimpleNamespace
 import pytest
 
 from returnguard.acceptance import case_support_score
-from returnguard.extractor import OpenAIExtractor
+from returnguard.extractor import OpenAIExtractor, OpenRouterExtractor
 from returnguard.pipeline import run_case
 from returnguard.schemas import Extraction
 
@@ -104,3 +104,36 @@ def test_non_json_model_output_becomes_validation_failure(policy, smoke_cases):
     assert result["final_route"] == "manual_review"
     assert result["review_reason"] == "validation_failure"
     assert result["raw_structured_extraction"] == "{truncated"
+
+
+def test_openrouter_adapter_uses_gateway_and_same_extraction_contract(monkeypatch, smoke_cases):
+    import openai
+
+    case = smoke_cases[0]
+    captured = {}
+    fake_response = SimpleNamespace(
+        output_text=Extraction.model_validate({
+            name: {**field, "support_score": 0.95}
+            for name, field in case.gold["extraction"].items()
+        }).model_dump_json(),
+        model="openai/gpt-5.6-luna", usage=None,
+    )
+
+    def fake_openai(**kwargs):
+        captured["client"] = kwargs
+        return SimpleNamespace(responses=SimpleNamespace(create=lambda **call: (
+            captured.setdefault("call", call), fake_response
+        )[1]))
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-only-placeholder")
+    monkeypatch.setattr(openai, "OpenAI", fake_openai)
+    result = OpenRouterExtractor().extract(case.input.customer_message)
+    assert captured["client"] == {
+        "api_key": "test-only-placeholder", "base_url": "https://openrouter.ai/api/v1"
+    }
+    assert captured["call"]["model"] == "openai/gpt-5.6-luna"
+    assert captured["call"]["input"][1]["content"] == case.input.customer_message
+    assert captured["call"]["tools"] == []
+    assert captured["call"]["text"]["format"]["strict"] is True
+    assert case.review_metadata["english_annotation"] not in repr(captured["call"])
+    assert result.model_name == "openai/gpt-5.6-luna"

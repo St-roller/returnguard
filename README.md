@@ -25,6 +25,10 @@ python scripts/run_smoke.py
 
 This makes one `gpt-5.6-luna` Responses API call per case and prints route, rule ID, review reason, score and whether the fixture's expected route and rule matched. A live failure remains a failure to investigate; the script does not edit the fixtures or policy. The actual model version, latency and token counts are in each in-memory prediction record. No API key is included in the repository.
 
+For an OpenRouter key, set `OPENROUTER_API_KEY` instead and run `python scripts/run_smoke.py --provider openrouter`. This uses the OpenRouter model ID `openai/gpt-5.6-luna` through its OpenAI-compatible Responses endpoint. The five live calls will establish whether this gateway accepts the exact structured-output request and whether the model produces valid evidence; local fixture tests do not establish either result. Provider choice and model ID should be reported with any experiment.
+
+To run without local key configuration, add a repository Actions secret named `OPENROUTER_API_KEY` in GitHub Settings → Secrets and variables → Actions. The branch workflow `Phase 1 live smoke` reads it only during the five-case run. Do not add the key to an issue, PR, commit, fixture, or chat. The Actions logs contain the synthetic case outputs and are visible to anyone who can read this repository's Actions logs. Once the secret is saved, rerun the workflow or push to this branch.
+
 ## Phase 1 boundaries
 
 - The five Chinese smoke messages and their gold decisions are in `tests/fixtures/smoke_cases.jsonl`. Adjacent English annotations help a reader understand the demonstration. English, gold labels, order facts and case IDs never enter the model prompt; only the original Chinese message does.

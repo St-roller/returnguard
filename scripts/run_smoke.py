@@ -1,5 +1,6 @@
 """Run exactly the five frozen Chinese smoke fixtures through live extraction."""
 
+import argparse
 import json
 import os
 import sys
@@ -7,18 +8,22 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from returnguard.extractor import OpenAIExtractor
+from returnguard.extractor import OpenAIExtractor, OpenRouterExtractor
 from returnguard.pipeline import run_case
 from returnguard.policy import Policy
 from returnguard.schemas import CaseRecord
 
 
 def main() -> None:
-    if not os.environ.get("OPENAI_API_KEY"):
-        raise SystemExit("Set OPENAI_API_KEY locally before running live smoke cases.")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--provider", choices=("openai", "openrouter"), default="openai")
+    args = parser.parse_args()
+    key_name = "OPENROUTER_API_KEY" if args.provider == "openrouter" else "OPENAI_API_KEY"
+    if not os.environ.get(key_name):
+        raise SystemExit(f"Set {key_name} before running live smoke cases.")
     path = Path(__file__).resolve().parents[1] / "tests" / "fixtures" / "smoke_cases.jsonl"
     cases = [CaseRecord.model_validate_json(line) for line in path.read_text(encoding="utf-8").splitlines()]
-    extractor = OpenAIExtractor()
+    extractor = OpenRouterExtractor() if args.provider == "openrouter" else OpenAIExtractor()
     policy = Policy()
     all_matched = True
     for case in cases:

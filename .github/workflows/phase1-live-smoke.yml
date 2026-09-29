@@ -1,0 +1,27 @@
+name: Phase 1 live smoke
+
+on:
+  push:
+    branches: [phase1-core-spec-v1]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run deterministic tests
+        run: python -m pytest -q
+      - name: Run five live OpenRouter cases
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python scripts/run_smoke.py --provider openrouter
