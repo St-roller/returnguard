@@ -1,0 +1,78 @@
+{
+  "policy_version": "policy_v1.0",
+  "scope": "Simplified project policy for one Mainland China online apparel item; initial staff triage only",
+  "brand_policy": {
+    "rule_id": "BP-01",
+    "name": "14-Day Goodwill Extension",
+    "description": "Ordinary non-custom-made apparel returns on calendar days 8 through 14 may use the brand extension when item condition is intact. Quality, fulfillment and shipping-damage disputes require manual review."
+  },
+  "window_semantics": {
+    "ordinary_max_days": 7,
+    "brand_extension_max_days": 14,
+    "day_unit": "calendar"
+  },
+  "rules": [
+    {
+      "priority": 1,
+      "rule_id": "MR01_QUALITY",
+      "all": [{"field": "return_reason", "op": "eq", "value": "quality_or_fulfillment_issue"}],
+      "route": "manual_review",
+      "review_reason": "policy_required"
+    },
+    {
+      "priority": 2,
+      "rule_id": "MR03_REASON",
+      "all": [{"field": "return_reason", "op": "in", "value": ["not_stated", "conflicting"]}],
+      "route": "manual_review",
+      "review_reason": "policy_required"
+    },
+    {
+      "priority": 3,
+      "rule_id": "IN01_CUSTOM",
+      "all": [{"field": "is_custom_made", "op": "eq", "value": true}],
+      "route": "ineligible",
+      "review_reason": null
+    },
+    {
+      "priority": 4,
+      "rule_id": "IN02_LATE",
+      "all": [{"field": "days_since_receipt", "op": "gt", "value": 14}],
+      "route": "ineligible",
+      "review_reason": null
+    },
+    {
+      "priority": 5,
+      "rule_id": "IN03_NOT_INTACT",
+      "all": [{"field": "condition_status", "op": "eq", "value": "not_intact"}],
+      "route": "ineligible",
+      "review_reason": null
+    },
+    {
+      "priority": 6,
+      "rule_id": "MR02_CONDITION",
+      "all": [{"field": "condition_status", "op": "in", "value": ["unknown", "conflicting"]}],
+      "route": "manual_review",
+      "review_reason": "policy_required"
+    },
+    {
+      "priority": 7,
+      "rule_id": "EL01_7DAY",
+      "all": [
+        {"field": "days_since_receipt", "op": "between_inclusive", "value": [0, 7]},
+        {"field": "condition_status", "op": "eq", "value": "intact"}
+      ],
+      "route": "eligible",
+      "review_reason": null
+    },
+    {
+      "priority": 8,
+      "rule_id": "EL02_BRAND14",
+      "all": [
+        {"field": "days_since_receipt", "op": "between_inclusive", "value": [8, 14]},
+        {"field": "condition_status", "op": "eq", "value": "intact"}
+      ],
+      "route": "eligible",
+      "review_reason": null
+    }
+  ]
+}
