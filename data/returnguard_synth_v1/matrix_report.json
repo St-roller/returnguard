@@ -1,0 +1,842 @@
+{
+  "dataset_version": "ReturnGuard-Synth-v1",
+  "blueprint_version": "blueprint_v1.0",
+  "generator_version": "deterministic_blueprints_v1",
+  "policy_version": "policy_v1.0",
+  "total_n": 180,
+  "splits": {
+    "dev": {
+      "n": 90,
+      "route_counts": {
+        "eligible": 30,
+        "ineligible": 30,
+        "manual_review": 30
+      },
+      "difficulty_counts": {
+        "easy": 30,
+        "hard": 30,
+        "medium": 30
+      },
+      "message_length_counts": {
+        "long": 30,
+        "medium": 30,
+        "short": 30
+      },
+      "tone_by_route": {
+        "eligible": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 8,
+          "polite_conversational": 7
+        },
+        "ineligible": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 8,
+          "polite_conversational": 7
+        },
+        "manual_review": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 8,
+          "polite_conversational": 7
+        }
+      },
+      "message_length_by_route": {
+        "eligible": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        },
+        "ineligible": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        },
+        "manual_review": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        }
+      },
+      "boundary_days": {
+        "0": {
+          "n": 7,
+          "difficulty": {
+            "easy": 5,
+            "hard": 1,
+            "medium": 1
+          }
+        },
+        "7": {
+          "n": 12,
+          "difficulty": {
+            "easy": 2,
+            "hard": 3,
+            "medium": 7
+          }
+        },
+        "8": {
+          "n": 9,
+          "difficulty": {
+            "easy": 2,
+            "hard": 5,
+            "medium": 2
+          }
+        },
+        "14": {
+          "n": 9,
+          "difficulty": {
+            "easy": 2,
+            "hard": 5,
+            "medium": 2
+          }
+        },
+        "15": {
+          "n": 7,
+          "difficulty": {
+            "easy": 4,
+            "hard": 2,
+            "medium": 1
+          }
+        }
+      },
+      "rules": {
+        "EL01_7DAY": {
+          "n": 15,
+          "route": "eligible",
+          "difficulty": {
+            "easy": 5,
+            "hard": 5,
+            "medium": 5
+          },
+          "message_length": {
+            "long": 5,
+            "medium": 5,
+            "short": 5
+          },
+          "reason_family": {
+            "changed_mind": 3,
+            "colour_style": 3,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 2,
+            "size_fit": 3
+          },
+          "composition_tags": {
+            "base": 15
+          },
+          "condition_status": {
+            "intact": 15
+          },
+          "day_counts": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 1,
+            "6": 2,
+            "7": 3
+          }
+        },
+        "EL02_BRAND14": {
+          "n": 15,
+          "route": "eligible",
+          "difficulty": {
+            "easy": 5,
+            "hard": 5,
+            "medium": 5
+          },
+          "message_length": {
+            "long": 5,
+            "medium": 5,
+            "short": 5
+          },
+          "reason_family": {
+            "changed_mind": 3,
+            "colour_style": 2,
+            "duplicate_purchase": 3,
+            "no_longer_needed": 3,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "base": 15
+          },
+          "condition_status": {
+            "intact": 15
+          },
+          "day_counts": {
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 1,
+            "14": 3
+          }
+        },
+        "IN01_CUSTOM": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 4,
+            "hard": 3,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 4,
+            "medium": 3,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 1,
+            "colour_style": 2,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 1,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "also_late": 2,
+            "also_not_intact": 2,
+            "custom_only": 6
+          },
+          "condition_status": {
+            "intact": 8,
+            "not_intact": 2
+          },
+          "day_counts": {
+            "0": 1,
+            "1": 1,
+            "4": 1,
+            "7": 2,
+            "8": 2,
+            "14": 1,
+            "15": 1,
+            "23": 1
+          }
+        },
+        "IN02_LATE": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 4,
+            "hard": 3,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 3,
+            "short": 4
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 2,
+            "duplicate_purchase": 1,
+            "no_longer_needed": 2,
+            "preference_mismatch": 1,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "late": 10
+          },
+          "condition_status": {
+            "intact": 6,
+            "not_intact": 2,
+            "unknown": 2
+          },
+          "day_counts": {
+            "15": 4,
+            "16": 1,
+            "20": 1,
+            "25": 1,
+            "30": 1,
+            "31": 1,
+            "45": 1
+          }
+        },
+        "IN03_NOT_INTACT": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 3,
+            "hard": 3,
+            "medium": 4
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 4,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 1,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 2,
+            "size_fit": 1
+          },
+          "composition_tags": {
+            "damage_present": 3,
+            "multiple_negative": 1,
+            "tag_removed": 3,
+            "use_beyond_inspection": 3
+          },
+          "condition_status": {
+            "not_intact": 10
+          },
+          "day_counts": {
+            "0": 1,
+            "2": 1,
+            "4": 1,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "10": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1
+          }
+        },
+        "MR01_QUALITY": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 3,
+            "medium": 4
+          },
+          "message_length": {
+            "long": 4,
+            "medium": 3,
+            "short": 3
+          },
+          "reason_family": {
+            "pre_existing_defect": 4,
+            "shipping_damage": 3,
+            "wrong_item_fulfillment": 3
+          },
+          "composition_tags": {
+            "quality_issue": 10
+          },
+          "condition_status": {
+            "intact": 3,
+            "not_intact": 7
+          },
+          "day_counts": {
+            "0": 1,
+            "2": 1,
+            "3": 1,
+            "7": 2,
+            "8": 1,
+            "14": 1,
+            "15": 1,
+            "18": 1,
+            "40": 1
+          }
+        },
+        "MR03_REASON": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 4,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 3,
+            "short": 4
+          },
+          "reason_family": {
+            "not_stated": 10
+          },
+          "composition_tags": {
+            "custom_or_late": 3,
+            "irrelevant_detail": 3,
+            "otherwise_intact": 4
+          },
+          "condition_status": {
+            "intact": 10
+          },
+          "day_counts": {
+            "0": 1,
+            "1": 1,
+            "7": 3,
+            "8": 1,
+            "14": 2,
+            "15": 1,
+            "16": 1
+          }
+        },
+        "MR02_CONDITION": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 4,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 4,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 1,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 2,
+            "size_fit": 1
+          },
+          "composition_tags": {
+            "contradiction": 4,
+            "explicit_uncertainty": 3,
+            "missing_information": 3
+          },
+          "condition_status": {
+            "conflicting": 4,
+            "unknown": 6
+          },
+          "day_counts": {
+            "0": 1,
+            "3": 1,
+            "5": 1,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "9": 1,
+            "11": 1,
+            "13": 1,
+            "14": 1
+          }
+        }
+      }
+    },
+    "test": {
+      "n": 90,
+      "route_counts": {
+        "eligible": 30,
+        "ineligible": 30,
+        "manual_review": 30
+      },
+      "difficulty_counts": {
+        "easy": 30,
+        "hard": 30,
+        "medium": 30
+      },
+      "message_length_counts": {
+        "long": 30,
+        "medium": 30,
+        "short": 30
+      },
+      "tone_by_route": {
+        "eligible": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 7,
+          "polite_conversational": 8
+        },
+        "ineligible": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 7,
+          "polite_conversational": 8
+        },
+        "manual_review": {
+          "colloquial": 8,
+          "frustrated_complaint": 7,
+          "neutral": 7,
+          "polite_conversational": 8
+        }
+      },
+      "message_length_by_route": {
+        "eligible": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        },
+        "ineligible": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        },
+        "manual_review": {
+          "long": 10,
+          "medium": 10,
+          "short": 10
+        }
+      },
+      "boundary_days": {
+        "0": {
+          "n": 7,
+          "difficulty": {
+            "easy": 5,
+            "hard": 1,
+            "medium": 1
+          }
+        },
+        "7": {
+          "n": 12,
+          "difficulty": {
+            "easy": 2,
+            "hard": 3,
+            "medium": 7
+          }
+        },
+        "8": {
+          "n": 9,
+          "difficulty": {
+            "easy": 2,
+            "hard": 5,
+            "medium": 2
+          }
+        },
+        "14": {
+          "n": 9,
+          "difficulty": {
+            "easy": 2,
+            "hard": 5,
+            "medium": 2
+          }
+        },
+        "15": {
+          "n": 7,
+          "difficulty": {
+            "easy": 4,
+            "hard": 2,
+            "medium": 1
+          }
+        }
+      },
+      "rules": {
+        "EL01_7DAY": {
+          "n": 15,
+          "route": "eligible",
+          "difficulty": {
+            "easy": 5,
+            "hard": 5,
+            "medium": 5
+          },
+          "message_length": {
+            "long": 5,
+            "medium": 5,
+            "short": 5
+          },
+          "reason_family": {
+            "changed_mind": 3,
+            "colour_style": 3,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 3,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "base": 15
+          },
+          "condition_status": {
+            "intact": 15
+          },
+          "day_counts": {
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 1,
+            "6": 2,
+            "7": 3
+          }
+        },
+        "EL02_BRAND14": {
+          "n": 15,
+          "route": "eligible",
+          "difficulty": {
+            "easy": 5,
+            "hard": 5,
+            "medium": 5
+          },
+          "message_length": {
+            "long": 5,
+            "medium": 5,
+            "short": 5
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 2,
+            "duplicate_purchase": 3,
+            "no_longer_needed": 3,
+            "preference_mismatch": 3,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "base": 15
+          },
+          "condition_status": {
+            "intact": 15
+          },
+          "day_counts": {
+            "8": 3,
+            "9": 2,
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 1,
+            "14": 3
+          }
+        },
+        "IN01_CUSTOM": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 4,
+            "hard": 3,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 4,
+            "medium": 3,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 2,
+            "duplicate_purchase": 1,
+            "no_longer_needed": 1,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "also_late": 2,
+            "also_not_intact": 2,
+            "custom_only": 6
+          },
+          "condition_status": {
+            "intact": 8,
+            "not_intact": 2
+          },
+          "day_counts": {
+            "0": 1,
+            "1": 1,
+            "4": 1,
+            "7": 2,
+            "8": 2,
+            "14": 1,
+            "15": 1,
+            "23": 1
+          }
+        },
+        "IN02_LATE": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 4,
+            "hard": 3,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 3,
+            "short": 4
+          },
+          "reason_family": {
+            "changed_mind": 2,
+            "colour_style": 2,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 1,
+            "size_fit": 1
+          },
+          "composition_tags": {
+            "late": 10
+          },
+          "condition_status": {
+            "intact": 6,
+            "not_intact": 2,
+            "unknown": 2
+          },
+          "day_counts": {
+            "15": 4,
+            "16": 1,
+            "20": 1,
+            "25": 1,
+            "30": 1,
+            "31": 1,
+            "45": 1
+          }
+        },
+        "IN03_NOT_INTACT": {
+          "n": 10,
+          "route": "ineligible",
+          "difficulty": {
+            "easy": 3,
+            "hard": 3,
+            "medium": 4
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 4,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 1,
+            "colour_style": 1,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "damage_present": 3,
+            "multiple_negative": 1,
+            "tag_removed": 3,
+            "use_beyond_inspection": 3
+          },
+          "condition_status": {
+            "not_intact": 10
+          },
+          "day_counts": {
+            "0": 1,
+            "2": 1,
+            "4": 1,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "10": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1
+          }
+        },
+        "MR01_QUALITY": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 3,
+            "medium": 4
+          },
+          "message_length": {
+            "long": 4,
+            "medium": 3,
+            "short": 3
+          },
+          "reason_family": {
+            "pre_existing_defect": 4,
+            "shipping_damage": 3,
+            "wrong_item_fulfillment": 3
+          },
+          "composition_tags": {
+            "quality_issue": 10
+          },
+          "condition_status": {
+            "intact": 3,
+            "not_intact": 7
+          },
+          "day_counts": {
+            "0": 1,
+            "2": 1,
+            "3": 1,
+            "7": 2,
+            "8": 1,
+            "14": 1,
+            "15": 1,
+            "18": 1,
+            "40": 1
+          }
+        },
+        "MR03_REASON": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 4,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 3,
+            "short": 4
+          },
+          "reason_family": {
+            "not_stated": 10
+          },
+          "composition_tags": {
+            "custom_or_late": 3,
+            "irrelevant_detail": 3,
+            "otherwise_intact": 4
+          },
+          "condition_status": {
+            "intact": 10
+          },
+          "day_counts": {
+            "0": 1,
+            "1": 1,
+            "7": 3,
+            "8": 1,
+            "14": 2,
+            "15": 1,
+            "16": 1
+          }
+        },
+        "MR02_CONDITION": {
+          "n": 10,
+          "route": "manual_review",
+          "difficulty": {
+            "easy": 3,
+            "hard": 4,
+            "medium": 3
+          },
+          "message_length": {
+            "long": 3,
+            "medium": 4,
+            "short": 3
+          },
+          "reason_family": {
+            "changed_mind": 1,
+            "colour_style": 1,
+            "duplicate_purchase": 2,
+            "no_longer_needed": 2,
+            "preference_mismatch": 2,
+            "size_fit": 2
+          },
+          "composition_tags": {
+            "contradiction": 4,
+            "explicit_uncertainty": 3,
+            "missing_information": 3
+          },
+          "condition_status": {
+            "conflicting": 4,
+            "unknown": 6
+          },
+          "day_counts": {
+            "0": 1,
+            "3": 1,
+            "5": 1,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "9": 1,
+            "11": 1,
+            "13": 1,
+            "14": 1
+          }
+        }
+      }
+    }
+  },
+  "validation": {
+    "policy_recomputed_matches": 180,
+    "valid_trusted_dates": 180,
+    "unique_ids": true
+  },
+  "blueprint_file_sha256": {
+    "dev": "00c67b86bb87988a3e028f07c64cdef3e9ddd0b203612d963ef0e52a33034832",
+    "test": "d71e4c86f24d1308c3abfbbd3adf70014b1156e9f22d9212c4a18d545902e772"
+  },
+  "phase": "2A",
+  "api_calls": 0
+}

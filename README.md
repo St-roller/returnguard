@@ -36,3 +36,16 @@ To run without local key configuration, add a repository Actions secret named `O
 - A `manual_review` output distinguishes `policy_required`, `low_confidence` and `validation_failure`. The threshold applies only to an otherwise automatic policy decision.
 - The policy is a simplified project policy, including a 14-day brand goodwill extension. It is not a complete returns policy or a consumer-facing legal decision.
 - Phase 1 includes no 180-case dataset, baseline, Streamlit UI, threshold tuning or held-out results.
+
+## Phase 2A blueprint review
+
+`data/returnguard_synth_v1/blueprints_dev.jsonl` and `blueprints_test.jsonl` contain 90 **design blueprints** each. They specify intended order/extraction facts and language constraints; they contain no Chinese customer messages and are not a finished benchmark. Their route/rule targets are design metadata, not model input. `matrix_report.json` records every quota, boundary-day counts, policy recomputations and blueprint file hashes. `review_samples.json` presents five complete blueprints for design review.
+
+Recheck the committed files without changing them:
+
+```bash
+python -m pytest -q
+python scripts/generate_blueprints.py --check
+```
+
+The deterministic generator is `scripts/generate_blueprints.py`; it creates missing outputs but refuses to overwrite different existing bytes. Phase 2A makes **zero API calls**. Surface generation with DeepSeek and formal dev/test evaluation require later design approval and are not part of these blueprints.

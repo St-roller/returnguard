@@ -1,0 +1,197 @@
+{
+  "purpose": "Phase 2A design review only; no Chinese messages or API calls",
+  "blueprints": [
+    {
+      "blueprint_id": "dev_bp_001",
+      "split": "dev",
+      "blueprint_version": "blueprint_v1.0",
+      "policy_version": "policy_v1.0",
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY"
+      },
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-01",
+        "request_date": "2026-05-01",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "generation_constraints": {
+        "reason_family": "size_fit",
+        "difficulty": "easy",
+        "message_length": "short",
+        "tone": "neutral",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": 0,
+        "composition_tag": "base",
+        "issue_family": null
+      },
+      "provenance": {
+        "blueprint_generator": "deterministic_python",
+        "generator_version": "deterministic_blueprints_v1",
+        "blueprint_batch_id": "dev_blueprints_v1"
+      }
+    },
+    {
+      "blueprint_id": "test_bp_029",
+      "split": "test",
+      "blueprint_version": "blueprint_v1.0",
+      "policy_version": "policy_v1.0",
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14"
+      },
+      "trusted_order_facts": {
+        "receipt_date": "2026-06-24",
+        "request_date": "2026-07-08",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "generation_constraints": {
+        "reason_family": "duplicate_purchase",
+        "difficulty": "medium",
+        "message_length": "short",
+        "tone": "colloquial",
+        "linguistic_features": [
+          "evidence_spread_across_sentences"
+        ],
+        "boundary_day": 14,
+        "composition_tag": "base",
+        "issue_family": null
+      },
+      "provenance": {
+        "blueprint_generator": "deterministic_python",
+        "generator_version": "deterministic_blueprints_v1",
+        "blueprint_batch_id": "test_blueprints_v1"
+      }
+    },
+    {
+      "blueprint_id": "dev_bp_037",
+      "split": "dev",
+      "blueprint_version": "blueprint_v1.0",
+      "policy_version": "policy_v1.0",
+      "target": {
+        "route": "ineligible",
+        "rule_id": "IN01_CUSTOM"
+      },
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-01",
+        "request_date": "2026-05-16",
+        "is_custom_made": true
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "generation_constraints": {
+        "reason_family": "duplicate_purchase",
+        "difficulty": "easy",
+        "message_length": "long",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": 15,
+        "composition_tag": "also_late",
+        "issue_family": null
+      },
+      "provenance": {
+        "blueprint_generator": "deterministic_python",
+        "generator_version": "deterministic_blueprints_v1",
+        "blueprint_batch_id": "dev_blueprints_v1"
+      }
+    },
+    {
+      "blueprint_id": "dev_bp_061",
+      "split": "dev",
+      "blueprint_version": "blueprint_v1.0",
+      "policy_version": "policy_v1.0",
+      "target": {
+        "route": "manual_review",
+        "rule_id": "MR01_QUALITY"
+      },
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-16",
+        "request_date": "2026-05-31",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "quality_or_fulfillment_issue",
+        "tag_status": "attached",
+        "damage_or_stain": "present",
+        "use_beyond_inspection": "no"
+      },
+      "generation_constraints": {
+        "reason_family": "pre_existing_defect",
+        "difficulty": "easy",
+        "message_length": "long",
+        "tone": "neutral",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": 15,
+        "composition_tag": "quality_issue",
+        "issue_family": "pre_existing_defect"
+      },
+      "provenance": {
+        "blueprint_generator": "deterministic_python",
+        "generator_version": "deterministic_blueprints_v1",
+        "blueprint_batch_id": "dev_blueprints_v1"
+      }
+    },
+    {
+      "blueprint_id": "test_bp_090",
+      "split": "test",
+      "blueprint_version": "blueprint_v1.0",
+      "policy_version": "policy_v1.0",
+      "target": {
+        "route": "manual_review",
+        "rule_id": "MR02_CONDITION"
+      },
+      "trusted_order_facts": {
+        "receipt_date": "2026-06-14",
+        "request_date": "2026-06-28",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "conflicting",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "generation_constraints": {
+        "reason_family": "size_fit",
+        "difficulty": "hard",
+        "message_length": "medium",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "irrelevant_detail",
+          "complex_negation",
+          "two_distinct_conflicting_condition_spans"
+        ],
+        "boundary_day": 14,
+        "composition_tag": "contradiction",
+        "issue_family": null
+      },
+      "provenance": {
+        "blueprint_generator": "deterministic_python",
+        "generator_version": "deterministic_blueprints_v1",
+        "blueprint_batch_id": "test_blueprints_v1"
+      }
+    }
+  ]
+}
