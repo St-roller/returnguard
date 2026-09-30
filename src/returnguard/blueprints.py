@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from datetime import date, timedelta
+from random import Random
 from typing import Literal
 
 from pydantic import Field
@@ -18,6 +19,8 @@ from .validation import derive_facts, validate_input
 BLUEPRINT_VERSION = "blueprint_v1.0"
 DATASET_VERSION = "ReturnGuard-Synth-v1"
 GENERATOR_VERSION = "deterministic_blueprints_v1"
+TEST_ASSIGNMENT_VERSION = "independent_test_assignment_v1.1"
+TEST_ASSIGNMENT_SEED = 2026093003
 SPLITS = ("dev", "test")
 RULE_QUOTAS = {
     "EL01_7DAY": ("eligible", (5, 5, 5)),
@@ -71,7 +74,7 @@ class GenerationConstraints(StrictModel):
 
 class BlueprintProvenance(StrictModel):
     blueprint_generator: Literal["deterministic_python"]
-    generator_version: Literal["deterministic_blueprints_v1"]
+    generator_version: Literal["deterministic_blueprints_v1", "deterministic_blueprints_v1.1"]
     blueprint_batch_id: Literal["dev_blueprints_v1", "test_blueprints_v1"]
 
 
@@ -248,7 +251,138 @@ def generate_blueprints() -> list[Blueprint]:
                         blueprint_batch_id=f"{split}_blueprints_v1",
                     ),
                 ))
+    test = [b for b in blueprints if b.split == "test"]
+    independent_test_assignment(test)
     return blueprints
+
+
+def _days(bp: Blueprint) -> int:
+    return (bp.trusted_order_facts.request_date - bp.trusted_order_facts.receipt_date).days
+
+
+def quota_signature(rows: list[Blueprint]) -> dict:
+    """Marginals preserved by test reassignment, including exact day counts."""
+    result = {}
+    for rule in RULE_QUOTAS:
+        subset = [b for b in rows if b.target.rule_id == rule]
+        result[rule] = {
+            "day": _count(_days(b) for b in subset),
+            "difficulty": _count(b.generation_constraints.difficulty for b in subset),
+            "length": _count(b.generation_constraints.message_length for b in subset),
+            "reason_family": _count(b.generation_constraints.reason_family for b in subset),
+            "composition": _count(b.generation_constraints.composition_tag for b in subset),
+            "facts": _count(str((b.trusted_order_facts.is_custom_made,
+                                  tuple(b.intended_extraction.model_dump().items()))) for b in subset),
+        }
+    result["tone_by_route"] = {
+        route: _count(b.generation_constraints.tone for b in rows if b.target.route == route)
+        for route in ("eligible", "ineligible", "manual_review")
+    }
+    return result
+
+
+def independent_test_assignment(rows: list[Blueprint]) -> None:
+    """Split-local permutations use no dev rows, messages, or dev-derived seed."""
+    before = quota_signature(rows)
+    rng = Random(TEST_ASSIGNMENT_SEED)
+    for rule in RULE_QUOTAS:
+        subset = [b for b in rows if b.target.rule_id == rule]
+        # Recombine each axis independently. Facts/composition remain bundled
+        # because contradiction, uncertainty and quality families have semantics.
+        bundles = [(b.trusted_order_facts.is_custom_made, b.intended_extraction.model_copy(deep=True),
+                    b.generation_constraints.composition_tag, b.generation_constraints.issue_family)
+                   for b in subset]
+        rng.shuffle(bundles)
+        for b, (custom, facts, composition, issue) in zip(subset, bundles):
+            b.trusted_order_facts.is_custom_made = custom
+            b.intended_extraction = facts
+            b.generation_constraints.composition_tag = composition
+            b.generation_constraints.issue_family = issue
+        # Some precedence compositions constrain the permissible day range.
+        # Assign the original day multiset within those semantic groups.
+        old_days = defaultdict(list)
+        for i in range(len(subset)):
+            day, custom, _, composition, _ = _design(rule, i)
+            key = (composition, custom) if rule in {"IN01_CUSTOM", "MR03_REASON"} else None
+            old_days[key].append(day)
+        for key, days in old_days.items():
+            rng.shuffle(days)
+            group = [b for b in subset if (
+                (b.generation_constraints.composition_tag, b.trusted_order_facts.is_custom_made)
+                if rule in {"IN01_CUSTOM", "MR03_REASON"} else None
+            ) == key]
+            for b, day in zip(group, days):
+                b.trusted_order_facts.request_date = b.trusted_order_facts.receipt_date + timedelta(days=day)
+                b.generation_constraints.boundary_day = day if day in BOUNDARIES else None
+        for field in ("difficulty", "message_length"):
+            values = [getattr(b.generation_constraints, field) for b in subset]
+            rng.shuffle(values)
+            if field == "message_length" and rule == "MR03_REASON":
+                # Substantial irrelevant detail still needs medium/long space.
+                bad = [i for i, b in enumerate(subset) if b.generation_constraints.composition_tag == "irrelevant_detail" and values[i] == "short"]
+                donors = [i for i, b in enumerate(subset) if b.generation_constraints.composition_tag != "irrelevant_detail" and values[i] != "short"]
+                rng.shuffle(donors)
+                for i, j in zip(bad, donors):
+                    values[i], values[j] = values[j], values[i]
+            for b, value in zip(subset, values):
+                setattr(b.generation_constraints, field, value)
+        families = [b.generation_constraints.reason_family for b in subset]
+        rng.shuffle(families)
+        for b, family in zip(subset, families):
+            c = b.generation_constraints
+            c.reason_family = family if b.intended_extraction.return_reason == "ordinary_return" else (c.issue_family or "not_stated")
+            c.linguistic_features = _features(c.difficulty, rng.randrange(10000), c.composition_tag)
+            b.provenance.generator_version = "deterministic_blueprints_v1.1"
+    for route in ("eligible", "ineligible", "manual_review"):
+        subset = [b for b in rows if b.target.route == route]
+        tones = [b.generation_constraints.tone for b in subset]
+        rng.shuffle(tones)
+        for b, tone in zip(subset, tones):
+            b.generation_constraints.tone = tone
+    _check(quota_signature(rows), before, "test reassignment quota preservation")
+
+
+def structural_overlap_report(blueprints: list[Blueprint]) -> dict:
+    """Compare structure without IDs, absolute dates, split or provenance."""
+    dev = sorted((b for b in blueprints if b.split == "dev"), key=lambda b: b.blueprint_id)
+    test = sorted((b for b in blueprints if b.split == "test"), key=lambda b: b.blueprint_id)
+    core_fields = ["route", "rule_id", "days_since_receipt", "is_custom_made", "intended_extraction",
+                   "difficulty", "message_length", "composition_tag", "issue_family"]
+    full_fields = core_fields + ["tone", "reason_family", "linguistic_features"]
+
+    def signature(b, full=False):
+        c = b.generation_constraints
+        core = (b.target.route, b.target.rule_id, _days(b), b.trusted_order_facts.is_custom_made,
+                tuple(b.intended_extraction.model_dump().values()), c.difficulty, c.message_length,
+                c.composition_tag, c.issue_family)
+        return core + (c.tone, c.reason_family, tuple(sorted(set(c.linguistic_features)))) if full else core
+
+    def pairs(full=False, same_index=False):
+        candidates = zip(dev, test) if same_index else ((a, b) for a in dev for b in test)
+        return [{"dev": a.blueprint_id, "test": b.blueprint_id} for a, b in candidates if signature(a, full) == signature(b, full)]
+
+    core_same, full_same = pairs(same_index=True), pairs(full=True, same_index=True)
+    core_all, full_all = pairs(), pairs(full=True)
+    axis_matches = {
+        "day": sum(_days(a) == _days(b) for a, b in zip(dev, test)),
+        **{name: sum(getattr(a.generation_constraints, name) == getattr(b.generation_constraints, name)
+                     for a, b in zip(dev, test))
+           for name in ("difficulty", "message_length", "tone", "reason_family")},
+        "linguistic_features": sum(set(a.generation_constraints.linguistic_features) == set(b.generation_constraints.linguistic_features) for a, b in zip(dev, test)),
+    }
+    return {
+        "signature_excludes": ["blueprint_id", "split", "absolute_dates", "provenance"],
+        "core_signature_fields": core_fields, "full_signature_fields": full_fields,
+        "same_index_compared": len(dev), "all_cross_split_pairs_compared": len(dev) * len(test),
+        "same_index_core_twins": len(core_same), "same_index_full_twins": len(full_same),
+        "all_pairs_core_twins": len(core_all), "all_pairs_full_twins": len(full_all),
+        "core_overlap_pairs": core_all, "full_overlap_pairs": full_all,
+        "same_index_axis_matches": axis_matches,
+        "test_assignment": {"version": TEST_ASSIGNMENT_VERSION, "seed": TEST_ASSIGNMENT_SEED,
+                            "source": "test-only quota pools; independent axis permutations",
+                            "seed_selection": "fixed construction seed satisfying zero same-index core twins; no model evaluation",
+                            "quota_preservation_checked": True},
+    }
 
 
 def _check(actual: object, expected: object, description: str) -> None:
@@ -361,7 +495,7 @@ def validate_blueprints(blueprints: list[Blueprint], policy: Policy | None = Non
     _check(len(set(ids)), len(ids), "unique blueprint IDs")
     report: dict = {
         "dataset_version": DATASET_VERSION, "blueprint_version": BLUEPRINT_VERSION,
-        "generator_version": GENERATOR_VERSION, "policy_version": policy.version,
+        "generator_version": "deterministic_blueprints_v1.1", "policy_version": policy.version,
         "total_n": len(blueprints), "splits": {},
         "validation": {"policy_recomputed_matches": 0, "valid_trusted_dates": 0, "unique_ids": True},
     }
@@ -436,4 +570,8 @@ def validate_blueprints(blueprints: list[Blueprint], policy: Policy | None = Non
             "boundary_days": boundaries, "rules": rule_report,
         }
     _check(report["validation"]["policy_recomputed_matches"], 180, "policy recomputations")
+    overlap = structural_overlap_report(blueprints)
+    _check(overlap["same_index_core_twins"], 0, "same-index core structural twins")
+    _check(overlap["same_index_full_twins"], 0, "same-index full structural twins")
+    report["cross_split_structural_overlap"] = overlap
     return report

@@ -49,6 +49,8 @@ def main() -> None:
     report_path = OUT / "matrix_report.json"
     report_bytes = (json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     _put_or_check(report_path, report_bytes, args.check)
+    overlap_bytes = (json.dumps(report["cross_split_structural_overlap"], ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    _put_or_check(OUT / "overlap_report.json", overlap_bytes, args.check)
     sample_ids = ("dev_bp_001", "test_bp_029", "dev_bp_037", "dev_bp_061", "test_bp_090")
     samples = {b.blueprint_id: b for b in generated if b.blueprint_id in sample_ids}
     if len(samples) != len(sample_ids):
@@ -64,6 +66,8 @@ def main() -> None:
         "policy_recomputed_matches": report["validation"]["policy_recomputed_matches"],
         "valid_trusted_dates": report["validation"]["valid_trusted_dates"],
         "api_calls": report["api_calls"], "mode": "check" if args.check else "generate",
+        "same_index_core_twins": report["cross_split_structural_overlap"]["same_index_core_twins"],
+        "same_index_full_twins": report["cross_split_structural_overlap"]["same_index_full_twins"],
     }, sort_keys=True))
 
 

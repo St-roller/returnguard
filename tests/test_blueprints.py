@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from returnguard.blueprints import Blueprint, BlueprintError, generate_blueprints, validate_blueprints
+from returnguard.blueprints import quota_signature, structural_overlap_report
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -48,3 +49,42 @@ def test_validator_rejects_corrupted_blueprints(policy, change):
         raw[30]["generation_constraints"]["composition_tag"] = "also_late"
     with pytest.raises(BlueprintError):
         validate_blueprints([Blueprint.model_validate(row) for row in raw], policy)
+
+
+def test_test_reassignment_preserves_marginals_and_dev_bytes(monkeypatch):
+    import returnguard.blueprints as module
+
+    revised = generate_blueprints()
+    monkeypatch.setattr(module, "independent_test_assignment", lambda rows: None)
+    original = generate_blueprints()
+    assert [b for b in revised if b.split == "dev"] == [b for b in original if b.split == "dev"]
+    assert quota_signature([b for b in revised if b.split == "test"]) == quota_signature([
+        b for b in original if b.split == "test"
+    ])
+    overlap = structural_overlap_report(revised)
+    assert overlap["same_index_core_twins"] == 0
+    assert overlap["same_index_full_twins"] == 0
+    assert overlap["all_cross_split_pairs_compared"] == 8100
+
+
+def test_structural_audit_ignores_dates_ids_and_provenance(policy):
+    from datetime import timedelta
+
+    rows = generate_blueprints()
+    dev = [b for b in rows if b.split == "dev"]
+    twins = []
+    for b in dev:
+        twin = b.model_copy(deep=True)
+        twin.split = "test"
+        twin.blueprint_id = b.blueprint_id.replace("dev_", "test_")
+        twin.provenance.blueprint_batch_id = "test_blueprints_v1"
+        twin.trusted_order_facts.receipt_date += timedelta(days=60)
+        twin.trusted_order_facts.request_date += timedelta(days=60)
+        features = twin.generation_constraints.linguistic_features
+        twin.generation_constraints.linguistic_features = list(reversed(features)) + features[:1]
+        twins.append(twin)
+    overlap = structural_overlap_report(dev + twins)
+    assert overlap["same_index_core_twins"] == 90
+    assert overlap["same_index_full_twins"] == 90
+    with pytest.raises(BlueprintError, match="same-index core structural twins"):
+        validate_blueprints(dev + twins, policy)

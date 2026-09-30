@@ -50,7 +50,7 @@
       },
       "trusted_order_facts": {
         "receipt_date": "2026-06-24",
-        "request_date": "2026-07-08",
+        "request_date": "2026-07-02",
         "is_custom_made": false
       },
       "intended_extraction": {
@@ -60,20 +60,21 @@
         "use_beyond_inspection": "no"
       },
       "generation_constraints": {
-        "reason_family": "duplicate_purchase",
-        "difficulty": "medium",
+        "reason_family": "changed_mind",
+        "difficulty": "hard",
         "message_length": "short",
         "tone": "colloquial",
         "linguistic_features": [
-          "evidence_spread_across_sentences"
+          "awkward_wording",
+          "self_correction"
         ],
-        "boundary_day": 14,
+        "boundary_day": 8,
         "composition_tag": "base",
         "issue_family": null
       },
       "provenance": {
         "blueprint_generator": "deterministic_python",
-        "generator_version": "deterministic_blueprints_v1",
+        "generator_version": "deterministic_blueprints_v1.1",
         "blueprint_batch_id": "test_blueprints_v1"
       }
     },
@@ -164,32 +165,31 @@
       },
       "trusted_order_facts": {
         "receipt_date": "2026-06-14",
-        "request_date": "2026-06-28",
+        "request_date": "2026-06-17",
         "is_custom_made": false
       },
       "intended_extraction": {
         "return_reason": "ordinary_return",
-        "tag_status": "conflicting",
+        "tag_status": "unknown",
         "damage_or_stain": "absent",
         "use_beyond_inspection": "no"
       },
       "generation_constraints": {
-        "reason_family": "size_fit",
-        "difficulty": "hard",
-        "message_length": "medium",
-        "tone": "polite_conversational",
+        "reason_family": "no_longer_needed",
+        "difficulty": "medium",
+        "message_length": "long",
+        "tone": "colloquial",
         "linguistic_features": [
-          "irrelevant_detail",
-          "complex_negation",
-          "two_distinct_conflicting_condition_spans"
+          "non_trivial_negation",
+          "explicit_condition_uncertainty"
         ],
-        "boundary_day": 14,
-        "composition_tag": "contradiction",
+        "boundary_day": null,
+        "composition_tag": "explicit_uncertainty",
         "issue_family": null
       },
       "provenance": {
         "blueprint_generator": "deterministic_python",
-        "generator_version": "deterministic_blueprints_v1",
+        "generator_version": "deterministic_blueprints_v1.1",
         "blueprint_batch_id": "test_blueprints_v1"
       }
     }

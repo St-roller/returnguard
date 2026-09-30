@@ -1,7 +1,7 @@
 {
   "dataset_version": "ReturnGuard-Synth-v1",
   "blueprint_version": "blueprint_v1.0",
-  "generator_version": "deterministic_blueprints_v1",
+  "generator_version": "deterministic_blueprints_v1.1",
   "policy_version": "policy_v1.0",
   "total_n": 180,
   "splits": {
@@ -474,41 +474,41 @@
         "0": {
           "n": 7,
           "difficulty": {
-            "easy": 5,
-            "hard": 1,
-            "medium": 1
+            "easy": 2,
+            "hard": 3,
+            "medium": 2
           }
         },
         "7": {
           "n": 12,
           "difficulty": {
-            "easy": 2,
-            "hard": 3,
-            "medium": 7
+            "easy": 5,
+            "hard": 4,
+            "medium": 3
           }
         },
         "8": {
           "n": 9,
           "difficulty": {
             "easy": 2,
-            "hard": 5,
-            "medium": 2
+            "hard": 3,
+            "medium": 4
           }
         },
         "14": {
           "n": 9,
           "difficulty": {
-            "easy": 2,
-            "hard": 5,
-            "medium": 2
+            "easy": 3,
+            "hard": 2,
+            "medium": 4
           }
         },
         "15": {
           "n": 7,
           "difficulty": {
             "easy": 4,
-            "hard": 2,
-            "medium": 1
+            "hard": 1,
+            "medium": 2
           }
         }
       },
@@ -833,9 +833,106 @@
     "valid_trusted_dates": 180,
     "unique_ids": true
   },
+  "cross_split_structural_overlap": {
+    "signature_excludes": [
+      "blueprint_id",
+      "split",
+      "absolute_dates",
+      "provenance"
+    ],
+    "core_signature_fields": [
+      "route",
+      "rule_id",
+      "days_since_receipt",
+      "is_custom_made",
+      "intended_extraction",
+      "difficulty",
+      "message_length",
+      "composition_tag",
+      "issue_family"
+    ],
+    "full_signature_fields": [
+      "route",
+      "rule_id",
+      "days_since_receipt",
+      "is_custom_made",
+      "intended_extraction",
+      "difficulty",
+      "message_length",
+      "composition_tag",
+      "issue_family",
+      "tone",
+      "reason_family",
+      "linguistic_features"
+    ],
+    "same_index_compared": 90,
+    "all_cross_split_pairs_compared": 8100,
+    "same_index_core_twins": 0,
+    "same_index_full_twins": 0,
+    "all_pairs_core_twins": 10,
+    "all_pairs_full_twins": 0,
+    "core_overlap_pairs": [
+      {
+        "dev": "dev_bp_001",
+        "test": "test_bp_008"
+      },
+      {
+        "dev": "dev_bp_014",
+        "test": "test_bp_011"
+      },
+      {
+        "dev": "dev_bp_017",
+        "test": "test_bp_026"
+      },
+      {
+        "dev": "dev_bp_026",
+        "test": "test_bp_028"
+      },
+      {
+        "dev": "dev_bp_027",
+        "test": "test_bp_023"
+      },
+      {
+        "dev": "dev_bp_028",
+        "test": "test_bp_016"
+      },
+      {
+        "dev": "dev_bp_041",
+        "test": "test_bp_043"
+      },
+      {
+        "dev": "dev_bp_041",
+        "test": "test_bp_049"
+      },
+      {
+        "dev": "dev_bp_044",
+        "test": "test_bp_043"
+      },
+      {
+        "dev": "dev_bp_044",
+        "test": "test_bp_049"
+      }
+    ],
+    "full_overlap_pairs": [],
+    "same_index_axis_matches": {
+      "day": 15,
+      "difficulty": 35,
+      "message_length": 30,
+      "tone": 27,
+      "reason_family": 24,
+      "linguistic_features": 17
+    },
+    "test_assignment": {
+      "version": "independent_test_assignment_v1.1",
+      "seed": 2026093003,
+      "source": "test-only quota pools; independent axis permutations",
+      "seed_selection": "fixed construction seed satisfying zero same-index core twins; no model evaluation",
+      "quota_preservation_checked": true
+    }
+  },
   "blueprint_file_sha256": {
     "dev": "00c67b86bb87988a3e028f07c64cdef3e9ddd0b203612d963ef0e52a33034832",
-    "test": "d71e4c86f24d1308c3abfbbd3adf70014b1156e9f22d9212c4a18d545902e772"
+    "test": "27c02b91f81f0416bb6d1bdd4846f4ace19acaef560b94f9001a13077a955c88"
   },
   "phase": "2A",
   "api_calls": 0
