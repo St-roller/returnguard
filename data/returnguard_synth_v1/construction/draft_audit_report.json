@@ -1,0 +1,1532 @@
+{
+  "audit_version": "dataset_audit_v1",
+  "dataset_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+  "n": 180,
+  "pairs_checked": {
+    "dev": 3741,
+    "cross_split": 7569,
+    "test": 3741
+  },
+  "exact_duplicate_groups": [],
+  "nonempty_message_count": 174,
+  "empty_message_cases": [
+    "dev_008",
+    "dev_014",
+    "dev_053",
+    "test_015",
+    "test_033",
+    "test_054"
+  ],
+  "exact_duplicate_count": 0,
+  "near_duplicate_pairs": [
+    {
+      "pair_id": "d34b10c4d478f98a2896098dfa25519cb63e48cff53e1f256307e0489d261c6e",
+      "case_a": "dev_001",
+      "case_b": "dev_019",
+      "scope": "dev",
+      "sequence_ratio": 0.86957,
+      "char3_jaccard": 0.58537
+    },
+    {
+      "pair_id": "f53d60d4b50ef816e9b3ff5bb5b36e0d797b25339ea30a6b8c87d77d1545b1eb",
+      "case_a": "dev_004",
+      "case_b": "dev_044",
+      "scope": "dev",
+      "sequence_ratio": 0.85714,
+      "char3_jaccard": 0.58333
+    },
+    {
+      "pair_id": "8d5ddf653f00e9d353a3c79acee5725bec88a508e07c4b2074734733088923c5",
+      "case_a": "dev_017",
+      "case_b": "dev_028",
+      "scope": "dev",
+      "sequence_ratio": 0.85714,
+      "char3_jaccard": 0.33333
+    },
+    {
+      "pair_id": "41b25677e6dde70c873fbe55acd10893a3d9204f90fd7a8237813c9be167f536",
+      "case_a": "dev_017",
+      "case_b": "dev_029",
+      "scope": "dev",
+      "sequence_ratio": 0.98246,
+      "char3_jaccard": 0.82759
+    },
+    {
+      "pair_id": "4273e1a7bc9e68b80e16030490c9719fb4dddb89ab53ff4d88e749954a1b28ee",
+      "case_a": "dev_017",
+      "case_b": "test_030",
+      "scope": "cross_split",
+      "sequence_ratio": 0.83077,
+      "char3_jaccard": 0.5641
+    },
+    {
+      "pair_id": "b83b561476a6ad86c58b77ebc04707d138c95973b0e6ec12ab4aa6482394dcf2",
+      "case_a": "dev_017",
+      "case_b": "test_034",
+      "scope": "cross_split",
+      "sequence_ratio": 0.80645,
+      "char3_jaccard": 0.34884
+    },
+    {
+      "pair_id": "6c1199be7895641b96584d9b21d0cfc1048dd328eafccde79790fc2afa9b0a36",
+      "case_a": "dev_028",
+      "case_b": "dev_029",
+      "scope": "dev",
+      "sequence_ratio": 0.84211,
+      "char3_jaccard": 0.2619
+    },
+    {
+      "pair_id": "b83a1f7d2e3e73693a605252a5b1d769579d8881b9d250663020cccac355f87e",
+      "case_a": "dev_028",
+      "case_b": "test_034",
+      "scope": "cross_split",
+      "sequence_ratio": 0.83871,
+      "char3_jaccard": 0.28889
+    },
+    {
+      "pair_id": "9f4119443a7d9d792a4a001c80d5aec843b975c4141a46b8c8ccdec9639185c7",
+      "case_a": "dev_029",
+      "case_b": "test_030",
+      "scope": "cross_split",
+      "sequence_ratio": 0.81818,
+      "char3_jaccard": 0.47619
+    },
+    {
+      "pair_id": "f4dcfec2012472eb0d3bcff8b05c1bc3c1eaaa749013bb096f005ef042b477b9",
+      "case_a": "dev_057",
+      "case_b": "test_034",
+      "scope": "cross_split",
+      "sequence_ratio": 0.81159,
+      "char3_jaccard": 0.3
+    },
+    {
+      "pair_id": "a9468ab52d4db3c239d0877ac8480487413e9662f04052ff00e7a2c7d190c0f0",
+      "case_a": "test_030",
+      "case_b": "test_034",
+      "scope": "test",
+      "sequence_ratio": 0.8169,
+      "char3_jaccard": 0.36735
+    }
+  ],
+  "near_duplicate_thresholds": {
+    "sequence_ratio_gte": 0.8,
+    "char3_jaccard_gte": 0.55,
+    "rule": "OR"
+  },
+  "model_visible_leakage": [],
+  "annotation_only_flags": [],
+  "input_word_flags": [
+    {
+      "case_id": "test_023",
+      "hits": [
+        "标签"
+      ]
+    },
+    {
+      "case_id": "test_036",
+      "hits": [
+        "标签"
+      ]
+    },
+    {
+      "case_id": "test_047",
+      "hits": [
+        "标签"
+      ]
+    },
+    {
+      "case_id": "test_081",
+      "hits": [
+        "标签"
+      ]
+    }
+  ],
+  "generator_artifact_word_flags": [
+    {
+      "case_id": "test_023",
+      "hits": [
+        "标签"
+      ],
+      "model_visible": false
+    },
+    {
+      "case_id": "test_036",
+      "hits": [
+        "标签"
+      ],
+      "model_visible": false
+    },
+    {
+      "case_id": "test_047",
+      "hits": [
+        "标签"
+      ],
+      "model_visible": false
+    },
+    {
+      "case_id": "test_081",
+      "hits": [
+        "标签"
+      ],
+      "model_visible": false
+    }
+  ],
+  "generation_request_leakage": [],
+  "generation_requests_scanned": 180,
+  "id_label_leakage": [],
+  "formatting_by_route": {
+    "eligible": [
+      {
+        "case_id": "dev_001",
+        "characters": 33,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_002",
+        "characters": 58,
+        "sentences": 3,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_003",
+        "characters": 56,
+        "sentences": 1,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_004",
+        "characters": 19,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_005",
+        "characters": 56,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_006",
+        "characters": 49,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_007",
+        "characters": 21,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_008",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_009",
+        "characters": 70,
+        "sentences": 2,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_010",
+        "characters": 18,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_011",
+        "characters": 75,
+        "sentences": 3,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_012",
+        "characters": 50,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_013",
+        "characters": 28,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_014",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_015",
+        "characters": 40,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_016",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_017",
+        "characters": 28,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_018",
+        "characters": 66,
+        "sentences": 2,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_019",
+        "characters": 36,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_020",
+        "characters": 20,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_021",
+        "characters": 59,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_022",
+        "characters": 25,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_023",
+        "characters": 22,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_024",
+        "characters": 68,
+        "sentences": 3,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_025",
+        "characters": 41,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_026",
+        "characters": 20,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_027",
+        "characters": 85,
+        "sentences": 3,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_028",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_029",
+        "characters": 29,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_030",
+        "characters": 62,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_001",
+        "characters": 26,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_002",
+        "characters": 45,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_003",
+        "characters": 50,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_004",
+        "characters": 82,
+        "sentences": 3,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_005",
+        "characters": 72,
+        "sentences": 3,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_006",
+        "characters": 31,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_007",
+        "characters": 19,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_008",
+        "characters": 30,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_009",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_010",
+        "characters": 68,
+        "sentences": 3,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_011",
+        "characters": 51,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_012",
+        "characters": 35,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_013",
+        "characters": 52,
+        "sentences": 2,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_014",
+        "characters": 67,
+        "sentences": 2,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_015",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_016",
+        "characters": 37,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_017",
+        "characters": 54,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_018",
+        "characters": 18,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_019",
+        "characters": 78,
+        "sentences": 2,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_020",
+        "characters": 44,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_021",
+        "characters": 60,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_022",
+        "characters": 43,
+        "sentences": 1,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_023",
+        "characters": 75,
+        "sentences": 4,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_024",
+        "characters": 67,
+        "sentences": 1,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_025",
+        "characters": 62,
+        "sentences": 3,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_026",
+        "characters": 15,
+        "sentences": 2,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_027",
+        "characters": 36,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_028",
+        "characters": 15,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_029",
+        "characters": 21,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_030",
+        "characters": 37,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      }
+    ],
+    "ineligible": [
+      {
+        "case_id": "dev_031",
+        "characters": 64,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_032",
+        "characters": 41,
+        "sentences": 3,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_033",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_034",
+        "characters": 51,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_035",
+        "characters": 42,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_036",
+        "characters": 27,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_037",
+        "characters": 64,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_038",
+        "characters": 45,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_039",
+        "characters": 32,
+        "sentences": 4,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_040",
+        "characters": 62,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_041",
+        "characters": 28,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_042",
+        "characters": 65,
+        "sentences": 3,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_043",
+        "characters": 45,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_044",
+        "characters": 23,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_045",
+        "characters": 56,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_046",
+        "characters": 44,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_047",
+        "characters": 21,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_048",
+        "characters": 56,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_049",
+        "characters": 43,
+        "sentences": 1,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_050",
+        "characters": 20,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_051",
+        "characters": 43,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_052",
+        "characters": 23,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_053",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_054",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_055",
+        "characters": 23,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_056",
+        "characters": 79,
+        "sentences": 1,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_057",
+        "characters": 35,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_058",
+        "characters": 24,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_059",
+        "characters": 86,
+        "sentences": 4,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_060",
+        "characters": 36,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_031",
+        "characters": 82,
+        "sentences": 3,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_032",
+        "characters": 34,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_033",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_034",
+        "characters": 34,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_035",
+        "characters": 63,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_036",
+        "characters": 14,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_037",
+        "characters": 39,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_038",
+        "characters": 68,
+        "sentences": 4,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_039",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_040",
+        "characters": 43,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_041",
+        "characters": 46,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_042",
+        "characters": 52,
+        "sentences": 3,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_043",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_044",
+        "characters": 55,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_045",
+        "characters": 24,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_046",
+        "characters": 46,
+        "sentences": 3,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_047",
+        "characters": 79,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_048",
+        "characters": 83,
+        "sentences": 2,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_049",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_050",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_051",
+        "characters": 42,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_052",
+        "characters": 75,
+        "sentences": 2,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_053",
+        "characters": 39,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_054",
+        "characters": 0,
+        "sentences": 0,
+        "punctuation": 0,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_055",
+        "characters": 24,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_056",
+        "characters": 34,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_057",
+        "characters": 31,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_058",
+        "characters": 23,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_059",
+        "characters": 36,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_060",
+        "characters": 68,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      }
+    ],
+    "manual_review": [
+      {
+        "case_id": "dev_061",
+        "characters": 51,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_062",
+        "characters": 41,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_063",
+        "characters": 30,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_064",
+        "characters": 52,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_065",
+        "characters": 27,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_066",
+        "characters": 22,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_067",
+        "characters": 71,
+        "sentences": 3,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_068",
+        "characters": 26,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_069",
+        "characters": 19,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_070",
+        "characters": 58,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_071",
+        "characters": 15,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_072",
+        "characters": 48,
+        "sentences": 3,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_073",
+        "characters": 31,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_074",
+        "characters": 22,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_075",
+        "characters": 21,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_076",
+        "characters": 25,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_077",
+        "characters": 23,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_078",
+        "characters": 53,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_079",
+        "characters": 77,
+        "sentences": 3,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_080",
+        "characters": 102,
+        "sentences": 2,
+        "punctuation": 10,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_081",
+        "characters": 29,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_082",
+        "characters": 35,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_083",
+        "characters": 77,
+        "sentences": 2,
+        "punctuation": 9,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_084",
+        "characters": 24,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_085",
+        "characters": 35,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_086",
+        "characters": 67,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_087",
+        "characters": 42,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_088",
+        "characters": 21,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_089",
+        "characters": 95,
+        "sentences": 4,
+        "punctuation": 12,
+        "emoji": 0
+      },
+      {
+        "case_id": "dev_090",
+        "characters": 44,
+        "sentences": 1,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_061",
+        "characters": 35,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_062",
+        "characters": 59,
+        "sentences": 1,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_063",
+        "characters": 68,
+        "sentences": 1,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_064",
+        "characters": 59,
+        "sentences": 2,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_065",
+        "characters": 50,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_066",
+        "characters": 36,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_067",
+        "characters": 24,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_068",
+        "characters": 71,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_069",
+        "characters": 19,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_070",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_071",
+        "characters": 15,
+        "sentences": 1,
+        "punctuation": 2,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_072",
+        "characters": 20,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_073",
+        "characters": 72,
+        "sentences": 2,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_074",
+        "characters": 65,
+        "sentences": 3,
+        "punctuation": 8,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_075",
+        "characters": 32,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_076",
+        "characters": 63,
+        "sentences": 4,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_077",
+        "characters": 12,
+        "sentences": 1,
+        "punctuation": 2,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_078",
+        "characters": 37,
+        "sentences": 2,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_079",
+        "characters": 59,
+        "sentences": 2,
+        "punctuation": 6,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_080",
+        "characters": 33,
+        "sentences": 1,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_081",
+        "characters": 72,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_082",
+        "characters": 40,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_083",
+        "characters": 19,
+        "sentences": 2,
+        "punctuation": 4,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_084",
+        "characters": 48,
+        "sentences": 3,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_085",
+        "characters": 14,
+        "sentences": 1,
+        "punctuation": 2,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_086",
+        "characters": 41,
+        "sentences": 1,
+        "punctuation": 5,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_087",
+        "characters": 94,
+        "sentences": 4,
+        "punctuation": 11,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_088",
+        "characters": 28,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_089",
+        "characters": 19,
+        "sentences": 1,
+        "punctuation": 3,
+        "emoji": 0
+      },
+      {
+        "case_id": "test_090",
+        "characters": 53,
+        "sentences": 3,
+        "punctuation": 7,
+        "emoji": 0
+      }
+    ]
+  },
+  "repeated_six_character_prefixes": [
+    {
+      "prefix": "衣服不想要了",
+      "case_ids": [
+        "dev_004",
+        "dev_016",
+        "dev_044",
+        "dev_050",
+        "dev_052"
+      ]
+    },
+    {
+      "prefix": "您好,这件衣",
+      "case_ids": [
+        "dev_007",
+        "dev_057",
+        "dev_083",
+        "test_030",
+        "test_041",
+        "test_073"
+      ]
+    },
+    {
+      "prefix": "",
+      "case_ids": [
+        "dev_008",
+        "dev_014",
+        "dev_053",
+        "test_015",
+        "test_033",
+        "test_054"
+      ]
+    },
+    {
+      "prefix": "您好,我想申",
+      "case_ids": [
+        "dev_009",
+        "dev_071",
+        "test_035",
+        "test_038",
+        "test_049"
+      ]
+    },
+    {
+      "prefix": "你好,我5月",
+      "case_ids": [
+        "dev_018",
+        "dev_037",
+        "dev_045",
+        "dev_080",
+        "dev_089"
+      ]
+    },
+    {
+      "prefix": "你好,我想申",
+      "case_ids": [
+        "dev_025",
+        "dev_061",
+        "dev_087",
+        "test_002",
+        "test_025",
+        "test_046",
+        "test_061"
+      ]
+    },
+    {
+      "prefix": "您好,我6月",
+      "case_ids": [
+        "test_003",
+        "test_004",
+        "test_047",
+        "test_052",
+        "test_081"
+      ]
+    },
+    {
+      "prefix": "你好,我6月",
+      "case_ids": [
+        "test_010",
+        "test_011",
+        "test_044",
+        "test_064",
+        "test_074"
+      ]
+    }
+  ],
+  "audit_status": "pending_human_review"
+}

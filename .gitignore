@@ -6,3 +6,5 @@ __pycache__/
 results/*.jsonl
 results/*.json
 !results/.gitkeep
+data/returnguard_synth_v1/construction/raw_*.jsonl
+data/returnguard_synth_v1/construction/review_drafts.json
