@@ -1,19 +1,24 @@
 name: Phase 3B authorized locked test
 
 on:
+  push:
+    branches: [phase3-evaluation-v1]
+    paths: ['results/phase3/test_authorization.json']
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
+
+concurrency:
+  group: phase3-formal-test-v1
+  cancel-in-progress: false
 
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
-      - name: Refuse un-restored reruns
-        if: github.run_attempt != 1
-        run: exit 1
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -22,15 +27,36 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
       - run: python -m pip install -r results/phase3/requirements_lock.txt
+      - name: Refuse a new held-out invocation after a prior run
+        if: github.run_attempt == 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          previous=$(gh api repos/${{ github.repository }}/actions/workflows/phase3-test-eval.yml/runs --jq '[.workflow_runs[] | select(.id != ${{ github.run_id }} and .head_branch == "phase3-evaluation-v1")] | length')
+          test "$previous" = 0
+      - name: Restore persisted partial results before resuming
+        if: github.run_attempt != 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          artifact=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts --jq '[.artifacts[] | select(.name | startswith("phase3-test-"))] | sort_by(.id) | last | .name')
+          test -n "$artifact" && test "$artifact" != "null"
+          gh run download ${{ github.run_id }} -n "$artifact" -D .
       - run: python -m pytest -q
-      - name: Require explicit matching held-out authorization
-        run: test -f results/phase3/test_authorization.json
+      - run: python scripts/generate_blueprints.py --check
+      - name: Verify all committed authorization, projection, scorer and experiment locks
+        run: python scripts/score_locked_test.py preflight
       - name: Collect under locked config and threshold
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python scripts/run_formal_eval.py test
+      - name: Offline scoring, unchanged baseline, error analysis and handoff
+        run: python scripts/score_locked_test.py score
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: phase3-test-${{ github.run_id }}-${{ github.run_attempt }}
-          path: results/phase3/
+          path: |
+            results/phase3/
+            docs/Phase3_Formal_Evaluation_Handoff.md
+          retention-days: 30
