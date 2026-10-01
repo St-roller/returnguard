@@ -1,0 +1,14 @@
+{
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "dependency_versions": {
+    "httpx": "0.28.1",
+    "openai": "2.54.0",
+    "pydantic": "2.13.5"
+  },
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "formal_run_id": "phase3_dev_v1_2026-10-01T08:28:52.129878+00:00",
+  "github_run_attempt": "1",
+  "github_run_id": "36836532341",
+  "implementation_commit": "a150d9beb5892a45af65f1e8611cbe05a8f8f883",
+  "started_at": "2026-10-01T08:28:52.129898+00:00"
+}

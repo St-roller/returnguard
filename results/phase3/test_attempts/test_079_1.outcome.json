@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_079",
+  "completed_at": "2026-10-01T09:24:06.641165+00:00",
+  "latency_seconds": 2.3311371819999636,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"申请退货\"],\"support_score\":0.82},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌连着\"],\"support_score\":0.98},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"没污没破\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"只在家试过\"],\"support_score\":0.97}}",
+  "request_binding_sha256": "f6faf48986fd901155e7813c321684395b21d0e38b7c9790fbfc29b44bc9674f",
+  "response": {
+    "completed_at": 1790846646.0,
+    "created_at": 1790846644.0,
+    "id": "sha256:352cc5cf2be75d5b67e1f65e870eb35f0e2e690448a77ed30c1de9d1733833b0",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.00045825,
+      "cost_details": {
+        "upstream_inference_cost": 0.00045825,
+        "upstream_inference_input_cost": 0.00025785,
+        "upstream_inference_output_cost": 0.0002004
+      },
+      "input_tokens": 1032,
+      "input_tokens_details": {
+        "cache_write_tokens": 1029,
+        "cached_tokens": 0
+      },
+      "output_tokens": 167,
+      "output_tokens_details": {
+        "reasoning_tokens": 53
+      },
+      "total_tokens": 1199
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:24:04.309418+00:00"
+}

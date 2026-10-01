@@ -1,0 +1,30 @@
+{
+  "additional_live_model_calls": 0,
+  "all_critical_error_ids_accounted_for": true,
+  "approved_locks_unchanged": true,
+  "attempt_status_counts": {
+    "content_response": 90
+  },
+  "auto_routing_error_ids": [],
+  "baseline_predictions_reproduced_byte_for_byte": true,
+  "blueprint_cases_verified": 180,
+  "distinct_content_response_ids": 90,
+  "exact_raw_case_concatenation_verified": true,
+  "execution_commit": "fc32b0451522887d9d3a212a354a70b56c4dde0e",
+  "offline_tests_passed": 94,
+  "phase3a_manifest_files_verified": 291,
+  "pre_test_scorer_commit": "3b6272d34a7caef57d522a4e3625ec62af518a19",
+  "primary_counts_confusion_fields_and_wilson_independently_verified": true,
+  "raw_frozen_before_gold_scoring": true,
+  "raw_predictions_sha256": "ab157376bb1df7cf8980489c5690042bb922f4df0ad3bf078ff34dbee6509b69",
+  "report_readme_dataset_docs_demo_deferred": true,
+  "request_attempts": 90,
+  "request_model_prompt_schema_input_bindings_verified": true,
+  "run_attempt": 1,
+  "run_id": "36842139464",
+  "status": "PASS",
+  "stored_extractor_policy_threshold_replay_verified": true,
+  "test_cases": 90,
+  "unsafe_gold_manual_auto_routed_ids": [],
+  "verified_at": "2026-10-01T09:26:05.068050+00:00"
+}

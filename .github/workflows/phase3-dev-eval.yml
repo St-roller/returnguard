@@ -1,0 +1,74 @@
+name: Phase 3A formal dev evaluation
+
+on:
+  push:
+    branches: [phase3-evaluation-v1]
+    paths: ['results/phase3/dev_execution_authorization.json']
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: phase3-formal-dev-v1
+  cancel-in-progress: false
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip install -r results/phase3/requirements_lock.txt
+      - name: Refuse a new dev run after a prior invocation
+        if: github.run_attempt == 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          previous=$(gh api repos/${{ github.repository }}/actions/workflows/phase3-dev-eval.yml/runs --jq '[.workflow_runs[] | select(.id != ${{ github.run_id }} and .head_branch == "phase3-evaluation-v1")] | length')
+          test "$previous" = 0
+      - name: Restore prior attempt before resuming this run
+        if: github.run_attempt != 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          artifact=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts --jq '[.artifacts[] | select(.name | startswith("phase3-dev-"))] | sort_by(.id) | last | .name')
+          test -n "$artifact" && test "$artifact" != "null"
+          gh run download ${{ github.run_id }} -n "$artifact" -D .
+      - name: Verify explicit dev execution authorization and config commit
+        run: |
+          python - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          p=Path('results/phase3')
+          a=json.loads((p/'dev_execution_authorization.json').read_bytes())
+          assert a['decision']=='approved_for_formal_dev_only'
+          assert a['dev_dataset_sha256']=='39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70'
+          for name,key in [('eval_config_v1.json','eval_config_sha256'),('baseline_lock_v1.json','baseline_lock_sha256')]:
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==a[key]
+              assert (p/name).read_bytes()==subprocess.check_output(['git','show',a['locked_config_commit']+':'+str(p/name)])
+          subprocess.run(['git','merge-base','--is-ancestor',a['locked_config_commit'],'HEAD'],check=True)
+          PY
+      - run: python -m pytest -q
+      - run: python scripts/generate_blueprints.py --check
+      - run: python scripts/run_formal_eval.py preflight
+      - name: Collect 90 dev candidates only
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python scripts/run_formal_eval.py dev
+      - name: Dev-only deterministic scoring and threshold lock
+        run: python scripts/run_formal_eval.py analyze-dev
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase3-dev-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            results/phase3/
+            docs/Phase3A_Dev_Evaluation_Handoff.md
+          retention-days: 30

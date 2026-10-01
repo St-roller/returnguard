@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_052",
+  "completed_at": "2026-10-01T09:23:05.785756+00:00",
+  "latency_seconds": 1.532505542000024,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"不是不喜欢\",\"也不是有毛病\",\"朋友也送了一件一样的，所以想退掉\"],\"support_score\":0.98},\"tag_status\":{\"value\":\"removed\",\"evidence\":[\"吊牌我已经拆了\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"也没有弄脏弄坏\"],\"support_score\":0.98},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"衣服没穿出去过\"],\"support_score\":0.95}}",
+  "request_binding_sha256": "62360a4261e9f2c24d8877377f7f93f6fb64d2a93ad9ab0e554fd14aab5161b4",
+  "response": {
+    "completed_at": 1790846585.0,
+    "created_at": 1790846584.0,
+    "id": "sha256:3a07d2ffe1d40cde053b3882d5ea631b898c774a7cf21e0f036026031968b082",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.0003684,
+      "cost_details": {
+        "upstream_inference_cost": 0.0003684,
+        "upstream_inference_input_cost": 0.0002052,
+        "upstream_inference_output_cost": 0.0001632
+      },
+      "input_tokens": 1026,
+      "input_tokens_details": {
+        "cache_write_tokens": null,
+        "cached_tokens": 0
+      },
+      "output_tokens": 136,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1162
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:23:04.252721+00:00"
+}

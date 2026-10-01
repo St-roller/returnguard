@@ -1,0 +1,124 @@
+{
+  "acceptance_version": "acceptance_v1.0",
+  "attempts": [
+    {
+      "attempt": 1,
+      "case_id": "test_007",
+      "completed_at": "2026-10-01T09:21:26.972274+00:00",
+      "latency_seconds": 1.327448813999979,
+      "request_binding_sha256": "b438a0e3a15ab32ba17865b447660e212d9cc863b581fe7642260540e22f8a60",
+      "status": "content_response",
+      "timestamp": "2026-10-01T09:21:25.644256+00:00"
+    }
+  ],
+  "candidate_review_reason": null,
+  "candidate_route": "eligible",
+  "candidate_rule_id": "EL01_7DAY",
+  "case_id": "test_007",
+  "case_support_score": 0.96,
+  "dataset_file_sha256": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+  "dataset_version": "ReturnGuard-Synth-v1",
+  "derived_facts": {
+    "condition_status": "intact",
+    "conflicting_fields": [],
+    "days_since_receipt": 6,
+    "explicit_uncertainty_fields": [],
+    "missing_condition_fields": []
+  },
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "eval_config_version": "formal_eval_v1.0",
+  "evaluation_status": "completed",
+  "final_route": "eligible",
+  "formal_run_id": "phase3_test_v1_2026-10-01T09:21:13.853450+00:00",
+  "gateway": "OpenRouter",
+  "latency_seconds": 1.327448813999979,
+  "model_id_requested": "openai/gpt-5.6-luna",
+  "model_id_returned": "openai/gpt-5.6-luna",
+  "model_name": "openai/gpt-5.6-luna",
+  "model_version": "openai/gpt-5.6-luna",
+  "operating_point": "locked_test_threshold",
+  "policy_version": "policy_v1.0",
+  "prompt_sha256": "3c2d740f12bf2f80b69caea30672b5970d162b0ea93c3410c219b5dde49ce4c8",
+  "prompt_version": "extraction_v1",
+  "raw_gateway_response_file": "test_attempts/test_007_1.outcome.json",
+  "raw_structured_extraction": {
+    "damage_or_stain": {
+      "evidence": [
+        "没污没破"
+      ],
+      "support_score": 0.99,
+      "value": "absent"
+    },
+    "return_reason": {
+      "evidence": [
+        "改主意了"
+      ],
+      "support_score": 0.98,
+      "value": "ordinary_return"
+    },
+    "tag_status": {
+      "evidence": [
+        "吊牌挂着"
+      ],
+      "support_score": 0.98,
+      "value": "attached"
+    },
+    "use_beyond_inspection": {
+      "evidence": [
+        "只试穿"
+      ],
+      "support_score": 0.96,
+      "value": "no"
+    }
+  },
+  "reported_usage_cost_usd": 0.0003328,
+  "request_attempts": 1,
+  "response_id": "sha256:5c4abb4af3b4ccff85b56ef691105ed3f6571cb13eb8c06d0b5051f857867e1c",
+  "review_reason": null,
+  "sampling_parameters": {
+    "seed": "omitted",
+    "temperature": "omitted",
+    "top_p": "omitted"
+  },
+  "schema_version": "case_v1.0",
+  "split": "test",
+  "threshold_value": 0.86,
+  "threshold_version": "acceptance_v1.0",
+  "timestamp": "2026-10-01T09:21:26.972274+00:00",
+  "token_usage": {
+    "input_tokens": 998,
+    "output_tokens": 111
+  },
+  "upstream_provider": null,
+  "validated_extraction": {
+    "damage_or_stain": {
+      "evidence": [
+        "没污没破"
+      ],
+      "support_score": 0.99,
+      "value": "absent"
+    },
+    "return_reason": {
+      "evidence": [
+        "改主意了"
+      ],
+      "support_score": 0.98,
+      "value": "ordinary_return"
+    },
+    "tag_status": {
+      "evidence": [
+        "吊牌挂着"
+      ],
+      "support_score": 0.98,
+      "value": "attached"
+    },
+    "use_beyond_inspection": {
+      "evidence": [
+        "只试穿"
+      ],
+      "support_score": 0.96,
+      "value": "no"
+    }
+  },
+  "validation_error": null
+}

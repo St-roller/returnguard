@@ -1,0 +1,788 @@
+{
+  "baseline_comparison": {
+    "baseline_safety_constraint_met": true,
+    "coverage_difference_percentage_points": 34.44444444444444,
+    "coverage_gap_target_10_pp_met": true,
+    "descriptive_raw_coverage_difference_percentage_points": 34.44444444444444,
+    "returnguard_safety_constraint_met": true,
+    "returnguard_safety_note": "ReturnGuard also met the safety constraint.",
+    "safe_comparison_valid": true,
+    "safe_coverage_gain_target_met": true,
+    "statement": "The Keyword+Rules baseline met the 90% selective-accuracy constraint; coverage was therefore compared at the predefined safety requirement."
+  },
+  "baseline_dev_metrics": {
+    "abstentions": {
+      "execution_failure": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "low_confidence": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "policy_required": {
+        "n": 66,
+        "rate": 0.7333333333333333
+      },
+      "validation_failure": {
+        "n": 0,
+        "rate": 0.0
+      }
+    },
+    "auto_routed_n": 24,
+    "confusion_matrix_gold_rows_final_columns": {
+      "eligible": {
+        "eligible": 6,
+        "ineligible": 0,
+        "manual_review": 24
+      },
+      "ineligible": {
+        "eligible": 0,
+        "ineligible": 18,
+        "manual_review": 12
+      },
+      "manual_review": {
+        "eligible": 0,
+        "ineligible": 0,
+        "manual_review": 30
+      }
+    },
+    "correct_auto_n": 24,
+    "coverage": {
+      "denominator": 90,
+      "numerator": 24,
+      "value": 0.26666666666666666,
+      "wilson_95": [
+        0.18623818738233572,
+        0.36619843788101675
+      ]
+    },
+    "dev_coverage_target_60_percent_met": false,
+    "diagnostics": {
+      "all_four_value_exact_accuracy": {
+        "denominator": 90,
+        "numerator": 10,
+        "value": 0.1111111111111111,
+        "wilson_95": [
+          0.06148319189297713,
+          0.19257785021261037
+        ]
+      },
+      "candidate_auto_route_n": 24,
+      "candidate_policy_required_manual_n": 66,
+      "candidate_route_accuracy": {
+        "denominator": 90,
+        "numerator": 54,
+        "value": 0.6,
+        "wilson_95": [
+          0.4967030736405094,
+          0.6951098012466252
+        ]
+      },
+      "candidate_rule_accuracy": {
+        "denominator": 90,
+        "numerator": 45,
+        "value": 0.5,
+        "wilson_95": [
+          0.3988372282354734,
+          0.6011627717645266
+        ]
+      },
+      "evidence_valid_case_n": 90,
+      "execution_failure_n": 0,
+      "field_value_accuracy": {
+        "damage_or_stain": {
+          "denominator": 90,
+          "numerator": 36,
+          "value": 0.4,
+          "wilson_95": [
+            0.3048901987533748,
+            0.5032969263594906
+          ]
+        },
+        "return_reason": {
+          "denominator": 90,
+          "numerator": 67,
+          "value": 0.7444444444444445,
+          "wilson_95": [
+            0.6456235101244654,
+            0.8232524062663082
+          ]
+        },
+        "tag_status": {
+          "denominator": 90,
+          "numerator": 68,
+          "value": 0.7555555555555555,
+          "wilson_95": [
+            0.6575162887069911,
+            0.8326721693379086
+          ]
+        },
+        "use_beyond_inspection": {
+          "denominator": 90,
+          "numerator": 49,
+          "value": 0.5444444444444444,
+          "wilson_95": [
+            0.44184633569208204,
+            0.6434038309244221
+          ]
+        }
+      },
+      "hard_validation_failure_n": 0,
+      "n": 90
+    },
+    "error_capture": {
+      "display": "N/A: deterministic baseline has no confidence threshold",
+      "value": null
+    },
+    "gold_manual_auto_routed_n": 0,
+    "interval_note": "Descriptive Wilson 95% intervals.",
+    "manual_review_recall": {
+      "denominator": 30,
+      "numerator": 30,
+      "value": 1.0,
+      "wilson_95": [
+        0.8864866068260312,
+        0.9999999999999999
+      ]
+    },
+    "n": 90,
+    "route_accuracy": {
+      "denominator": 90,
+      "numerator": 54,
+      "value": 0.6,
+      "wilson_95": [
+        0.4967030736405094,
+        0.6951098012466252
+      ]
+    },
+    "selective_accuracy": {
+      "denominator": 24,
+      "numerator": 24,
+      "value": 1.0,
+      "wilson_95": [
+        0.8620237953250198,
+        1.0
+      ]
+    },
+    "selective_accuracy_constraint_met": true
+  },
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "baseline_test_metrics": {
+    "abstentions": {
+      "execution_failure": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "low_confidence": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "policy_required": {
+        "n": 64,
+        "rate": 0.7111111111111111
+      },
+      "validation_failure": {
+        "n": 0,
+        "rate": 0.0
+      }
+    },
+    "auto_routed_n": 26,
+    "confusion_matrix_gold_rows_final_columns": {
+      "eligible": {
+        "eligible": 4,
+        "ineligible": 0,
+        "manual_review": 26
+      },
+      "ineligible": {
+        "eligible": 0,
+        "ineligible": 21,
+        "manual_review": 9
+      },
+      "manual_review": {
+        "eligible": 0,
+        "ineligible": 1,
+        "manual_review": 29
+      }
+    },
+    "correct_auto_n": 25,
+    "coverage": {
+      "denominator": 90,
+      "numerator": 26,
+      "value": 0.28888888888888886,
+      "wilson_95": [
+        0.20542127259162143,
+        0.3896404359799831
+      ]
+    },
+    "coverage_target_60_percent_met": false,
+    "diagnostics": {
+      "all_four_value_exact_accuracy": {
+        "denominator": 90,
+        "numerator": 13,
+        "value": 0.14444444444444443,
+        "wilson_95": [
+          0.08639988786660784,
+          0.23159877920135785
+        ]
+      },
+      "candidate_auto_route_n": 26,
+      "candidate_policy_required_manual_n": 64,
+      "candidate_route_accuracy": {
+        "denominator": 90,
+        "numerator": 54,
+        "value": 0.6,
+        "wilson_95": [
+          0.4967030736405094,
+          0.6951098012466252
+        ]
+      },
+      "candidate_rule_accuracy": {
+        "denominator": 90,
+        "numerator": 49,
+        "value": 0.5444444444444444,
+        "wilson_95": [
+          0.44184633569208204,
+          0.6434038309244221
+        ]
+      },
+      "evidence_valid_case_n": 90,
+      "execution_failure_n": 0,
+      "field_value_accuracy": {
+        "damage_or_stain": {
+          "denominator": 90,
+          "numerator": 42,
+          "value": 0.4666666666666667,
+          "wilson_95": [
+            0.3670842495769752,
+            0.5689781254606465
+          ]
+        },
+        "return_reason": {
+          "denominator": 90,
+          "numerator": 73,
+          "value": 0.8111111111111111,
+          "wilson_95": [
+            0.7181637647568584,
+            0.8785874015586717
+          ]
+        },
+        "tag_status": {
+          "denominator": 90,
+          "numerator": 59,
+          "value": 0.6555555555555556,
+          "wilson_95": [
+            0.5528347234071513,
+            0.7455408597506137
+          ]
+        },
+        "use_beyond_inspection": {
+          "denominator": 90,
+          "numerator": 63,
+          "value": 0.7,
+          "wilson_95": [
+            0.598734894751539,
+            0.7848908550227303
+          ]
+        }
+      },
+      "hard_validation_failure_n": 0,
+      "n": 90
+    },
+    "error_capture": {
+      "display": "N/A: deterministic baseline has no confidence threshold",
+      "value": null
+    },
+    "gold_manual_auto_routed_n": 1,
+    "interval_note": "Descriptive Wilson 95% intervals.",
+    "manual_review_recall": {
+      "denominator": 30,
+      "numerator": 29,
+      "value": 0.9666666666666667,
+      "wilson_95": [
+        0.8332960900859082,
+        0.9940914096183874
+      ]
+    },
+    "n": 90,
+    "route_accuracy": {
+      "denominator": 90,
+      "numerator": 54,
+      "value": 0.6,
+      "wilson_95": [
+        0.4967030736405094,
+        0.6951098012466252
+      ]
+    },
+    "scorer_version": "heldout_scoring_v1.0",
+    "selective_accuracy": {
+      "denominator": 26,
+      "numerator": 25,
+      "value": 0.9615384615384616,
+      "wilson_95": [
+        0.8110722109696524,
+        0.9931780150064564
+      ]
+    },
+    "selective_accuracy_constraint_met": true,
+    "split": "test"
+  },
+  "dataset_version": "ReturnGuard-Synth-v1",
+  "dev_dataset_sha256": "39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70",
+  "dev_metrics": {
+    "abstentions": {
+      "execution_failure": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "low_confidence": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "policy_required": {
+        "n": 33,
+        "rate": 0.36666666666666664
+      },
+      "validation_failure": {
+        "n": 0,
+        "rate": 0.0
+      }
+    },
+    "auto_routed_n": 57,
+    "confusion_matrix_gold_rows_final_columns": {
+      "eligible": {
+        "eligible": 29,
+        "ineligible": 0,
+        "manual_review": 1
+      },
+      "ineligible": {
+        "eligible": 0,
+        "ineligible": 28,
+        "manual_review": 2
+      },
+      "manual_review": {
+        "eligible": 0,
+        "ineligible": 0,
+        "manual_review": 30
+      }
+    },
+    "correct_auto_n": 57,
+    "coverage": {
+      "denominator": 90,
+      "numerator": 57,
+      "value": 0.6333333333333333,
+      "wilson_95": [
+        0.5302230476398118,
+        0.725527452209701
+      ]
+    },
+    "dev_coverage_target_60_percent_met": true,
+    "diagnostics": {
+      "all_four_value_exact_accuracy": {
+        "denominator": 90,
+        "numerator": 86,
+        "value": 0.9555555555555556,
+        "wilson_95": [
+          0.8912314496718777,
+          0.9825827581472913
+        ]
+      },
+      "candidate_auto_route_n": 57,
+      "candidate_policy_required_manual_n": 33,
+      "candidate_route_accuracy": {
+        "denominator": 90,
+        "numerator": 87,
+        "value": 0.9666666666666667,
+        "wilson_95": [
+          0.9065271396961013,
+          0.9885996097771937
+        ]
+      },
+      "candidate_rule_accuracy": {
+        "denominator": 90,
+        "numerator": 87,
+        "value": 0.9666666666666667,
+        "wilson_95": [
+          0.9065271396961013,
+          0.9885996097771937
+        ]
+      },
+      "evidence_valid_case_n": 90,
+      "execution_failure_n": 0,
+      "field_value_accuracy": {
+        "damage_or_stain": {
+          "denominator": 90,
+          "numerator": 90,
+          "value": 1.0,
+          "wilson_95": [
+            0.9590643744356734,
+            1.0
+          ]
+        },
+        "return_reason": {
+          "denominator": 90,
+          "numerator": 88,
+          "value": 0.9777777777777777,
+          "wilson_95": [
+            0.9225547331137463,
+            0.9938845580136748
+          ]
+        },
+        "tag_status": {
+          "denominator": 90,
+          "numerator": 90,
+          "value": 1.0,
+          "wilson_95": [
+            0.9590643744356734,
+            1.0
+          ]
+        },
+        "use_beyond_inspection": {
+          "denominator": 90,
+          "numerator": 88,
+          "value": 0.9777777777777777,
+          "wilson_95": [
+            0.9225547331137463,
+            0.9938845580136748
+          ]
+        }
+      },
+      "hard_validation_failure_n": 0,
+      "n": 90
+    },
+    "error_capture": {
+      "captured_n": 0,
+      "display": "N/A",
+      "error_candidate_n": 0,
+      "value": null
+    },
+    "gold_manual_auto_routed_n": 0,
+    "interval_note": "Descriptive Wilson 95%; threshold selected on these same dev data; optimistic with respect to selection.",
+    "manual_review_recall": {
+      "denominator": 30,
+      "numerator": 30,
+      "value": 1.0,
+      "wilson_95": [
+        0.8864866068260312,
+        0.9999999999999999
+      ]
+    },
+    "n": 90,
+    "provisional_threshold": 0.86,
+    "route_accuracy": {
+      "denominator": 90,
+      "numerator": 87,
+      "value": 0.9666666666666667,
+      "wilson_95": [
+        0.9065271396961013,
+        0.9885996097771937
+      ]
+    },
+    "selective_accuracy": {
+      "denominator": 57,
+      "numerator": 57,
+      "value": 1.0,
+      "wilson_95": [
+        0.9368611651470209,
+        0.9999999999999998
+      ]
+    },
+    "selective_accuracy_constraint_met": true,
+    "status": "DEV_COMPLETE_PENDING_GATE_3A_APPROVAL"
+  },
+  "error_analysis_counts": {
+    "auto_routing_error_ids": 0,
+    "execution_failure_ids": 0,
+    "field_value_error_ids": 4,
+    "gold_manual_auto_routed_ids": 0,
+    "low_confidence_abstention_ids": 3,
+    "over_abstention_ids": 3,
+    "validation_failure_ids": 0
+  },
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "final_report_readme_dataset_docs_demo_updated": false,
+  "gate_3b": "TEST_COMPLETE",
+  "gateway": "OpenRouter",
+  "limitations": [
+    "Small synthetic balanced 90-case splits; intervals are descriptive; no statistical significance claim.",
+    "Dev threshold selected on the same dev cases; dev intervals are optimistic with respect to selection.",
+    "Support scores are self-assessments for ranking/abstention, not calibrated probabilities.",
+    "Returned model alias may not identify an immutable upstream revision; provider recorded only where exposed."
+  ],
+  "model_id": "openai/gpt-5.6-luna",
+  "prediction_and_artifact_hashes": {
+    "baseline_dev_metrics.json": "5ac21969d852a15d4822c029a8032bfdb523e764295a1140eca8ecb7ecba731b",
+    "baseline_dev_predictions.jsonl": "bcdeacd4fe002b6f467a5910a532b98d4719a732e6474b7e620344af86037725",
+    "baseline_lock_v1.json": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+    "baseline_test_metrics.json": "334cb7d668ae6e16c51fab51e45846d869cfcdb6ec7b11178e0f2bc90a6dca81",
+    "baseline_test_predictions.jsonl": "65ba0a19c61f518b799d30aee273af6a4a74dea17afc9401ce97157ee224fc4e",
+    "dev_inputs.jsonl": "844f1f0f180d2cbae29f281ca828a1cb0ff10e319f772ca666e0d16d10217e3a",
+    "dev_metrics.json": "69afa91e070a2c430424cd5598d6dc4db0147a21431186e23c78e50d008ae74f",
+    "dev_predictions_raw.jsonl": "e0e880c011ce2a346bf604e644570d04bed2658f5b7e2c8a1fc7e4a16a77b764",
+    "dev_predictions_scored.jsonl": "47a882922a2bcb04428a0213e6f3b139fd7fa28fe2cb649885709a1543e2e127",
+    "error_analysis.json": "e6233dafa05617bdc76e17526d4c2a6f36e2955a1cadd7bc30b8e8b59d27d8ab",
+    "eval_config_v1.json": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+    "phase3b_scorer_lock.json": "cbbdc8f8f367dc422cb6ae7decd433a0c998c9e70aebddcd1470c897c1e38a1f",
+    "test_authorization.json": "4997f79d60207ae8a81b9fe015342aa3947929c30c98038eed20e61bf14d53a5",
+    "test_inputs.jsonl": "d68d5b0ad0a0a59fd4b2f4cb657d685086285777844df850422974a6a91c90ef",
+    "test_metrics.json": "1025a7e9eb4a44d53b21966d6ea600dbf553191188e747804b5c5af4d7941157",
+    "test_predictions_raw.jsonl": "ab157376bb1df7cf8980489c5690042bb922f4df0ad3bf078ff34dbee6509b69",
+    "test_predictions_scored.jsonl": "92d60e551c068abb393ee814fd60a23fe0428895f82e5969c0b81bb63e34a1c9",
+    "threshold_lock_v1.json": "8be8a8084d288561c2e939631e03edfd78dd7fd3a05373a92d36ec6ce18b9e93"
+  },
+  "prompt_sha256": "3c2d740f12bf2f80b69caea30672b5970d162b0ea93c3410c219b5dde49ce4c8",
+  "prompt_version": "extraction_v1",
+  "scorer_version": "heldout_scoring_v1.0",
+  "status": "PHASE_3_FORMAL_EVALUATION_CLOSED",
+  "test_authorization_sha256": "4997f79d60207ae8a81b9fe015342aa3947929c30c98038eed20e61bf14d53a5",
+  "test_dataset_sha256": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+  "test_metrics": {
+    "abstentions": {
+      "execution_failure": {
+        "n": 0,
+        "rate": 0.0
+      },
+      "low_confidence": {
+        "n": 3,
+        "rate": 0.03333333333333333
+      },
+      "policy_required": {
+        "n": 30,
+        "rate": 0.3333333333333333
+      },
+      "validation_failure": {
+        "n": 0,
+        "rate": 0.0
+      }
+    },
+    "auto_routed_n": 57,
+    "confusion_matrix_gold_rows_final_columns": {
+      "eligible": {
+        "eligible": 29,
+        "ineligible": 0,
+        "manual_review": 1
+      },
+      "ineligible": {
+        "eligible": 0,
+        "ineligible": 28,
+        "manual_review": 2
+      },
+      "manual_review": {
+        "eligible": 0,
+        "ineligible": 0,
+        "manual_review": 30
+      }
+    },
+    "correct_auto_n": 57,
+    "coverage": {
+      "denominator": 90,
+      "numerator": 57,
+      "value": 0.6333333333333333,
+      "wilson_95": [
+        0.5302230476398118,
+        0.725527452209701
+      ]
+    },
+    "coverage_target_60_percent_met": true,
+    "diagnostics": {
+      "all_four_value_exact_accuracy": {
+        "denominator": 90,
+        "numerator": 86,
+        "value": 0.9555555555555556,
+        "wilson_95": [
+          0.8912314496718777,
+          0.9825827581472913
+        ]
+      },
+      "candidate_auto_route_n": 60,
+      "candidate_policy_required_manual_n": 30,
+      "candidate_route_accuracy": {
+        "denominator": 90,
+        "numerator": 88,
+        "value": 0.9777777777777777,
+        "wilson_95": [
+          0.9225547331137463,
+          0.9938845580136748
+        ]
+      },
+      "candidate_rule_accuracy": {
+        "denominator": 90,
+        "numerator": 87,
+        "value": 0.9666666666666667,
+        "wilson_95": [
+          0.9065271396961013,
+          0.9885996097771937
+        ]
+      },
+      "evidence_valid_case_n": 90,
+      "execution_failure_n": 0,
+      "field_value_accuracy": {
+        "damage_or_stain": {
+          "denominator": 90,
+          "numerator": 90,
+          "value": 1.0,
+          "wilson_95": [
+            0.9590643744356734,
+            1.0
+          ]
+        },
+        "return_reason": {
+          "denominator": 90,
+          "numerator": 87,
+          "value": 0.9666666666666667,
+          "wilson_95": [
+            0.9065271396961013,
+            0.9885996097771937
+          ]
+        },
+        "tag_status": {
+          "denominator": 90,
+          "numerator": 90,
+          "value": 1.0,
+          "wilson_95": [
+            0.9590643744356734,
+            1.0
+          ]
+        },
+        "use_beyond_inspection": {
+          "denominator": 90,
+          "numerator": 89,
+          "value": 0.9888888888888889,
+          "wilson_95": [
+            0.9397159168824657,
+            0.9980359158990818
+          ]
+        }
+      },
+      "hard_validation_failure_n": 0,
+      "n": 90
+    },
+    "error_capture": {
+      "captured_n": 1,
+      "display": "1/1",
+      "error_candidate_n": 1,
+      "value": 1.0
+    },
+    "gold_manual_auto_routed_n": 0,
+    "interval_note": "Descriptive Wilson 95% intervals.",
+    "locked_threshold": 0.86,
+    "manual_review_recall": {
+      "denominator": 30,
+      "numerator": 30,
+      "value": 1.0,
+      "wilson_95": [
+        0.8864866068260312,
+        0.9999999999999999
+      ]
+    },
+    "n": 90,
+    "route_accuracy": {
+      "denominator": 90,
+      "numerator": 87,
+      "value": 0.9666666666666667,
+      "wilson_95": [
+        0.9065271396961013,
+        0.9885996097771937
+      ]
+    },
+    "scorer_version": "heldout_scoring_v1.0",
+    "selective_accuracy": {
+      "denominator": 57,
+      "numerator": 57,
+      "value": 1.0,
+      "wilson_95": [
+        0.9368611651470209,
+        0.9999999999999998
+      ]
+    },
+    "selective_accuracy_constraint_met": true,
+    "split": "test",
+    "threshold_status": "provisional_locked_from_dev"
+  },
+  "test_prompt_model_policy_schema_baseline_threshold_retuned": false,
+  "test_run_provenance": {
+    "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+    "dependency_versions": {
+      "httpx": "0.28.1",
+      "openai": "2.54.0",
+      "pydantic": "2.13.5"
+    },
+    "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+    "formal_run_id": "phase3_test_v1_2026-10-01T09:21:13.853450+00:00",
+    "github_run_attempt": "1",
+    "github_run_id": "36842139464",
+    "implementation_commit": "fc32b0451522887d9d3a212a354a70b56c4dde0e",
+    "started_at": "2026-10-01T09:21:13.853467+00:00"
+  },
+  "test_target_outcomes": {
+    "baseline_gain_comparison_applicable": true,
+    "coverage_60_percent": "met",
+    "safe_baseline_coverage_gain_10_pp": "met",
+    "selective_accuracy_90_percent": "met"
+  },
+  "threshold_lock_sha256": "8be8a8084d288561c2e939631e03edfd78dd7fd3a05373a92d36ec6ce18b9e93",
+  "threshold_status": "provisional_locked_from_dev",
+  "threshold_value": 0.86,
+  "usage": {
+    "dev": {
+      "content_response_cost_complete": true,
+      "content_response_n": 90,
+      "cost_available_n": 90,
+      "cost_complete": true,
+      "cost_note": "Only directly returned response costs; infrastructure attempts without usage metadata have unknown cost; no price estimate substituted.",
+      "execution_failure_n": 0,
+      "infrastructure_retry_n": 0,
+      "input_tokens": 91690,
+      "latency_seconds_total": 187.18504546600005,
+      "model_request_attempts": 90,
+      "output_tokens": 15368,
+      "reported_api_cost_usd": 0.03834265000000001,
+      "returned_model_ids": [
+        "openai/gpt-5.6-luna"
+      ],
+      "token_usage_available_n": 90,
+      "upstream_providers": [],
+      "validation_failure_n": 0
+    },
+    "test": {
+      "content_response_cost_complete": true,
+      "content_response_n": 90,
+      "cost_available_n": 90,
+      "cost_complete": true,
+      "cost_note": "Only directly returned response costs; infrastructure attempts without usage metadata have unknown cost; no price estimate substituted.",
+      "execution_failure_n": 0,
+      "infrastructure_retry_n": 0,
+      "input_tokens": 91731,
+      "latency_seconds_total": 200.68635520599992,
+      "model_request_attempts": 90,
+      "output_tokens": 16864,
+      "reported_api_cost_usd": 0.04014795000000001,
+      "returned_model_ids": [
+        "openai/gpt-5.6-luna"
+      ],
+      "token_usage_available_n": 90,
+      "upstream_providers": [],
+      "validation_failure_n": 0
+    },
+    "total": {
+      "content_response_cost_complete": true,
+      "content_response_n": 180,
+      "cost_available_n": 180,
+      "cost_complete": true,
+      "cost_note": "Only directly returned response costs; infrastructure attempts without usage metadata have unknown cost; no price estimate substituted.",
+      "execution_failure_n": 0,
+      "infrastructure_retry_n": 0,
+      "input_tokens": 183421,
+      "latency_seconds_total": 387.871400672,
+      "model_request_attempts": 180,
+      "output_tokens": 32232,
+      "reported_api_cost_usd": 0.07849060000000001,
+      "returned_model_ids": [
+        "openai/gpt-5.6-luna"
+      ],
+      "token_usage_available_n": 180,
+      "upstream_providers": [],
+      "validation_failure_n": 0
+    }
+  }
+}

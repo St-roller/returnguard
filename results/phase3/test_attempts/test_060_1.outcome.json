@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_060",
+  "completed_at": "2026-10-01T09:23:27.482489+00:00",
+  "latency_seconds": 3.1456721549999997,
+  "output_text": "{\"return_reason\":{\"value\":\"quality_or_fulfillment_issue\",\"evidence\":[\"包装盒有点压痕\"],\"support_score\":0.9},\"tag_status\":{\"value\":\"removed\",\"evidence\":[\"吊牌已经剪掉了\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"衣服本身没有任何污渍或破损\"],\"support_score\":0.98},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"只试穿了一下\"],\"support_score\":0.95}}",
+  "request_binding_sha256": "1d5d5a6f02fa7baac329eb7bedac637c9c615e946b304e264c48af9daecc928c",
+  "response": {
+    "completed_at": 1790846607.0,
+    "created_at": 1790846604.0,
+    "id": "sha256:99462faae5b91204430466a7953e0bc37d418a2b01ccdfa6585ed0977c7772d7",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.000708,
+      "cost_details": {
+        "upstream_inference_cost": 0.000708,
+        "upstream_inference_input_cost": 0.0002616,
+        "upstream_inference_output_cost": 0.0004464
+      },
+      "input_tokens": 1047,
+      "input_tokens_details": {
+        "cache_write_tokens": 1044,
+        "cached_tokens": 0
+      },
+      "output_tokens": 372,
+      "output_tokens_details": {
+        "reasoning_tokens": 240
+      },
+      "total_tokens": 1419
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:23:24.336347+00:00"
+}

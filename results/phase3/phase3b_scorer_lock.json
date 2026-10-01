@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-10-01T09:18:43.915089+00:00",
+  "implementation_commit": "3b6272d34a7caef57d522a4e3625ec62af518a19",
+  "scope": "Additive offline scoring and orchestration, committed before first test call; locked inference and baseline unchanged.",
+  "source_sha256": {
+    ".github/workflows/phase3-test-eval.yml": "18a76ab7c42deb15e607aa072d93a65ca1bb0d7cff2512b9c1428a4508adf825",
+    "scripts/score_locked_test.py": "1fb7e0abfe16ada5efdafa7551685b86d4e9dfb0613a0a45836236bf9e1a3a0d",
+    "src/returnguard/heldout_scoring.py": "d4dd099ccd17a0d7ddd1f7f09445396da80444440791c24a1553d74f71fb113c"
+  },
+  "version": "heldout_scoring_v1.0"
+}

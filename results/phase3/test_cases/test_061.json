@@ -1,0 +1,124 @@
+{
+  "acceptance_version": "acceptance_v1.0",
+  "attempts": [
+    {
+      "attempt": 1,
+      "case_id": "test_061",
+      "completed_at": "2026-10-01T09:23:28.983205+00:00",
+      "latency_seconds": 1.4956486870000276,
+      "request_binding_sha256": "7387f8217c4f3ebe4c93733b5c361cf2f4be0dd09ea47dd876dd0e239c3a2c36",
+      "status": "content_response",
+      "timestamp": "2026-10-01T09:23:27.487017+00:00"
+    }
+  ],
+  "candidate_review_reason": "policy_required",
+  "candidate_route": "manual_review",
+  "candidate_rule_id": "MR01_QUALITY",
+  "case_id": "test_061",
+  "case_support_score": null,
+  "dataset_file_sha256": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+  "dataset_version": "ReturnGuard-Synth-v1",
+  "derived_facts": {
+    "condition_status": "not_intact",
+    "conflicting_fields": [],
+    "days_since_receipt": 40,
+    "explicit_uncertainty_fields": [],
+    "missing_condition_fields": []
+  },
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "eval_config_version": "formal_eval_v1.0",
+  "evaluation_status": "completed",
+  "final_route": "manual_review",
+  "formal_run_id": "phase3_test_v1_2026-10-01T09:21:13.853450+00:00",
+  "gateway": "OpenRouter",
+  "latency_seconds": 1.4956486870000276,
+  "model_id_requested": "openai/gpt-5.6-luna",
+  "model_id_returned": "openai/gpt-5.6-luna",
+  "model_name": "openai/gpt-5.6-luna",
+  "model_version": "openai/gpt-5.6-luna",
+  "operating_point": "locked_test_threshold",
+  "policy_version": "policy_v1.0",
+  "prompt_sha256": "3c2d740f12bf2f80b69caea30672b5970d162b0ea93c3410c219b5dde49ce4c8",
+  "prompt_version": "extraction_v1",
+  "raw_gateway_response_file": "test_attempts/test_061_1.outcome.json",
+  "raw_structured_extraction": {
+    "damage_or_stain": {
+      "evidence": [
+        "袖口就有一处破口"
+      ],
+      "support_score": 0.99,
+      "value": "present"
+    },
+    "return_reason": {
+      "evidence": [
+        "收到时袖口就有一处破口"
+      ],
+      "support_score": 0.99,
+      "value": "quality_or_fulfillment_issue"
+    },
+    "tag_status": {
+      "evidence": [
+        "吊牌还在"
+      ],
+      "support_score": 0.98,
+      "value": "attached"
+    },
+    "use_beyond_inspection": {
+      "evidence": [
+        "我只试穿检查过"
+      ],
+      "support_score": 0.95,
+      "value": "no"
+    }
+  },
+  "reported_usage_cost_usd": 0.0003544,
+  "request_attempts": 1,
+  "response_id": "sha256:e0f47b217f3feda9418c838cc5a12eb6cbd5183faec21a37acd06f5c009cf215",
+  "review_reason": "policy_required",
+  "sampling_parameters": {
+    "seed": "omitted",
+    "temperature": "omitted",
+    "top_p": "omitted"
+  },
+  "schema_version": "case_v1.0",
+  "split": "test",
+  "threshold_value": 0.86,
+  "threshold_version": "acceptance_v1.0",
+  "timestamp": "2026-10-01T09:23:28.983205+00:00",
+  "token_usage": {
+    "input_tokens": 1010,
+    "output_tokens": 127
+  },
+  "upstream_provider": null,
+  "validated_extraction": {
+    "damage_or_stain": {
+      "evidence": [
+        "袖口就有一处破口"
+      ],
+      "support_score": 0.99,
+      "value": "present"
+    },
+    "return_reason": {
+      "evidence": [
+        "收到时袖口就有一处破口"
+      ],
+      "support_score": 0.99,
+      "value": "quality_or_fulfillment_issue"
+    },
+    "tag_status": {
+      "evidence": [
+        "吊牌还在"
+      ],
+      "support_score": 0.98,
+      "value": "attached"
+    },
+    "use_beyond_inspection": {
+      "evidence": [
+        "我只试穿检查过"
+      ],
+      "support_score": 0.95,
+      "value": "no"
+    }
+  },
+  "validation_error": null
+}

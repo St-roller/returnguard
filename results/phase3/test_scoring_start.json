@@ -1,0 +1,10 @@
+{
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "raw_frozen_before_gold_join": true,
+  "raw_predictions_sha256": "ab157376bb1df7cf8980489c5690042bb922f4df0ad3bf078ff34dbee6509b69",
+  "scorer_version": "heldout_scoring_v1.0",
+  "started_at": "2026-10-01T09:24:35.970004+00:00",
+  "test_authorization_sha256": "4997f79d60207ae8a81b9fe015342aa3947929c30c98038eed20e61bf14d53a5",
+  "threshold_lock_sha256": "8be8a8084d288561c2e939631e03edfd78dd7fd3a05373a92d36ec6ce18b9e93"
+}

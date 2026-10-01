@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "dev_042",
+  "completed_at": "2026-10-01T08:30:13.195670+00:00",
+  "latency_seconds": 3.446338088999994,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"颜色不是我喜欢的那种\",\"单纯不喜欢这个效果\"],\"support_score\":0.99},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌还都在衣服上\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"没有污渍也没有破损\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"只在家试了一下\",\"没实际穿用\"],\"support_score\":0.98}}",
+  "request_binding_sha256": "43b840c0bf667f04308a0b5798a2d818a63c5006cfe58c19c39569dffc67dfaa",
+  "response": {
+    "completed_at": 1790843413.0,
+    "created_at": 1790843409.0,
+    "id": "sha256:c16beba3849a389b90f97d7d769739716882c549a8dc88341a629e0ba27228bb",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.0005928,
+      "cost_details": {
+        "upstream_inference_cost": 0.0005928,
+        "upstream_inference_input_cost": 0.0002616,
+        "upstream_inference_output_cost": 0.0003312
+      },
+      "input_tokens": 1047,
+      "input_tokens_details": {
+        "cache_write_tokens": 1044,
+        "cached_tokens": 0
+      },
+      "output_tokens": 276,
+      "output_tokens_details": {
+        "reasoning_tokens": 137
+      },
+      "total_tokens": 1323
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T08:30:09.748893+00:00"
+}

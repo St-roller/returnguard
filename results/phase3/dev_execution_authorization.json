@@ -1,0 +1,10 @@
+{
+  "authorization_source": "Explicit user instruction on 2026-10-01 to execute §33 Direct instruction to Work — Phase 3A in the attached design-frozen specification; exactly 90 frozen dev cases, infrastructure-only retries; stop at Gate 3A.",
+  "authorized_at": "2026-10-01T08:27:09.215128+00:00",
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "decision": "approved_for_formal_dev_only",
+  "dev_dataset_sha256": "39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70",
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "held_out_test_authorized": false,
+  "locked_config_commit": "e276978e07a8525ce8737dbfb49807a1f6d3c6c3"
+}

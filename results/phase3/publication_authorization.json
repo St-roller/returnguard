@@ -1,0 +1,14 @@
+{
+  "additional_model_calls_authorized": 0,
+  "authorization_source": "Direct user instruction: Gate 3B approved; authorize publication to the public repository St-roller/returnguard of a deterministically sanitized Phase 3 evaluation package, not unredacted provider response envelopes. Preserve evaluation results; remove provider reasoning/credential/opaque-identifier payloads; response IDs may be hashed; run offline equivalence and keep PR #4 draft.",
+  "authorized_at": "2026-10-01T17:43:45+08:00",
+  "decision": "approved_for_deterministically_sanitized_publication",
+  "formal_evaluation_closed": true,
+  "gate_3b_approved": true,
+  "keep_pr_draft": true,
+  "pr_number": 4,
+  "private_full_package_sha256": "375026564d47e37c7bf1683e52820bc20014494608fc5bddb948d2d60a661bc4",
+  "repository": "St-roller/returnguard",
+  "sanitization_version": "phase3_public_sanitization_v1",
+  "visibility": "public"
+}

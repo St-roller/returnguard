@@ -1,0 +1,14 @@
+{
+  "baseline_version": "keyword_rules_v1.0",
+  "created_at": "2026-10-01T08:21:34.966428+00:00",
+  "implementation_commit": "9c48949413dd7ead31a6d1ac2fc5de6cc64b77f2",
+  "no_confidence_score": true,
+  "no_threshold": true,
+  "pattern_file_sha256": "ea98c3a72af4799a368c4539ba7dc2f90d2bb0d1c7cd778ea9d4cc9f309c26ee",
+  "policy_version": "policy_v1.0",
+  "schema_value_space": "four frozen semantic values; baseline fields contain value and evidence only",
+  "source_sha256": {
+    "baselines/keyword_rules_v1.json": "ea98c3a72af4799a368c4539ba7dc2f90d2bb0d1c7cd778ea9d4cc9f309c26ee",
+    "src/returnguard/keyword_baseline.py": "8c6ce85661f37da768ca7a616c5e64ceb72fd946f967585a4a819436307e5d3d"
+  }
+}

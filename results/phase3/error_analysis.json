@@ -1,0 +1,734 @@
+{
+  "auto_routing_error_ids": [],
+  "baseline_auto_routing_errors": [
+    {
+      "candidate_rule_id": "IN03_NOT_INTACT",
+      "case_id": "test_087",
+      "final_route": "ineligible",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "现在整件没污渍也没破损",
+            "现在这件袖口有污渍"
+          ],
+          "value": "conflicting"
+        },
+        "return_reason": {
+          "evidence": [
+            "整体风格跟想的不一样"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌我没摘，还连着"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试过，没有实际穿用"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "manual_review",
+      "gold_rule_id": "MR02_CONDITION",
+      "input": {
+        "customer_message": "不是不喜欢这件，但整体风格跟想的不一样，还是送回吧。吊牌我没摘，还连着。衣服只试过，没有实际穿用。现在整件没污渍也没破损；现在这件袖口有污渍。两句话我都认，可不是把前面那句撤回，暂时说不清，真烦。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-17",
+          "request_date": "2026-06-17"
+        }
+      },
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "有污渍"
+          ],
+          "value": "present"
+        },
+        "return_reason": {
+          "evidence": [
+            "不喜欢",
+            "风格"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [],
+          "value": "unknown"
+        },
+        "use_beyond_inspection": {
+          "evidence": [],
+          "value": "unknown"
+        }
+      }
+    }
+  ],
+  "execution_failure_ids": [],
+  "field_value_error_ids": [
+    "test_060",
+    "test_071",
+    "test_079",
+    "test_087"
+  ],
+  "gold_manual_auto_routed_ids": [],
+  "inspected_cases": [
+    {
+      "candidate_route": "eligible",
+      "candidate_rule_id": "EL02_BRAND14",
+      "case_id": "test_024",
+      "case_support_score": 0.76,
+      "categories": [
+        "over-abstention / low-confidence false alarm"
+      ],
+      "derived_facts": {
+        "condition_status": "intact",
+        "conflicting_fields": [],
+        "days_since_receipt": 9,
+        "explicit_uncertainty_fields": [],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没污没破"
+          ],
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "腰并不是不紧"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌好好挂着"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只在家试穿"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "eligible",
+      "gold_rule_id": "EL02_BRAND14",
+      "gold_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "您好，6月13日到的裙子只在家试穿，吊牌好好挂着，没污没破。腰并不是不紧，只能让它回去了；盒子放书桌边。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-13",
+          "request_date": "2026-06-22"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没污没破"
+          ],
+          "support_score": 0.99,
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "腰并不是不紧",
+            "只能让它回去了"
+          ],
+          "support_score": 0.76,
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌好好挂着"
+          ],
+          "support_score": 0.98,
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只在家试穿"
+          ],
+          "support_score": 0.98,
+          "value": "no"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "review_reason": "low_confidence",
+      "validation_error": null
+    },
+    {
+      "candidate_route": "ineligible",
+      "candidate_rule_id": "IN02_LATE",
+      "case_id": "test_045",
+      "case_support_score": 0.84,
+      "categories": [
+        "over-abstention / low-confidence false alarm"
+      ],
+      "derived_facts": {
+        "condition_status": "intact",
+        "conflicting_fields": [],
+        "days_since_receipt": 16,
+        "explicit_uncertainty_fields": [],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没脏没破"
+          ],
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "颜色不是我不嫌弃的"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌在"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试穿"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "ineligible",
+      "gold_rule_id": "IN02_LATE",
+      "gold_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "颜色不是我不嫌弃的，想退！吊牌在，只试穿，没脏没破，盒子留着。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-15",
+          "request_date": "2026-07-01"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没脏没破"
+          ],
+          "support_score": 0.98,
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "颜色不是我不嫌弃的",
+            "想退"
+          ],
+          "support_score": 0.84,
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌在"
+          ],
+          "support_score": 0.98,
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试穿"
+          ],
+          "support_score": 0.96,
+          "value": "no"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "review_reason": "low_confidence",
+      "validation_error": null
+    },
+    {
+      "candidate_route": "manual_review",
+      "candidate_rule_id": "MR01_QUALITY",
+      "case_id": "test_060",
+      "case_support_score": null,
+      "categories": [
+        "return_reason extraction error",
+        "policy consequence of extraction error",
+        "over-abstention / policy manual decision"
+      ],
+      "derived_facts": {
+        "condition_status": "not_intact",
+        "conflicting_fields": [],
+        "days_since_receipt": 7,
+        "explicit_uncertainty_fields": [],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [
+        "return_reason"
+      ],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没有任何污渍或破损"
+          ],
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "尺码实在不合适"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌已经剪掉了"
+          ],
+          "value": "removed"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "就只试穿了一下"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "ineligible",
+      "gold_rule_id": "IN03_NOT_INTACT",
+      "gold_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "removed",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "这件衬衫收到后我就只试穿了一下，吊牌已经剪掉了，但衣服本身没有任何污渍或破损。尺码实在不合适，穿着很紧绷，想申请退货，真烦。另外包装盒有点压痕，盒子我也还留着。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-05",
+          "request_date": "2026-06-12"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "衣服本身没有任何污渍或破损"
+          ],
+          "support_score": 0.98,
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "包装盒有点压痕"
+          ],
+          "support_score": 0.9,
+          "value": "quality_or_fulfillment_issue"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌已经剪掉了"
+          ],
+          "support_score": 0.99,
+          "value": "removed"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试穿了一下"
+          ],
+          "support_score": 0.95,
+          "value": "no"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "quality_or_fulfillment_issue",
+        "tag_status": "removed",
+        "use_beyond_inspection": "no"
+      },
+      "review_reason": "policy_required",
+      "validation_error": null
+    },
+    {
+      "candidate_route": "manual_review",
+      "candidate_rule_id": "MR03_REASON",
+      "case_id": "test_071",
+      "case_support_score": null,
+      "categories": [
+        "use extraction error"
+      ],
+      "derived_facts": {
+        "condition_status": "unknown",
+        "conflicting_fields": [],
+        "days_since_receipt": 7,
+        "explicit_uncertainty_fields": [
+          "use_beyond_inspection"
+        ],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [
+        "use_beyond_inspection"
+      ],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没脏没破"
+          ],
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [],
+          "value": "not_stated"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌在"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试穿过"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "manual_review",
+      "gold_rule_id": "MR03_REASON",
+      "gold_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "not_stated",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "申请退货，别拖了！吊牌在，没脏没破，只试穿过。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-20",
+          "request_date": "2026-06-27"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没脏没破"
+          ],
+          "support_score": 0.99,
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [],
+          "support_score": 0.97,
+          "value": "not_stated"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌在"
+          ],
+          "support_score": 0.98,
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试穿过"
+          ],
+          "support_score": 0.68,
+          "value": "unknown"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "not_stated",
+        "tag_status": "attached",
+        "use_beyond_inspection": "unknown"
+      },
+      "review_reason": "policy_required",
+      "validation_error": null
+    },
+    {
+      "candidate_route": "eligible",
+      "candidate_rule_id": "EL01_7DAY",
+      "case_id": "test_079",
+      "case_support_score": 0.82,
+      "categories": [
+        "return_reason extraction error",
+        "policy consequence of extraction error",
+        "candidate error captured by low-confidence abstention"
+      ],
+      "derived_facts": {
+        "condition_status": "intact",
+        "conflicting_fields": [],
+        "days_since_receipt": 7,
+        "explicit_uncertainty_fields": [],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [
+        "return_reason"
+      ],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没污没破"
+          ],
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [],
+          "value": "not_stated"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌连着"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只在家试过"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "manual_review",
+      "gold_rule_id": "MR03_REASON",
+      "gold_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "not_stated",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "您好，衬衫只在家试过，吊牌连着。没污没破，申请退货。袋子放抽屉，旁边一叠旧票据，昨晚找它翻了好几遍，最后还理了抽屉。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-04",
+          "request_date": "2026-06-11"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "没污没破"
+          ],
+          "support_score": 0.99,
+          "value": "absent"
+        },
+        "return_reason": {
+          "evidence": [
+            "申请退货"
+          ],
+          "support_score": 0.82,
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌连着"
+          ],
+          "support_score": 0.98,
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只在家试过"
+          ],
+          "support_score": 0.97,
+          "value": "no"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "absent",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "review_reason": "low_confidence",
+      "validation_error": null
+    },
+    {
+      "candidate_route": "manual_review",
+      "candidate_rule_id": "MR01_QUALITY",
+      "case_id": "test_087",
+      "case_support_score": null,
+      "categories": [
+        "return_reason extraction error",
+        "policy consequence of extraction error"
+      ],
+      "derived_facts": {
+        "condition_status": "conflicting",
+        "conflicting_fields": [
+          "damage_or_stain"
+        ],
+        "days_since_receipt": 0,
+        "explicit_uncertainty_fields": [],
+        "missing_condition_fields": []
+      },
+      "evaluation_status": "completed",
+      "field_value_mismatches": [
+        "return_reason"
+      ],
+      "final_route": "manual_review",
+      "gold_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "现在整件没污渍也没破损",
+            "现在这件袖口有污渍"
+          ],
+          "value": "conflicting"
+        },
+        "return_reason": {
+          "evidence": [
+            "整体风格跟想的不一样"
+          ],
+          "value": "ordinary_return"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌我没摘，还连着"
+          ],
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "只试过，没有实际穿用"
+          ],
+          "value": "no"
+        }
+      },
+      "gold_route": "manual_review",
+      "gold_rule_id": "MR02_CONDITION",
+      "gold_values": {
+        "damage_or_stain": "conflicting",
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "input": {
+        "customer_message": "不是不喜欢这件，但整体风格跟想的不一样，还是送回吧。吊牌我没摘，还连着。衣服只试过，没有实际穿用。现在整件没污渍也没破损；现在这件袖口有污渍。两句话我都认，可不是把前面那句撤回，暂时说不清，真烦。",
+        "order_facts": {
+          "is_custom_made": false,
+          "receipt_date": "2026-06-17",
+          "request_date": "2026-06-17"
+        }
+      },
+      "label_method": "deterministic frozen-gold value/route/rule comparisons; descriptive case inspection only; no model judge",
+      "locked_threshold": 0.86,
+      "predicted_extraction": {
+        "damage_or_stain": {
+          "evidence": [
+            "现在整件没污渍也没破损",
+            "现在这件袖口有污渍"
+          ],
+          "support_score": 0.99,
+          "value": "conflicting"
+        },
+        "return_reason": {
+          "evidence": [
+            "整体风格跟想的不一样",
+            "袖口有污渍"
+          ],
+          "support_score": 0.96,
+          "value": "quality_or_fulfillment_issue"
+        },
+        "tag_status": {
+          "evidence": [
+            "吊牌我没摘，还连着"
+          ],
+          "support_score": 0.99,
+          "value": "attached"
+        },
+        "use_beyond_inspection": {
+          "evidence": [
+            "衣服只试过，没有实际穿用"
+          ],
+          "support_score": 0.99,
+          "value": "no"
+        }
+      },
+      "predicted_values": {
+        "damage_or_stain": "conflicting",
+        "return_reason": "quality_or_fulfillment_issue",
+        "tag_status": "attached",
+        "use_beyond_inspection": "no"
+      },
+      "review_reason": "policy_required",
+      "validation_error": null
+    }
+  ],
+  "low_confidence_abstention_ids": [
+    "test_024",
+    "test_045",
+    "test_079"
+  ],
+  "low_confidence_sample_ids": [
+    "test_024",
+    "test_045",
+    "test_079"
+  ],
+  "model_judge_calls": 0,
+  "over_abstention_ids": [
+    "test_024",
+    "test_045",
+    "test_060"
+  ],
+  "representative_field_error_ids": {
+    "damage_or_stain": [],
+    "return_reason": [
+      "test_060",
+      "test_079",
+      "test_087"
+    ],
+    "tag_status": [],
+    "use_beyond_inspection": [
+      "test_071"
+    ]
+  },
+  "results_altered": false,
+  "scope": "test only; descriptive after finalized raw predictions and metrics; no corrections or retuning",
+  "selection_rule": "all auto-route errors, all validation/execution failures, all unsafe gold-manual auto routes, all field-value mismatches and all over-abstentions; low-confidence sample first 5 ascending IDs; first 3 mismatches per field are representatives",
+  "validation_failure_ids": []
+}

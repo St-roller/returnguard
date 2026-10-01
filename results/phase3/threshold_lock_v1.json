@@ -1,0 +1,19 @@
+{
+  "acceptance_rule": "score >= threshold",
+  "accepted_n": 57,
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "correct_accepted_n": 57,
+  "coverage": 0.6333333333333333,
+  "created_at": "2026-10-01T08:32:00.686042+00:00",
+  "dev_dataset_sha256": "39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70",
+  "dev_n": 90,
+  "dev_predictions_sha256": "e0e880c011ce2a346bf604e644570d04bed2658f5b7e2c8a1fc7e4a16a77b764",
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "prompt_sha256": "3c2d740f12bf2f80b69caea30672b5970d162b0ea93c3410c219b5dde49ce4c8",
+  "selection_rule": "max coverage subject to selective_accuracy >= 0.90; tie higher accuracy; then higher threshold",
+  "selective_accuracy": 1.0,
+  "selector_version": "threshold_selector_v1.0",
+  "status": "provisional_locked_from_dev",
+  "threshold_version": "threshold_v1.0",
+  "value": 0.86
+}
