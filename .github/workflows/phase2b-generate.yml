@@ -1,0 +1,63 @@
+name: Phase 2B DeepSeek surface generation
+
+on:
+  push:
+    branches: [phase2b-generation-review-v1]
+    paths:
+      - '.github/workflows/phase2b-generate.yml'
+      - 'src/returnguard/surface_generation.py'
+      - 'prompts/dataset_generation_v1.md'
+      - 'scripts/generate_dataset.py'
+
+permissions:
+  contents: read
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python scripts/generate_blueprints.py --check
+      - name: Generate dev in an isolated run
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python scripts/generate_dataset.py --split dev
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2b-dev
+          path: data/returnguard_synth_v1/construction/*dev*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2b-settings
+          path: data/returnguard_synth_v1/construction/provenance_dev.json
+  test:
+    needs: dev
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: phase2b-settings
+          path: generation-settings
+      - name: Generate test in a separate isolated run
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python scripts/generate_dataset.py --split test --settings-file generation-settings/provenance_dev.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2b-test
+          path: data/returnguard_synth_v1/construction/*test*

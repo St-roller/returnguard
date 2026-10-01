@@ -51,3 +51,22 @@ python scripts/generate_blueprints.py --check
 The deterministic generator is `scripts/generate_blueprints.py`; it creates missing outputs but refuses to overwrite different existing bytes. Phase 2A makes **zero API calls**. Surface generation with DeepSeek and formal dev/test evaluation require later design approval and are not part of these blueprints.
 
 The test split uses a separate fixed construction seed to independently recombine factual/day, difficulty, length, tone, reason-family and linguistic-feature assignments within the quota constraints. Dev blueprints are unchanged. `overlap_report.json` compares all 8,100 dev/test pairs and all 90 same-index pairs, excluding IDs, absolute dates and provenance. The core signature includes rule, policy facts, elapsed days, difficulty, length and composition; the full signature adds tone, reason family and linguistic features (as an unordered set). Same-index twins under both signatures must be zero. Repeated policy facts across arbitrary indices are expected; this blueprint audit does not replace the later Chinese-message duplicate/leakage audit.
+
+## Phase 2B construction and structured case review
+
+Separate clean jobs produced 90 dev and 90 test records using `deepseek/deepseek-v4-pro-0813`, temperature 0.7 and top_p 0.9. The test job received only dev settings, never dev messages. Full raw responses, provenance and the original draft audit remain unchanged. Six generation responses were truncated and were completed against their frozen blueprints during structured case review, with no generation retries.
+
+All 180 cases now have explicit `structured_case_review_v1.1` records: findings, repairs, exact evidence, source/content hashes and timestamps. Case-specific semantic review includes every unflagged case. No author-wide personal manual-review claim or fabricated reviewer identity is made. The project author owns the final dataset-level approval.
+
+Validate the concrete reviewed snapshot without API calls:
+
+```bash
+python scripts/check_review_readiness.py
+python scripts/prepare_dataset_review.py --reviews data/returnguard_synth_v1/construction/structured_reviews.json
+```
+
+The commands produce review-stage candidates/audits and an optional offline inspector in `construction/`; they do not create frozen root splits or a freeze manifest. Case content hashes, pair hashes and audit snapshot hashes invalidate stale decisions after edits. Exact evidence, frozen intended values and unchanged Policy v1 are validated separately from substantive semantic review.
+
+Read `docs/Phase2B_Review_Approval_Package.md` for counts, issue distribution, ten representative cases, all near-pair decisions, audit findings and course-feedback consistency. The status is **READY_FOR_DATASET_LEVEL_APPROVAL**, pending project-level go/no-go. `docs/Phase2B_Human_Review_Instructions.md` retains its old filename but describes the revised workflow. The original `human_review.html` is historical; the current optional inspector is `structured_review.html`.
+
+After explicit approval of this snapshot, `scripts/freeze_dataset.py` requires both `--reviews REVIEW_PACKET` and `--approval APPROVAL_RECORD`. Its existing dedicated data commit, committed-byte verification and separate freeze-manifest procedure then applies. Formal GPT-5.6 Luna dev/test evaluation, provisional threshold selection and the baseline remain later work.

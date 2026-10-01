@@ -1,0 +1,11 @@
+{
+  "data/returnguard_synth_v1/blueprints_dev.jsonl": "00c67b86bb87988a3e028f07c64cdef3e9ddd0b203612d963ef0e52a33034832",
+  "data/returnguard_synth_v1/blueprints_test.jsonl": "27c02b91f81f0416bb6d1bdd4846f4ace19acaef560b94f9001a13077a955c88",
+  "data/returnguard_synth_v1/construction/raw_dev.jsonl.gz": "5a3bf7775159186d0b0d8f8fe54d98c76d89df5061242953f01b14979bbe1036",
+  "data/returnguard_synth_v1/construction/raw_test.jsonl.gz": "ed02c4d4f7563b691ce4d8d627fc5fce9308d83b15b3c848aed2c50461ae0f1c",
+  "data/returnguard_synth_v1/construction/provenance_dev.json": "ad651feb132a6298ac21d4a595f1323e96c784fe335b4c8652dbe00ddb1b3583",
+  "data/returnguard_synth_v1/construction/provenance_test.json": "d256297c29a9f5105211f3dd472262bd0f4a358b4c3058d9eafe4faae19a7b0c",
+  "data/returnguard_synth_v1/construction/draft_audit_report.json": "2f04df57fe26aeb4f16d32fe3d482225fd86186bad924409e96f0bab7dd4ef83",
+  "policies/policy_v1.json": "d663464d6651625bc1faa7ca315c672aea45c6a0c2ace958f6b107ef5a14fb39",
+  "src/returnguard/schemas.py": "384e3f0b59cee56b2d2988fa82e1f0ac5ccdc32474ccdddc524d1bc9cb897cfa"
+}

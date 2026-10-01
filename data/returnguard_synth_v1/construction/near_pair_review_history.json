@@ -1,0 +1,263 @@
+[
+  {
+    "pair_id": "d34b10c4d478f98a2896098dfa25519cb63e48cff53e1f256307e0489d261c6e",
+    "case_a": "dev_001",
+    "case_b": "dev_019",
+    "scope": "dev",
+    "sequence_ratio": 0.86957,
+    "char3_jaccard": 0.58537,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_001",
+      "dev_019"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_001: Original no-stain span did not exclude damage; made both explicit within short/direct constraints. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes.; dev_019: Expanded stain-only statement to exclude damage too; made preference mismatch explicit and kept polite medium/direct style. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "f53d60d4b50ef816e9b3ff5bb5b36e0d797b25339ea30a6b8c87d77d1545b1eb",
+    "case_a": "dev_004",
+    "case_b": "dev_044",
+    "scope": "dev",
+    "sequence_ratio": 0.85714,
+    "char3_jaccard": 0.58333,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_004",
+      "dev_044"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_004: Added absent damage/stain; distinguished no-longer-needed from generic changed mind and retained short frustrated style. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes.; dev_044: Stain-only support completed and no-longer-needed phrasing restored; short colloquial direct style. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "8d5ddf653f00e9d353a3c79acee5725bec88a508e07c4b2074734733088923c5",
+    "case_a": "dev_017",
+    "case_b": "dev_028",
+    "scope": "dev",
+    "sequence_ratio": 0.85714,
+    "char3_jaccard": 0.33333,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_017",
+      "dev_028"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_017: Reordered the short multi-sentence realization and used trousers/fabric context to break the near-duplicate cluster without changing facts.; dev_028: Replaced template-like sentence order with complaint first and distinct top/fabric wording, preserving easy/direct medium intent.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "41b25677e6dde70c873fbe55acd10893a3d9204f90fd7a8237813c9be167f536",
+    "case_a": "dev_017",
+    "case_b": "dev_029",
+    "scope": "dev",
+    "sequence_ratio": 0.98246,
+    "char3_jaccard": 0.82759,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_017",
+      "dev_029"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_017: Reordered the short multi-sentence realization and used trousers/fabric context to break the near-duplicate cluster without changing facts.; dev_029: Changed garment context and evidence order while retaining short neutral evidence spread across sentences; no-longer-needed remains explicit.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "4273e1a7bc9e68b80e16030490c9719fb4dddb89ab53ff4d88e749954a1b28ee",
+    "case_a": "dev_017",
+    "case_b": "test_030",
+    "scope": "cross_split",
+    "sequence_ratio": 0.83077,
+    "char3_jaccard": 0.5641,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_017",
+      "test_030"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_017: Reordered the short multi-sentence realization and used trousers/fabric context to break the near-duplicate cluster without changing facts.; test_030: Reordered wording and changed apparel context to a scarf, reducing template similarity and meeting short polite direct constraints; frozen no-longer-needed facts retained.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "b83b561476a6ad86c58b77ebc04707d138c95973b0e6ec12ab4aa6482394dcf2",
+    "case_a": "dev_017",
+    "case_b": "test_034",
+    "scope": "cross_split",
+    "sequence_ratio": 0.80645,
+    "char3_jaccard": 0.34884,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_017",
+      "test_034"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_017: Reordered the short multi-sentence realization and used trousers/fabric context to break the near-duplicate cluster without changing facts.; test_034: Reordered source template and used top/fabric/collar context to resolve similarity flags while retaining easy polite medium changed-mind custom case.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "6c1199be7895641b96584d9b21d0cfc1048dd328eafccde79790fc2afa9b0a36",
+    "case_a": "dev_028",
+    "case_b": "dev_029",
+    "scope": "dev",
+    "sequence_ratio": 0.84211,
+    "char3_jaccard": 0.2619,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_028",
+      "dev_029"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_028: Replaced template-like sentence order with complaint first and distinct top/fabric wording, preserving easy/direct medium intent.; dev_029: Changed garment context and evidence order while retaining short neutral evidence spread across sentences; no-longer-needed remains explicit.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "b83a1f7d2e3e73693a605252a5b1d769579d8881b9d250663020cccac355f87e",
+    "case_a": "dev_028",
+    "case_b": "test_034",
+    "scope": "cross_split",
+    "sequence_ratio": 0.83871,
+    "char3_jaccard": 0.28889,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_028",
+      "test_034"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_028: Replaced template-like sentence order with complaint first and distinct top/fabric wording, preserving easy/direct medium intent.; test_034: Reordered source template and used top/fabric/collar context to resolve similarity flags while retaining easy polite medium changed-mind custom case.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "9f4119443a7d9d792a4a001c80d5aec843b975c4141a46b8c8ccdec9639185c7",
+    "case_a": "dev_029",
+    "case_b": "test_030",
+    "scope": "cross_split",
+    "sequence_ratio": 0.81818,
+    "char3_jaccard": 0.47619,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_029",
+      "test_030"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_029: Changed garment context and evidence order while retaining short neutral evidence spread across sentences; no-longer-needed remains explicit.; test_030: Reordered wording and changed apparel context to a scarf, reducing template similarity and meeting short polite direct constraints; frozen no-longer-needed facts retained.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "f4dcfec2012472eb0d3bcff8b05c1bc3c1eaaa749013bb096f005ef042b477b9",
+    "case_a": "dev_057",
+    "case_b": "test_034",
+    "scope": "cross_split",
+    "sequence_ratio": 0.81159,
+    "char3_jaccard": 0.3,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "dev_057",
+      "test_034"
+    ],
+    "notes": "Resolved by recorded surface changes: dev_057: Expanded one-character-short medium realization with polite request while retaining explicit external use and direct changed mind. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes.; test_034: Reordered source template and used top/fabric/collar context to resolve similarity flags while retaining easy polite medium changed-mind custom case.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "a9468ab52d4db3c239d0877ac8480487413e9662f04052ff00e7a2c7d190c0f0",
+    "case_a": "test_030",
+    "case_b": "test_034",
+    "scope": "test",
+    "sequence_ratio": 0.8169,
+    "char3_jaccard": 0.36735,
+    "stage": "original_draft",
+    "source_snapshot_sha256": "7e508aec939a37f178e1e99c6bd3dcf8959ebd02590dcc6f7f6fa6399bab4483",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "test_030",
+      "test_034"
+    ],
+    "notes": "Resolved by recorded surface changes: test_030: Reordered wording and changed apparel context to a scarf, reducing template similarity and meeting short polite direct constraints; frozen no-longer-needed facts retained.; test_034: Reordered source template and used top/fabric/collar context to resolve similarity flags while retaining easy polite medium changed-mind custom case.",
+    "valid_for_current_content": false,
+    "current_pair_still_flagged": false
+  },
+  {
+    "pair_id": "62d4a3cbd7a2170599e838f7dd97275f6425bac0aca19868c0893067ade9fd02",
+    "case_a": "dev_013",
+    "case_b": "test_032",
+    "scope": "cross_split",
+    "sequence_ratio": 0.81633,
+    "char3_jaccard": 0.40625,
+    "stage": "intermediate_review",
+    "source_snapshot_sha256": "cd4646f0d822c7ffd9667ab94951e59f91e1ab1ae8ec0b2659a81a846fba5149",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "test_032"
+    ],
+    "notes": "Current re-audit resolved this intermediate similarity after message-order/context changes: test_032: Reordered condition-first short realization and specified waist fit to remove newly flagged cross-split similarity with dev_013 while retaining easy/direct custom-plus-late facts.",
+    "valid_for_current_content": false
+  },
+  {
+    "pair_id": "71f2d32372f55b001950fd1d8cbcced451bbad2c1fbc84f661f7dc2143fe40a6",
+    "case_a": "dev_019",
+    "case_b": "test_016",
+    "scope": "cross_split",
+    "sequence_ratio": 0.80899,
+    "char3_jaccard": 0.28788,
+    "stage": "intermediate_review",
+    "source_snapshot_sha256": "cd4646f0d822c7ffd9667ab94951e59f91e1ab1ae8ec0b2659a81a846fba5149",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "test_016"
+    ],
+    "notes": "Current re-audit resolved this intermediate similarity after message-order/context changes: test_016: Clarified original preference mismatch and rewrote message order/garment context to remove newly flagged similarity with dev_019; easy medium complaint remains direct.",
+    "valid_for_current_content": false
+  },
+  {
+    "pair_id": "5ff41a2a1d9a0f18c82d71dc3ba5701ce07742a04bf0cdd4e459b28e1d5ff2dc",
+    "case_a": "test_018",
+    "case_b": "test_049",
+    "scope": "test",
+    "sequence_ratio": 0.80851,
+    "char3_jaccard": 0.43333,
+    "stage": "intermediate_review",
+    "source_snapshot_sha256": "cd4646f0d822c7ffd9667ab94951e59f91e1ab1ae8ec0b2659a81a846fba5149",
+    "decision": "rewrite_surface",
+    "changed_cases": [
+      "test_049"
+    ],
+    "notes": "Current re-audit resolved this intermediate similarity after message-order/context changes: test_049: Added true color reason to original request and varied short condition wording/order to remove newly flagged similarity with test_018.",
+    "valid_for_current_content": false
+  },
+  {
+    "pair_id": "2c7a77858400b9b1b9acf18bbea330ef22da409e21213ef4c2137320f8c5e5d0",
+    "case_a": "dev_052",
+    "case_b": "test_085",
+    "scope": "cross_split",
+    "sequence_ratio": 0.81818,
+    "char3_jaccard": 0.29032,
+    "stage": "final_review",
+    "source_snapshot_sha256": "6bc97f310cffef6b62c32e473455bb7c60766479521d6d1d96758db94681977a",
+    "decision": "accepted_distinct",
+    "review_method_version": "structured_case_review_v1.1",
+    "reviewed_at": "2026-10-01T06:04:54.250594+00:00",
+    "notes": "Similarity comes from short unavoidable no-longer-needed and intact/use phrases (sequence 0.81818; char3 Jaccard 0.29032). dev_052 explicitly says the tag was cut off and routes IN03_NOT_INTACT/ineligible; test_085 entirely omits tag status and routes MR02_CONDITION/manual_review. The former spreads evidence across two colloquial sentences, the latter is a direct neutral request. These are independent condition/composition realizations, not the same case with a substituted identifier. No target or gold was changed.",
+    "valid_for_current_content": true
+  }
+]
