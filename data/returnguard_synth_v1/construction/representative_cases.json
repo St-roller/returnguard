@@ -1,0 +1,1112 @@
+[
+  {
+    "case_id": "dev_011",
+    "category": "clean/no-change",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-23",
+        "request_date": "2026-05-29",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY"
+      },
+      "generation_constraints": {
+        "reason_family": "duplicate_purchase",
+        "difficulty": "medium",
+        "message_length": "long",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "one_irrelevant_detail"
+        ],
+        "boundary_day": null,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "您好，我5月23日收到的这件衬衫，吊牌还完整挂着，也没有污渍或破损。我只在家里试穿了一下，没有穿出门。因为朋友也送了一件一样的，想申请退货，麻烦您了。",
+      "english_annotation": "Hello, I received this shirt on May 23. The tag is still fully attached, and there are no stains or damage. I only tried it on at home and did not wear it out. Since a friend also gave me the same one, I would like to request a return. Thank you.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "朋友也送了一件一样的"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还完整挂着"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍或破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只在家里试穿了一下",
+            "没有穿出门"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [],
+    "after": {
+      "customer_message": "您好，我5月23日收到的这件衬衫，吊牌还完整挂着，也没有污渍或破损。我只在家里试穿了一下，没有穿出门。因为朋友也送了一件一样的，想申请退货，麻烦您了。",
+      "english_annotation": "Hello, I received this shirt on May 23. The tag is still fully attached, and there are no stains or damage. I only tried it on at home and did not wear it out. Since a friend also gave me the same one, I would like to request a return. Thank you."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "朋友也送了一件一样的"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还完整挂着"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍或破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只在家里试穿了一下",
+            "没有穿出门"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 6,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Same shirt gifted by a friend supports duplicate purchase. Fully attached tag, no stains/damage and home-only trial have exact spans. Receipt date matches trusted facts; polite long message includes unrelated date detail."
+  },
+  {
+    "case_id": "dev_025",
+    "category": "clean/no-change",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-19",
+        "request_date": "2026-05-29",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14"
+      },
+      "generation_constraints": {
+        "reason_family": "preference_mismatch",
+        "difficulty": "easy",
+        "message_length": "medium",
+        "tone": "neutral",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": null,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "你好，我想申请退货，这件衣服不太适合我。吊牌还在，没有污渍和破损，只是试穿了一下。",
+      "english_annotation": "Hello, I would like to request a return. This clothing item doesn't suit me well. The tag is still attached, there are no stains or damage, and I only tried it on.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不太适合我"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍和破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只是试穿了一下"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [],
+    "after": {
+      "customer_message": "你好，我想申请退货，这件衣服不太适合我。吊牌还在，没有污渍和破损，只是试穿了一下。",
+      "english_annotation": "Hello, I would like to request a return. This clothing item doesn't suit me well. The tag is still attached, there are no stains or damage, and I only tried it on."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不太适合我"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍和破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只是试穿了一下"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 10,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Personal suitability supports ordinary preference mismatch, not a defect allegation. Attached tag, absence of both stains and damage, and exclusive trial are exact contiguous evidence; polite/direct medium wording and translation agree."
+  },
+  {
+    "case_id": "dev_001",
+    "category": "evidence repair",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-01",
+        "request_date": "2026-05-01",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY"
+      },
+      "generation_constraints": {
+        "reason_family": "size_fit",
+        "difficulty": "easy",
+        "message_length": "short",
+        "tone": "neutral",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": 0,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "这件衣服尺码不合适，想申请退货，吊牌还在，没有污渍，只试穿了一下。",
+      "english_annotation": "The size of this clothing doesn't fit. I'd like to request a return. The tag is still attached, there are no stains, and I only tried it on.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "尺码不合适"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿了一下"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Text or proposed evidence did not support absence/presence of both damage and stain.",
+      "Template similarity required varied surface wording while preserving all frozen facts."
+    ],
+    "after": {
+      "customer_message": "这件尺码不合适想退，吊牌还在，没脏没破，只试穿了一下。",
+      "english_annotation": "The size does not fit, so I want to return it. The tag is attached, there is no dirt or damage, and I only tried it on."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "尺码不合适"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没脏没破"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿了一下"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 0,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Original no-stain span did not exclude damage; made both explicit within short/direct constraints. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes."
+  },
+  {
+    "case_id": "dev_019",
+    "category": "evidence repair",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-01",
+        "request_date": "2026-05-10",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14"
+      },
+      "generation_constraints": {
+        "reason_family": "preference_mismatch",
+        "difficulty": "easy",
+        "message_length": "medium",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": null,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "你好，这件衣服不太适合我，想申请退货，吊牌还在，没有污渍，只试穿了一下。",
+      "english_annotation": "Hello, this garment doesn't quite suit me. I'd like to request a return. The tag is still attached, there are no stains, and I only tried it on.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不太适合我"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿了一下"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Text or proposed evidence did not support absence/presence of both damage and stain.",
+      "Template similarity required varied surface wording while preserving all frozen facts."
+    ],
+    "after": {
+      "customer_message": "你好，这件衣服不合我喜好，想申请退货。吊牌还在，没有污渍或破损，只试穿了一下，请帮我办理。",
+      "english_annotation": "Hello, this garment is not to my taste and I want to return it. The tag is attached, there are no stains or damage, and I only tried it on. Please help me process it."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不合我喜好"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍或破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿了一下"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 9,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Expanded stain-only statement to exclude damage too; made preference mismatch explicit and kept polite medium/direct style. Its original near-duplicate flag was resolved by the recorded surface changes; the final pair is re-audited under new content hashes."
+  },
+  {
+    "case_id": "dev_073",
+    "category": "semantic repair",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-09",
+        "request_date": "2026-05-17",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "not_stated",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "manual_review",
+        "rule_id": "MR03_REASON"
+      },
+      "generation_constraints": {
+        "reason_family": "not_stated",
+        "difficulty": "hard",
+        "message_length": "medium",
+        "tone": "neutral",
+        "linguistic_features": [
+          "indirect_expression",
+          "irrelevant_detail"
+        ],
+        "boundary_day": 8,
+        "composition_tag": "otherwise_intact",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "这件衣服我5月9号收到的，试了一下不太合适，吊牌还在，想退掉。",
+      "english_annotation": "I received this clothing item on May 9th. I tried it on and it didn't fit well. The tag is still attached, and I'd like to return it.",
+      "extraction": {
+        "return_reason": {
+          "value": "not_stated",
+          "evidence": []
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": []
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "试了一下"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Text supplied or implied a causal reason despite frozen not_stated intent.",
+      "Text or proposed evidence did not support absence/presence of both damage and stain.",
+      "Length/tone/difficulty or required language feature was not fully realized."
+    ],
+    "after": {
+      "customer_message": "这件衣服5月9号收到的，只有拆包检查，吊牌还在，没脏没破。盒子放在书架边，昨晚还找了半天，能帮它安排回去吗？",
+      "english_annotation": "I received this garment on May 9 and only opened it for inspection. The tag is attached and it has no dirt or damage. The box was beside the bookshelf and took a while to find last night. Could you arrange for it to go back?"
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "not_stated",
+          "evidence": []
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没脏没破"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只有拆包检查"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 8,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "manual_review",
+        "rule_id": "MR03_REASON",
+        "review_reason": "policy_required"
+      }
+    },
+    "review_notes": "Removed actual does-not-fit reason from not_stated realization; retained unrelated date/box detail and indirect neutral hard request."
+  },
+  {
+    "case_id": "dev_083",
+    "category": "semantic repair",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-12",
+        "request_date": "2026-05-17",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "conflicting",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "manual_review",
+        "rule_id": "MR02_CONDITION"
+      },
+      "generation_constraints": {
+        "reason_family": "duplicate_purchase",
+        "difficulty": "hard",
+        "message_length": "long",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "indirect_expression",
+          "irrelevant_detail",
+          "two_distinct_conflicting_condition_spans"
+        ],
+        "boundary_day": null,
+        "composition_tag": "contradiction",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "您好，这件衣服我收到了，朋友也送了一件一样的，所以想退掉，5月12号签收的。试穿了一下，没有污渍破损；不过吊牌刚要拆还没拆，另一个衣架上的吊牌还在衣服上。",
+      "english_annotation": "Hello, I received this clothing item, and a friend also gave me the same one, so I would like to return it. It was signed for on May 12. I tried it on briefly; there are no stains or damage. However, the tag was just about to be removed but not yet removed, while the tag on the other hanger is still attached to the clothing.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "朋友也送了一件一样的",
+            "所以想退掉"
+          ]
+        },
+        "tag_status": {
+          "value": "conflicting",
+          "evidence": [
+            "刚要拆还没拆",
+            "吊牌还在衣服上"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "试穿了一下"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Conflict spans were compatible, resolved, hedged, about different items, or missing.",
+      "Verbatim span existed but did not semantically support the intended value."
+    ],
+    "after": {
+      "customer_message": "您好，朋友也送了一件一样的，这件怕是多出来了，能收回吗？5月12号签收，只试穿，没污渍破损。现在这件的吊牌完整连着；现在这件的吊牌已经剪下。两句话我都确认，但暂时解释不了，没法把其中一句改掉。",
+      "english_annotation": "Hello, a friend gave me the same item, leaving this one redundant; could you take it back? I received it on May 12 and only tried it on. It has no stains or damage. The tag on this item is currently fully attached; the tag on this same item has already been cut off. I affirm both statements but cannot explain them or withdraw either one."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "朋友也送了一件一样的，这件怕是多出来了"
+          ]
+        },
+        "tag_status": {
+          "value": "conflicting",
+          "evidence": [
+            "现在这件的吊牌完整连着",
+            "现在这件的吊牌已经剪下"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没污渍破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 5,
+        "condition_status": "conflicting",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": [
+          "tag_status"
+        ]
+      },
+      "decision": {
+        "route": "manual_review",
+        "rule_id": "MR02_CONDITION",
+        "review_reason": "policy_required"
+      }
+    },
+    "review_notes": "Original two spans both meant attached and referred to different items. Rewrote as two unresolved present-state assertions about the same item, preserving tag conflict and indirect duplicate reason."
+  },
+  {
+    "case_id": "dev_017",
+    "category": "near-duplicate-related",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-11",
+        "request_date": "2026-05-19",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14"
+      },
+      "generation_constraints": {
+        "reason_family": "no_longer_needed",
+        "difficulty": "medium",
+        "message_length": "short",
+        "tone": "neutral",
+        "linguistic_features": [
+          "evidence_spread_across_sentences"
+        ],
+        "boundary_day": 8,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "这件衣服我不需要了，吊牌还在。没有污渍和破损，只试穿过。",
+      "english_annotation": "I no longer need this piece of clothing. The tag is still attached. There are no stains or damage, and I only tried it on.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "我不需要了"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍和破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿过"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Template similarity required varied surface wording while preserving all frozen facts."
+    ],
+    "after": {
+      "customer_message": "用不上这条裤子了。只试穿；吊牌连着，布面没脏没破，想退。",
+      "english_annotation": "I no longer need these trousers. I only tried them on; the tag is attached and the fabric has no dirt or damage. I want to return them."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "用不上这条裤子了"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌连着"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "布面没脏没破"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 8,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL02_BRAND14",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Reordered the short multi-sentence realization and used trousers/fabric context to break the near-duplicate cluster without changing facts."
+  },
+  {
+    "case_id": "test_034",
+    "category": "near-duplicate-related",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-06-05",
+        "request_date": "2026-06-12",
+        "is_custom_made": true
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "ineligible",
+        "rule_id": "IN01_CUSTOM"
+      },
+      "generation_constraints": {
+        "reason_family": "changed_mind",
+        "difficulty": "easy",
+        "message_length": "medium",
+        "tone": "polite_conversational",
+        "linguistic_features": [
+          "direct_wording"
+        ],
+        "boundary_day": 7,
+        "composition_tag": "custom_only",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "您好，这件定制衣服我不太想要了，吊牌还在，也没有污渍破损，只试穿过。",
+      "english_annotation": "Hello, I don't really want this custom-made garment anymore. The tag is still attached, there are no stains or damage, and I only tried it on.",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不太想要了"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还在"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只试穿过"
+          ]
+        }
+      },
+      "available_partial_generator_content": null
+    },
+    "issues": [
+      "Template similarity required varied surface wording while preserving all frozen facts."
+    ],
+    "after": {
+      "customer_message": "您好，我改主意不留这件定制上衣了，想退。只在家试过，布料没脏没破，领口的吊牌还连着，麻烦办理。",
+      "english_annotation": "Hello, I changed my mind and will not keep this custom-made top. I want to return it. I only tried it on at home, the fabric has no dirt or damage, and the tag is still attached at the collar. Please process it."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "我改主意不留这件定制上衣了"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "领口的吊牌还连着"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "布料没脏没破"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只在家试过"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 7,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "ineligible",
+        "rule_id": "IN01_CUSTOM",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Reordered source template and used top/fabric/collar context to resolve similarity flags while retaining easy polite medium changed-mind custom case."
+  },
+  {
+    "case_id": "dev_008",
+    "category": "formerly truncated",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-05-02",
+        "request_date": "2026-05-05",
+        "is_custom_made": false
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY"
+      },
+      "generation_constraints": {
+        "reason_family": "colour_style",
+        "difficulty": "medium",
+        "message_length": "long",
+        "tone": "frustrated_complaint",
+        "linguistic_features": [
+          "non_trivial_negation"
+        ],
+        "boundary_day": null,
+        "composition_tag": "base",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "",
+      "english_annotation": "",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": []
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": []
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": []
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": []
+        }
+      },
+      "available_partial_generator_content": "{\n  \"customer_message\": \"收到后只在家对着镜子试了一下，根本没穿出门，吊牌也一直完整挂在衣服上，没有污渍、没有破损"
+    },
+    "issues": [
+      "Generation response truncated; surface/annotation/evidence incomplete."
+    ],
+    "after": {
+      "customer_message": "收到后只在家对着镜子试了一下，根本没穿出门，吊牌也一直完整挂在衣服上，没有污渍、没有破损。不是我想挑剔，但这件的颜色不是我想要的那种，实在不喜欢，想申请退货。",
+      "english_annotation": "I only tried it on in front of the mirror at home, never wore it out, and the tag remains fully attached. There are no stains or damage. I am not trying to be picky, but this is not the color I wanted; I really dislike it and want to return it."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "颜色不是我想要的那种，实在不喜欢"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌也一直完整挂在衣服上"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没有污渍、没有破损"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "只在家对着镜子试了一下，根本没穿出门"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 3,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "eligible",
+        "rule_id": "EL01_7DAY",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Retained the usable original partial message; completed the color-preference reason with frustrated non-trivial negation. All four definitive facts now have exact support."
+  },
+  {
+    "case_id": "test_033",
+    "category": "formerly truncated",
+    "blueprint_intent": {
+      "trusted_order_facts": {
+        "receipt_date": "2026-06-22",
+        "request_date": "2026-07-06",
+        "is_custom_made": true
+      },
+      "intended_extraction": {
+        "return_reason": "ordinary_return",
+        "tag_status": "attached",
+        "damage_or_stain": "absent",
+        "use_beyond_inspection": "no"
+      },
+      "target": {
+        "route": "ineligible",
+        "rule_id": "IN01_CUSTOM"
+      },
+      "generation_constraints": {
+        "reason_family": "preference_mismatch",
+        "difficulty": "hard",
+        "message_length": "long",
+        "tone": "frustrated_complaint",
+        "linguistic_features": [
+          "self_correction",
+          "indirect_expression"
+        ],
+        "boundary_day": 14,
+        "composition_tag": "custom_only",
+        "issue_family": null
+      }
+    },
+    "before": {
+      "customer_message": "",
+      "english_annotation": "",
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": []
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": []
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": []
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": []
+        }
+      },
+      "available_partial_generator_content": "{\n  \"customer_message\": \"6月22号收到的这件定制衣服，等了这么久，我本来想留，但试穿后越看越不喜欢，算了，还是不留了，不是我的风格。吊牌还完整挂着，没污渍也没破，就只在家试了试。现在不太想要了，能帮我安排退回吗？实在喜欢不起来。\",\n  \"english_annotation\": \"I received this custom-made item on June 22. After waiting so long, I originally wanted to keep it, but after trying it on, the more I looked at it"
+    },
+    "issues": [
+      "Generation response truncated; surface/annotation/evidence incomplete."
+    ],
+    "after": {
+      "customer_message": "6月22号收到的这件定制衣服，等了这么久，我本来想留，但试穿后越看越不喜欢，算了，还是不留了，不是我的风格。吊牌还完整挂着，没污渍也没破，就只在家试了试。现在不太想要了，能帮我安排退回吗？实在喜欢不起来。",
+      "english_annotation": "I received this custom-made garment on June 22 after a long wait. I intended to keep it, but after trying it on I liked it less and less; on second thought I will not keep it because it is not my style. The tag remains fully attached, there are no stains or damage, and I only tried it on at home. I no longer want it; can you arrange a return? I really cannot come to like it."
+    },
+    "gold": {
+      "extraction": {
+        "return_reason": {
+          "value": "ordinary_return",
+          "evidence": [
+            "不是我的风格"
+          ]
+        },
+        "tag_status": {
+          "value": "attached",
+          "evidence": [
+            "吊牌还完整挂着"
+          ]
+        },
+        "damage_or_stain": {
+          "value": "absent",
+          "evidence": [
+            "没污渍也没破"
+          ]
+        },
+        "use_beyond_inspection": {
+          "value": "no",
+          "evidence": [
+            "就只在家试了试"
+          ]
+        }
+      },
+      "derived": {
+        "days_since_receipt": 14,
+        "condition_status": "intact",
+        "missing_condition_fields": [],
+        "explicit_uncertainty_fields": [],
+        "conflicting_fields": []
+      },
+      "decision": {
+        "route": "ineligible",
+        "rule_id": "IN01_CUSTOM",
+        "review_reason": null
+      }
+    },
+    "review_notes": "Recovered the complete Chinese message from the truncated JSON response and completed its annotation/evidence. Self-correction and indirect preference mismatch remain; custom-only semantics preserved."
+  }
+]

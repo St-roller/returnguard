@@ -1,6 +1,7 @@
-"""Human-review gates, deterministic gold construction, and dataset audits."""
+"""Structured case-review gates, deterministic gold construction, and dataset audits."""
 
 from collections import Counter, defaultdict
+from datetime import datetime
 from difflib import SequenceMatcher
 import hashlib
 import json
@@ -81,7 +82,7 @@ def make_drafts(blueprints: list[Blueprint], raw: list[dict]) -> list[dict]:
             "blueprint": bp.model_dump(mode="json"), "customer_message": surface.get("customer_message", ""),
             "english_annotation": surface.get("english_annotation", ""), "extraction": ex,
             "proposed_gold": proposed, "preflight_issues": issues,
-            "review_status": "pending", "reviewer_name": None, "reviewed_at": None,
+            "review_status": "pending", "review_method_version": None, "reviewed_at": None,
             "review_round": 1, "checklist_confirmed": False, "review_notes": "",
             "generation_provenance": record["generation_provenance"],
             "raw_record_sha256": digest(record), "original_message_sha256": digest(surface.get("customer_message", "")),
@@ -93,7 +94,7 @@ def make_drafts(blueprints: list[Blueprint], raw: list[dict]) -> list[dict]:
 
 
 def audit_messages(records: list[dict]) -> dict:
-    """Deterministic findings; near duplicates are flags for human review."""
+    """Deterministic findings; near duplicates are flags for case-level review."""
     normalized = [normalize(r["customer_message"]) for r in records]
     groups = defaultdict(list)
     for i, text in enumerate(normalized):
@@ -158,7 +159,7 @@ def audit_messages(records: list[dict]) -> dict:
         "id_label_leakage": [r["case_id"] for r in records if INPUT_LEAKAGE.search(r["case_id"])],
         "formatting_by_route": dict(formatting),
         "repeated_six_character_prefixes": [{"prefix": prefix, "case_ids": ids} for prefix,ids in prefixes.items() if len(ids)>=5],
-        "audit_status": "pending_human_review",
+        "audit_status": "pending_structured_review",
     }
 
 
@@ -168,50 +169,71 @@ def approved_records(drafts: list[dict], reviews: dict) -> tuple[list[dict], dic
     changes = reviews.get("reviews", [])
     by_id = {r["case_id"]: r for r in changes}
     if len(changes) != 180 or len(by_id) != 180 or set(by_id) != {d["case_id"] for d in drafts}:
-        raise ValueError("All 180 cases require individual human review")
+        raise ValueError("All 180 cases require individual structured case review")
     finals, audit_input = [], []
     for draft in drafts:
-        human = by_id[draft["case_id"]]
-        if human.get("review_status") != "approved" or not human.get("checklist_confirmed"):
-            raise ValueError(f"{draft['case_id']}: human approval/checklist pending")
-        if len(human.get("checklist_items", [])) != 13 or not all(x is True for x in human["checklist_items"]):
-            raise ValueError("All 13 human-review checks require individual confirmation")
-        if not human.get("reviewer_name", "").strip() or not human.get("reviewed_at"):
-            raise ValueError("Named and timestamped human review required")
+        review = by_id[draft["case_id"]]
+        if review.get("review_status") != "approved" or not review.get("checklist_confirmed"):
+            raise ValueError(f"{draft['case_id']}: case approval/checklist pending")
+        if len(review.get("checklist_items", [])) != 13 or not all(x is True for x in review["checklist_items"]):
+            raise ValueError("All 13 case-review checks require individual confirmation")
+        if review.get("review_method_version") != "structured_case_review_v1.1" or not review.get("reviewed_at"):
+            raise ValueError("Versioned and timestamped structured review required")
+        try:
+            reviewed_at = datetime.fromisoformat(review["reviewed_at"].replace("Z", "+00:00"))
+            if reviewed_at.tzinfo is None:
+                raise ValueError("timezone missing")
+        except (ValueError, TypeError):
+            raise ValueError("Review timestamp must be timezone-aware ISO-8601") from None
+        if not review.get("review_notes", "").strip():
+            raise ValueError("Case-specific substantive review notes required")
+        if not isinstance(review.get("issues_found"), list) or not isinstance(review.get("repairs_made"), list):
+            raise ValueError("Per-case issue and repair records required")
+        if review.get("reviewed_content_sha256") != digest({k: review[k] for k in
+                ("customer_message", "english_annotation", "extraction")}):
+            raise ValueError("Case review is stale for the current text/evidence")
         bp = Blueprint.model_validate(draft["blueprint"])
-        if not human.get("english_annotation", "").strip():
+        if not review.get("english_annotation", "").strip():
             raise ValueError("English review annotation missing")
-        gold = candidate_gold(bp, human["customer_message"], human["extraction"])
+        gold = candidate_gold(bp, review["customer_message"], review["extraction"])
+        edited = (review["customer_message"] != draft["customer_message"]
+                  or review["extraction"] != draft["extraction"]
+                  or review["english_annotation"] != draft.get("english_annotation", ""))
+        if edited and not review["repairs_made"]:
+            raise ValueError("Edited case requires an explicit repair record")
         metadata = {
-            "english_annotation": human["english_annotation"], "review_status": "approved",
-            "reviewed_by": "human", "reviewer_name": human["reviewer_name"],
-            "reviewed_at": human["reviewed_at"], "review_round": human.get("review_round", 1),
-            "review_notes": human.get("review_notes"), "checklist_confirmed": True,
+            "english_annotation": review["english_annotation"], "review_status": "approved",
+            "review_method_version": review["review_method_version"],
+            "issues_found": review["issues_found"], "repairs_made": review["repairs_made"],
+            "reviewed_content_sha256": review["reviewed_content_sha256"],
+            "reviewed_at": review["reviewed_at"], "review_round": review.get("review_round", 1),
+            "review_notes": review.get("review_notes"), "checklist_confirmed": True,
             "dataset_version": "ReturnGuard-Synth-v1", "design_tags": bp.generation_constraints.model_dump(),
             "generation_provenance": draft["generation_provenance"],
             "source_blueprint_id": bp.blueprint_id, "source_raw_record_sha256": draft["raw_record_sha256"],
-            "edited_during_review": human["customer_message"] != draft["customer_message"] or human["extraction"] != draft["extraction"],
+            "edited_during_review": edited,
         }
         final = CaseRecord.model_validate({"case_id": draft["case_id"], "split": draft["split"],
             "schema_version": "case_v1.0", "policy_version": "policy_v1.0",
-            "input": {"order_facts": bp.trusted_order_facts.model_dump(mode="json"), "customer_message": human["customer_message"]},
+            "input": {"order_facts": bp.trusted_order_facts.model_dump(mode="json"), "customer_message": review["customer_message"]},
             "gold": gold, "review_metadata": metadata})
         finals.append(final.model_dump(mode="json"))
-        audit_input.append({**draft, "customer_message": human["customer_message"], "english_annotation": human["english_annotation"]})
+        audit_input.append({**draft, "customer_message": review["customer_message"], "english_annotation": review["english_annotation"]})
     audit = audit_messages(audit_input)
     if audit["exact_duplicate_count"] or audit["model_visible_leakage"] or audit["id_label_leakage"] or audit.get("generation_request_leakage"):
         raise ValueError("Exact duplicates or model-visible label leakage block freeze")
     resolutions = reviews.get("pair_decisions", {})
     unresolved = [p["pair_id"] for p in audit["near_duplicate_pairs"] if not (
         resolutions.get(p["pair_id"], {}).get("decision") == "accepted_distinct" and
-        resolutions[p["pair_id"]].get("reviewer_name") and resolutions[p["pair_id"]].get("notes", "").strip())]
+        resolutions[p["pair_id"]].get("review_method_version") == "structured_case_review_v1.1" and
+        resolutions[p["pair_id"]].get("reviewed_at") and resolutions[p["pair_id"]].get("notes", "").strip())]
     if unresolved:
-        raise ValueError(f"{len(unresolved)} near-duplicate pairs need human resolution")
+        raise ValueError(f"{len(unresolved)} near-duplicate pairs need structured resolution")
     attest = reviews.get("audit_attestation", {})
-    if not (attest.get("reviewer_name") and attest.get("reviewed_at") and
+    if not (attest.get("review_method_version") == "structured_case_review_v1.1" and attest.get("reviewed_at") and
             attest.get("formatting_checked") and attest.get("annotation_flags_checked") and attest.get("input_flags_checked") and
             attest.get("dataset_snapshot_sha256") == audit["dataset_snapshot_sha256"]):
-        raise ValueError("Current formatting/annotation audit needs human attestation")
-    audit.update(audit_status="passed", human_audit_attestation=attest, near_duplicate_resolutions=resolutions,
-                 human_approved=180, evidence_validated=180, policy_recomputed=180)
+        raise ValueError("Current formatting/annotation audit needs structured attestation")
+    audit.update(audit_status="passed", structured_audit_attestation=attest, near_duplicate_resolutions=resolutions,
+                 review_approved=180, evidence_validated=180, policy_recomputed=180)
     return finals, audit

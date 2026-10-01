@@ -85,7 +85,7 @@ def test_no_implicit_human_approval_or_stale_snapshot():
         approved_records(drafts, {"source_drafts_sha256": digest(drafts), "reviews": []})
     reviews = {"source_drafts_sha256": digest(drafts), "reviews": [
         {"case_id": d["case_id"], "review_status": "pending"} for d in drafts]}
-    with pytest.raises(ValueError, match="human approval/checklist pending"):
+    with pytest.raises(ValueError, match="case approval/checklist pending"):
         approved_records(drafts, reviews)
 
 
@@ -97,7 +97,7 @@ def test_live_raw_requests_have_matching_label_free_provenance():
     module = importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     drafts, provenance = module.load_drafts()
     assert len(drafts) == 180
-    assert all(d["review_status"] == "pending" and d["reviewer_name"] is None for d in drafts)
+    assert all(d["review_status"] == "pending" and d["review_method_version"] is None for d in drafts)
     assert provenance["dev"]["actual_settings"] == provenance["test"]["actual_settings"] == {"temperature": 0.7, "top_p": 0.9}
 
 
@@ -107,27 +107,47 @@ def test_approved_records_require_resolved_pairs_and_current_human_audit(monkeyp
         message, ex = example(bp)
         case_id = bp.blueprint_id.replace("_bp_", "_")
         drafts.append({"case_id": case_id, "split": bp.split, "blueprint": bp.model_dump(mode="json"),
-            "customer_message": message, "extraction": ex, "generation_provenance": {"fixture": True}, "raw_record_sha256": "fixture"})
+            "customer_message": message, "english_annotation": "Test fixture annotation.",
+            "extraction": ex, "generation_provenance": {"fixture": True}, "raw_record_sha256": "fixture"})
         reviews.append({"case_id": case_id, "customer_message": message, "english_annotation": "Test fixture annotation.",
             "extraction": ex, "review_status": "approved", "checklist_confirmed": True, "checklist_items": [True]*13,
-            "reviewer_name": "TEST FIXTURE ONLY", "reviewed_at": "2026-01-01T00:00:00Z"})
+            "review_method_version": "structured_case_review_v1.1", "reviewed_at": "2026-01-01T00:00:00Z",
+            "issues_found": [], "repairs_made": [], "review_notes": "Fixture-only substantive review.",
+            "reviewed_content_sha256": digest({"customer_message": message, "english_annotation": "Test fixture annotation.", "extraction": ex})})
     # Test the review gate separately from similarity algorithms, covered above.
     monkeypatch.setattr("returnguard.dataset_review.audit_messages", lambda rows: {
         "exact_duplicate_count": 0, "model_visible_leakage": [], "id_label_leakage": [],
         "near_duplicate_pairs": [{"pair_id": "fixture_pair"}], "dataset_snapshot_sha256": "fixture_snapshot"})
     packet = {"source_drafts_sha256": digest(drafts), "reviews": reviews}
-    with pytest.raises(ValueError, match="near-duplicate pairs need human"):
+    with pytest.raises(ValueError, match="near-duplicate pairs need structured"):
         approved_records(drafts, packet)
-    packet["pair_decisions"] = {"fixture_pair": {"decision": "accepted_distinct", "reviewer_name": "TEST FIXTURE ONLY", "notes": "Fixture decision."}}
-    with pytest.raises(ValueError, match="needs human attestation"):
+    packet["pair_decisions"] = {"fixture_pair": {"decision": "accepted_distinct", "review_method_version": "structured_case_review_v1.1", "notes": "Fixture decision.", "reviewed_at": "2026-01-01T00:00:00Z"}}
+    with pytest.raises(ValueError, match="needs structured attestation"):
         approved_records(drafts, packet)
-    packet["audit_attestation"] = {"reviewer_name": "TEST FIXTURE ONLY", "reviewed_at": "2026-01-01T00:00:00Z",
+    packet["audit_attestation"] = {"review_method_version": "structured_case_review_v1.1", "reviewed_at": "2026-01-01T00:00:00Z",
         "formatting_checked": True, "annotation_flags_checked": True, "input_flags_checked": True,
         "dataset_snapshot_sha256": "fixture_snapshot"}
     final, audit = approved_records(drafts, packet)
-    assert len(final) == audit["human_approved"] == 180
+    assert len(final) == audit["review_approved"] == 180
     assert all(r["review_metadata"]["english_annotation"] == "Test fixture annotation." for r in final)
     assert all(set(r["input"]) == {"order_facts", "customer_message"} for r in final)
+    assert all("reviewer_name" not in r["review_metadata"] and "reviewed_by" not in r["review_metadata"] for r in final)
+    packet["reviews"][0]["review_method_version"] = None
+    with pytest.raises(ValueError, match="Versioned and timestamped"):
+        approved_records(drafts, packet)
+    packet["reviews"][0]["review_method_version"] = "structured_case_review_v1.1"
+    packet["reviews"][0]["reviewed_at"] = "2026-01-01"
+    with pytest.raises(ValueError, match="timezone-aware ISO-8601"):
+        approved_records(drafts, packet)
+    packet["reviews"][0]["reviewed_at"] = "2026-01-01T00:00:00Z"
+    packet["audit_attestation"]["dataset_snapshot_sha256"] = "stale"
+    with pytest.raises(ValueError, match="needs structured attestation"):
+        approved_records(drafts, packet)
+    packet["audit_attestation"]["dataset_snapshot_sha256"] = "fixture_snapshot"
+    packet["reviews"][0]["customer_message"] += "谢谢。"
+    with pytest.raises(ValueError, match="Case review is stale"):
+        approved_records(drafts, packet)
+    packet["reviews"][0]["customer_message"] = drafts[0]["customer_message"]
     packet["reviews"][0]["checklist_items"][0] = False
     with pytest.raises(ValueError, match="All 13"):
         approved_records(drafts, packet)

@@ -52,30 +52,21 @@ The deterministic generator is `scripts/generate_blueprints.py`; it creates miss
 
 The test split uses a separate fixed construction seed to independently recombine factual/day, difficulty, length, tone, reason-family and linguistic-feature assignments within the quota constraints. Dev blueprints are unchanged. `overlap_report.json` compares all 8,100 dev/test pairs and all 90 same-index pairs, excluding IDs, absolute dates and provenance. The core signature includes rule, policy facts, elapsed days, difficulty, length and composition; the full signature adds tone, reason family and linguistic features (as an unordered set). Same-index twins under both signatures must be zero. Repeated policy facts across arbitrary indices are expected; this blueprint audit does not replace the later Chinese-message duplicate/leakage audit.
 
-## Phase 2B construction and individual human review
+## Phase 2B construction and structured case review
 
-Gate 2 authorized separate DeepSeek generation runs using the merged PR #2 blueprints. The run produced 90 dev and 90 test records with `deepseek/deepseek-v4-pro-0813`, temperature 0.7 and top_p 0.9. Raw responses are retained losslessly as `construction/raw_dev.jsonl.gz` and `raw_test.jsonl.gz`; split provenance records actual settings, provider routing, batch IDs and source hashes. The test job received only the dev settings file, never dev messages. Six outputs were truncated; no content-quality retry was made. This is a construction dataset, **not a frozen or evaluated benchmark**.
+Separate clean jobs produced 90 dev and 90 test records using `deepseek/deepseek-v4-pro-0813`, temperature 0.7 and top_p 0.9. The test job received only dev settings, never dev messages. Full raw responses, provenance and the original draft audit remain unchanged. Six generation responses were truncated and were completed against their frozen blueprints during structured case review, with no generation retries.
 
-Prepare the offline review page without an API key:
+All 180 cases now have explicit `structured_case_review_v1.1` records: findings, repairs, exact evidence, source/content hashes and timestamps. Case-specific semantic review includes every unflagged case. No author-wide personal manual-review claim or fabricated reviewer identity is made. The project author owns the final dataset-level approval.
 
-```bash
-python scripts/prepare_dataset_review.py
-```
-
-Open `data/returnguard_synth_v1/construction/human_review.html` in a browser. Every case starts pending. A named human must check all 13 items, correct Chinese realization/evidence/English annotation as necessary, and approve each case individually. Chinese remains canonical; English is stored only inside review metadata. The page saves progress locally and exports `returnguard_human_reviews.json`. Do not commit reviewer exports containing unreviewed cases as gold.
-
-After edits, regenerate the page/audit while preserving actual review decisions:
+Validate the concrete reviewed snapshot without API calls:
 
 ```bash
-python scripts/prepare_dataset_review.py --reviews /path/to/returnguard_human_reviews.json
+python scripts/check_review_readiness.py
+python scripts/prepare_dataset_review.py --reviews data/returnguard_synth_v1/construction/structured_reviews.json
 ```
 
-Reopen the updated page, resolve current near-duplicate pairs and attest the new formatting/annotation/input-word audit. Content hashes prevent an old pair decision or audit attestation from silently approving edited text. Exact duplicates and route/rule leakage block freeze. Generic words such as the garment's Chinese “标签” are flags requiring human inspection, not automatically treated as policy labels.
+The commands produce review-stage candidates/audits and an optional offline inspector in `construction/`; they do not create frozen root splits or a freeze manifest. Case content hashes, pair hashes and audit snapshot hashes invalidate stale decisions after edits. Exact evidence, frozen intended values and unchanged Policy v1 are validated separately from substantive semantic review.
 
-Only after all 180 individual approvals and current audits pass:
+Read `docs/Phase2B_Review_Approval_Package.md` for counts, issue distribution, ten representative cases, all near-pair decisions, audit findings and course-feedback consistency. The status is **READY_FOR_DATASET_LEVEL_APPROVAL**, pending project-level go/no-go. `docs/Phase2B_Human_Review_Instructions.md` retains its old filename but describes the revised workflow. The original `human_review.html` is historical; the current optional inspector is `structured_review.html`.
 
-```bash
-python scripts/freeze_dataset.py --reviews /path/to/returnguard_human_reviews.json
-```
-
-This validates exact Chinese evidence, preserves blueprint facts/quotas, recomputes Policy v1 gold and prepares final CaseRecord v1 files. Commit final data, human-review export, provenance and audit in a dedicated data commit; then run the same command with `--freeze-commit ACTUAL_DATA_COMMIT_SHA`. The script verifies the committed bytes before writing `freeze_manifest.json`. Commit that manifest separately as metadata, so it can reference a real data commit without a self-reference. No freeze manifest is issued while human review is pending. No formal GPT-5.6 Luna calls or threshold selection belong to this phase.
+After explicit approval of this snapshot, `scripts/freeze_dataset.py` requires both `--reviews REVIEW_PACKET` and `--approval APPROVAL_RECORD`. Its existing dedicated data commit, committed-byte verification and separate freeze-manifest procedure then applies. Formal GPT-5.6 Luna dev/test evaluation, provisional threshold selection and the baseline remain later work.

@@ -1,4 +1,4 @@
-"""Build an offline, individually approved human review packet; never freeze."""
+"""Build an offline, structured case review packet; never freeze."""
 import argparse
 import gzip
 import json
@@ -50,7 +50,7 @@ def load_drafts():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--reviews", type=Path, help="Re-audit human edits and preserve actual decisions")
+    parser.add_argument("--reviews", type=Path, help="Re-audit reviewed edits and preserve actual decisions")
     args = parser.parse_args()
     drafts, provenance = load_drafts()
     initial = {"source_drafts_sha256": digest(drafts), "reviews": [], "pair_decisions": {}, "audit_attestation": {}}
@@ -62,16 +62,16 @@ def main():
     audit_input = [{**d, **{k: changes[d["case_id"]][k] for k in ("customer_message", "english_annotation")}}
                    if d["case_id"] in changes else d for d in drafts]
     audit = audit_messages(audit_input)
-    for name, obj in (("review_drafts.json", drafts), ("draft_audit_report.json", audit)):
+    for name, obj in (("review_drafts.json", drafts), ("current_review_audit.json", audit)):
         (OUT / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n")
     packet = {"drafts": drafts, "audit": audit, "initial": initial, "provenance": provenance}
     embedded = json.dumps(packet, ensure_ascii=False).replace("<", "\\u003c")
     html = (ROOT / "templates/dataset_review.html").read_text().replace("__PACKET_JSON__", embedded)
-    (OUT / "human_review.html").write_text(html)
+    (OUT / "structured_review.html").write_text(html)
     print(json.dumps({"cases": len(drafts), "preflight_issue_cases": sum(bool(d["preflight_issues"]) for d in drafts),
         "exact_duplicate_count": audit["exact_duplicate_count"], "near_pairs": len(audit["near_duplicate_pairs"]),
-        "human_approved": sum(r.get("review_status") == "approved" for r in initial["reviews"]),
-        "review_page": str(OUT / "human_review.html"), "freeze_status": "blocked_pending_human_review"}))
+        "review_approved": sum(r.get("review_status") == "approved" for r in initial["reviews"]),
+        "review_page": str(OUT / "structured_review.html"), "freeze_status": "blocked_pending_dataset_level_approval"}))
 
 
 if __name__ == "__main__":

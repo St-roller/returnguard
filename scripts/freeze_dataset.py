@@ -1,4 +1,4 @@
-"""Freeze only individually human-approved cases with passed current audits.
+"""Freeze only structured-review-approved cases with passed current audits.
 
 First run prepares the final files. Commit those files in a dedicated commit.
 Then run --freeze-commit SHA to verify committed bytes and record the manifest
@@ -22,28 +22,34 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--reviews", required=True, type=Path)
     parser.add_argument("--freeze-commit", help="Actual dedicated data commit, verified locally")
+    parser.add_argument("--approval", required=True, type=Path, help="Explicit project-level approval record for this reviewed snapshot")
     args = parser.parse_args()
     if (DATA / "freeze_manifest.json").exists():
         raise SystemExit("Dataset already frozen: version any correction explicitly")
     drafts, provenance = load_drafts()
     reviews = json.loads(args.reviews.read_text())
     finals, audit = approved_records(drafts, reviews)
+    approval = json.loads(args.approval.read_text())
+    if (approval.get("decision") != "approved_for_freeze" or not approval.get("approved_at")
+            or not approval.get("approval_source", "").strip()
+            or approval.get("dataset_snapshot_sha256") != audit["dataset_snapshot_sha256"]):
+        raise ValueError("Explicit project-level approval of the current reviewed snapshot required")
     outputs = {}
     for split in ("dev", "test"):
         rows = [r for r in finals if r["split"] == split]
         if len(rows) != 90:
             raise ValueError("Split size changed")
         outputs[f"{split}.jsonl"] = ("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n").encode()
-        outputs[f"provenance_{split}.json"] = (json.dumps({**provenance[split], "human_review_status": "approved", "human_approved": 90}, ensure_ascii=False, indent=2) + "\n").encode()
+        outputs[f"provenance_{split}.json"] = (json.dumps({**provenance[split], "structured_review_status": "approved", "review_approved": 90}, ensure_ascii=False, indent=2) + "\n").encode()
     outputs["audit_report.json"] = (json.dumps(audit, ensure_ascii=False, indent=2) + "\n").encode()
-    outputs["human_reviews.json"] = (json.dumps(reviews, ensure_ascii=False, indent=2) + "\n").encode()
+    outputs["structured_reviews.json"] = (json.dumps(reviews, ensure_ascii=False, indent=2) + "\n").encode()
     if not args.freeze_commit:
         for name, content in outputs.items():
             path = DATA / name
             if path.exists() and path.read_bytes() != content:
                 raise ValueError(f"{name} differs from prior prepared bytes; inspect before replacement")
             path.write_bytes(content)
-        print("All 180 human approvals validated. Commit final data/audit/provenance/reviews, then record --freeze-commit SHA.")
+        print("All 180 case approvals validated. Commit final data/audit/provenance/reviews, then record --freeze-commit SHA.")
         return
     commit = subprocess.check_output(["git", "rev-parse", "--verify", args.freeze_commit + "^{commit}"], cwd=ROOT, text=True).strip()
     names = list(outputs) + ["blueprints_dev.jsonl", "blueprints_test.jsonl", "matrix_report.json", "overlap_report.json"]
@@ -61,7 +67,7 @@ def main():
         "git_commit": commit, "source_blueprint_commit": provenance["dev"]["source_blueprint_commit"],
         "sha256": {name: sha256(DATA / name) for name in names},
         "dev_sha256": sha256(DATA / "dev.jsonl"), "test_sha256": sha256(DATA / "test.jsonl"),
-        "evaluated_model_formal_calls": 0, "acceptance_threshold_selected": False,
+        "project_level_approval": approval, "evaluated_model_formal_calls": 0, "acceptance_threshold_selected": False,
     }
     (DATA / "freeze_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     print("Manifest recorded against verified data commit; commit manifest as metadata.")
