@@ -1,72 +1,133 @@
 # ReturnGuard
 
-Phase 1 core for a Simplified Chinese apparel-return triage prototype. One model call extracts four facts and verbatim Chinese evidence. Deterministic code validates the extraction, derives item condition and calendar days, and applies the ordered rules in `policies/policy_v1.json`. The output is for human confirmation and takes no operational action.
+ReturnGuard helps an apparel customer-service agent triage a Simplified Chinese return request into **eligible**, **ineligible** or **manual_review**, with inspectable evidence and a policy rule ID. One LLM call extracts facts; deterministic code validates them and applies a versioned project policy. Staff confirm the recommendation. The prototype does not issue refunds or act on an order.
 
-## Run the Phase 1 tests
+**Status:** the frozen 180-case synthetic benchmark and formal dev/test evaluation are complete. The provisional threshold is locked at **0.86**. Recorded held-out results are final; the current entry point supports offline inspection and deterministic replay.
 
-Python 3.11+ is required. From the repository root:
+## Problem and persona
+
+A support agent receives informal messages that mix return reasons, item condition, uncertain statements and irrelevant details. Reading every message against a policy is repetitive, while automatically accepting a guessed condition is risky. ReturnGuard supplies a consistent first-pass route, Chinese evidence spans and an explicit review reason when automation should stop.
+
+The scope is one online apparel item and one simplified project policy, including a 14-day brand goodwill extension. It is not a complete real retailer policy.
+
+## Input and output
+
+Input has a Chinese message and trusted order facts. Dates and custom-made status come from the order record, not the model's interpretation:
+
+```json
+{
+  "customer_message": "尺码不合适想退，吊牌还在，没脏没破，只试穿了一下。",
+  "order_facts": {
+    "receipt_date": "2026-06-02",
+    "request_date": "2026-06-05",
+    "is_custom_made": false
+  }
+}
+```
+
+The output contains four extracted values (`return_reason`, `tag_status`, `damage_or_stain`, `use_beyond_inspection`), verbatim Chinese evidence, field support scores, derived calendar days/item condition, a candidate route and rule ID, the final route, and any review reason. Eligible/ineligible are triage recommendations; manual review preserves uncertainty or policy-required escalation. See the [schemas](src/returnguard/schemas.py) and [recorded test example](results/phase3/test_cases/test_001.json).
+
+## Architecture and transformation
+
+```mermaid
+flowchart TD
+    A["Chinese customer message"] --> C["One LLM extraction call"]
+    B["Trusted order facts"] --> D["Validate evidence, derive facts, apply Policy v1"]
+    C --> D
+    D -->|"policy requires review"| F["Triage record for staff confirmation"]
+    D -->|"automatic candidate"| E["Rule-specific support score >= 0.86"]
+    E --> F
+```
+
+1. The model receives only the Chinese message under [extraction_v1](prompts/extraction_v1.md), with a strict four-field JSON schema and no tools. Order facts, English annotations, gold labels, IDs and split metadata are excluded from model input.
+2. [Validation](src/returnguard/validation.py) checks the schema and exact evidence spans. Code derives condition and elapsed calendar days, then [Policy v1](policies/policy_v1.json) applies ordered rules. Quality/fulfillment disputes and some missing or conflicting facts require review according to those rules.
+3. For an automatic candidate, [acceptance](src/returnguard/acceptance.py) aggregates support from fields relevant to that rule. It accepts at `score >= 0.86`; a lower score becomes manual review. Policy-required manual routes bypass that threshold. Validation and exhausted infrastructure failures also yield review in their respective execution paths.
+
+Support scores are self-assessments for ranking/abstention, not calibrated probabilities. The LLM extracts facts; it does not choose the final policy route.
+
+## TA quick start: offline, no API key
+
+Use Python 3.11+ from the repository root. Python 3.11 was used for formal evaluation. Install project dependencies and the recorded dependency versions:
 
 ```bash
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
+python -m pip install -r results/phase3/requirements_lock.txt
 python -m pytest -q
-```
-
-On Windows, activate with `.venv\Scripts\activate` instead. The automated smoke tests use a fixture extractor to test the complete validation and routing path without an API key; they do **not** establish the live model's extraction accuracy.
-
-## Run five live smoke inputs
-
-Set `OPENAI_API_KEY` in your shell without committing it, then run:
-
-```bash
-python scripts/run_smoke.py
-```
-
-This makes one `gpt-5.6-luna` Responses API call per case and prints route, rule ID, review reason, score and whether the fixture's expected route and rule matched. A live failure remains a failure to investigate; the script does not edit the fixtures or policy. The actual model version, latency and token counts are in each in-memory prediction record. No API key is included in the repository.
-
-For an OpenRouter key, set `OPENROUTER_API_KEY` instead and run `python scripts/run_smoke.py --provider openrouter`. This uses the OpenRouter model ID `openai/gpt-5.6-luna` through its OpenAI-compatible Responses endpoint. The five live calls will establish whether this gateway accepts the exact structured-output request and whether the model produces valid evidence; local fixture tests do not establish either result. Provider choice and model ID should be reported with any experiment.
-
-To run without local key configuration, add a repository Actions secret named `OPENROUTER_API_KEY` in GitHub Settings → Secrets and variables → Actions. The branch workflow `Phase 1 live smoke` reads it only during the five-case run. Do not add the key to an issue, PR, commit, fixture, or chat. The Actions logs contain the synthetic case outputs and are visible to anyone who can read this repository's Actions logs. Once the secret is saved, rerun the workflow or push to this branch.
-
-## Phase 1 boundaries
-
-- The five Chinese smoke messages and their gold decisions are in `tests/fixtures/smoke_cases.jsonl`. Adjacent English annotations help a reader understand the demonstration. English, gold labels, order facts and case IDs never enter the model prompt; only the original Chinese message does.
-- The output schema contains four extraction fields with field-level support scores. Scores are ranking signals, not calibrated probabilities. `threshold=None` runs a clearly marked `smoke_unlocked` mode; no acceptance threshold has been selected yet. Do not report smoke-mode routes as held-out evaluation results.
-- A `manual_review` output distinguishes `policy_required`, `low_confidence` and `validation_failure`. The threshold applies only to an otherwise automatic policy decision.
-- The policy is a simplified project policy, including a 14-day brand goodwill extension. It is not a complete returns policy or a consumer-facing legal decision.
-- Phase 1 includes no 180-case dataset, baseline, Streamlit UI, threshold tuning or held-out results.
-
-## Phase 2A blueprint review
-
-`data/returnguard_synth_v1/blueprints_dev.jsonl` and `blueprints_test.jsonl` contain 90 **design blueprints** each. They specify intended order/extraction facts and language constraints; they contain no Chinese customer messages and are not a finished benchmark. Their route/rule targets are design metadata, not model input. `matrix_report.json` records every quota, boundary-day counts, policy recomputations and blueprint file hashes. `review_samples.json` presents five complete blueprints for design review.
-
-Recheck the committed files without changing them:
-
-```bash
-python -m pytest -q
+python scripts/sanitize_phase3_public.py verify-public
 python scripts/generate_blueprints.py --check
 ```
 
-The deterministic generator is `scripts/generate_blueprints.py`; it creates missing outputs but refuses to overwrite different existing bytes. Phase 2A makes **zero API calls**. Surface generation with DeepSeek and formal dev/test evaluation require later design approval and are not part of these blueprints.
+On Windows, activate with `.venv\Scripts\activate`. These checks use fixtures or stored artifacts, make no model calls, and do not rewrite the benchmark or results. The suite currently has 101 passing tests. `verify-public` validates published evaluation hashes; `--check` verifies existing blueprints without generating replacements.
 
-The test split uses a separate fixed construction seed to independently recombine factual/day, difficulty, length, tone, reason-family and linguistic-feature assignments within the quota constraints. Dev blueprints are unchanged. `overlap_report.json` compares all 8,100 dev/test pairs and all 90 same-index pairs, excluding IDs, absolute dates and provenance. The core signature includes rule, policy facts, elapsed days, difficulty, length and composition; the full signature adds tone, reason family and linguistic features (as an unordered set). Same-index twins under both signatures must be zero. Repeated policy facts across arbitrary indices are expected; this blueprint audit does not replace the later Chinese-message duplicate/leakage audit.
+### Replay one recorded case through the product logic
 
-## Phase 2B construction and structured case review
-
-Separate clean jobs produced 90 dev and 90 test records using `deepseek/deepseek-v4-pro-0813`, temperature 0.7 and top_p 0.9. The test job received only dev settings, never dev messages. Full raw responses, provenance and the original draft audit remain unchanged. Six generation responses were truncated and were completed against their frozen blueprints during structured case review, with no generation retries.
-
-All 180 cases now have explicit `structured_case_review_v1.1` records: findings, repairs, exact evidence, source/content hashes and timestamps. Case-specific semantic review includes every unflagged case.
-
-Validate the concrete reviewed snapshot without API calls:
+With the virtual environment active, run this from the repository root. It injects a saved extraction into `run_case`, verifies recorded routing/support fields, and prints a triage record without writing results:
 
 ```bash
-python scripts/check_review_readiness.py
-python scripts/prepare_dataset_review.py --reviews data/returnguard_synth_v1/construction/structured_reviews.json
+PYTHONPATH=src python - <<'PY'
+import json
+from pathlib import Path
+from returnguard.extractor import ExtractionResponse
+from returnguard.pipeline import run_case
+from returnguard.policy import Policy
+
+inputs = [json.loads(line) for line in Path("results/phase3/test_inputs.jsonl").read_text(encoding="utf-8").splitlines()]
+case = next(row for row in inputs if row["case_id"] == "test_001")
+saved = json.loads(Path("results/phase3/test_cases/test_001.json").read_text(encoding="utf-8"))
+
+class StoredExtractor:
+    def extract(self, message):
+        assert message == case["input"]["customer_message"]
+        return ExtractionResponse(raw=saved["raw_structured_extraction"], model_name=saved["model_name"])
+
+replayed = run_case(case["input"], StoredExtractor(), Policy(), case_id=case["case_id"], threshold=0.86)
+keys = ("final_route", "candidate_rule_id", "review_reason", "case_support_score")
+assert all(replayed[key] == saved[key] for key in keys)
+print(json.dumps({key: replayed[key] for key in keys}, ensure_ascii=False, indent=2))
+PY
 ```
 
-The commands produce review-stage candidates/audits and an optional offline inspector in `construction/`; they do not create frozen root splits or a freeze manifest. Case content hashes, pair hashes and audit snapshot hashes invalidate stale decisions after edits. Exact evidence, frozen intended values and unchanged Policy v1 are validated separately from substantive semantic review.
+Expected: `eligible`, `EL01_7DAY`, `review_reason: null`, score `0.96`. In PowerShell, set `$env:PYTHONPATH = "src"` and pass the Python block as a here-string to `python`; the heredoc above is bash syntax.
 
-Read `docs/Phase2B_Review_Approval_Package.md` for counts, issue distribution, ten representative cases, all near-pair decisions, audit findings and course-feedback consistency. The status is **READY_FOR_DATASET_LEVEL_APPROVAL**, pending project-level go/no-go. `docs/Phase2B_Human_Review_Instructions.md` retains its old filename but describes the revised workflow. The original `human_review.html` is historical; the current optional inspector is `structured_review.html`.
+Replay and fixture tests exercise deterministic logic; they are not new model evaluation. `run_smoke.py`, generation scripts and formal inference/scoring workflows are historical experiment tooling, outside this quick start. Formal evaluation is closed; do not execute new dev/test model calls or regenerate its results.
 
-After explicit approval of this snapshot, `scripts/freeze_dataset.py` requires both `--reviews REVIEW_PACKET` and `--approval APPROVAL_RECORD`. Its existing dedicated data commit, committed-byte verification and separate freeze-manifest procedure then applies. Formal GPT-5.6 Luna dev/test evaluation, provisional threshold selection and the baseline remain later work.
+## Metrics targeted and reached
+
+The predefined targets were **>=90% selective accuracy**, **>=60% coverage**, and **>=+10 percentage points of coverage over the fixed baseline when both meet the accuracy constraint**. The comparison uses the predefined point-estimate constraint, not an interval lower-bound rule.
+
+| Frozen 90-case held-out result | ReturnGuard | Locked Keyword+Rules |
+|---|---:|---:|
+| Coverage: automatic routes / all cases | 57/90 (63.33%) | 26/90 (28.89%) |
+| Selective accuracy: correct / automatic routes | 57/57 (100%) | 25/26 (96.15%) |
+| Manual-review recall | 30/30 (100%) | 29/30 (96.67%) |
+| Three-class final route accuracy | 87/90 (96.67%) | 54/90 (60%) |
+| Gold-manual cases routed automatically | 0 | 1 |
+
+All three predefined targets were met; safe coverage gain was **+34.44 percentage points**. Manual-review recall is an additional reported safety diagnostic. Selective accuracy covers accepted automatic routes, not all requests or all extracted fields. [Evaluation definitions, intervals and artifacts](results/README.md) give the full interpretation.
+
+## Limitations
+
+- The benchmark is **small, balanced and synthetic**: 90 dev and 90 test cases, with 30 per gold route in each split. It does not estimate real traffic, workload savings or production reliability.
+- Threshold **0.86 is provisional**, selected on 90 dev cases. Test support-score error capture is **1/1** erroneous automatic candidate; two correct candidates were also withheld. This is limited evidence for general error ranking or calibration.
+- Four test cases had extraction-value errors; all-four-field exact accuracy was 86/90. A correct final route can coexist with an extraction or rule-ID error.
+- The evaluated alias does not identify an immutable upstream model revision; upstream-provider metadata was unavailable. Recorded API costs are historical returned usage costs, not current price estimates.
+- This is a Python triage prototype with audit records, without a deployed UI, order-system integration or refund action.
+
+## Repository map and documentation
+
+| Location | Purpose |
+|---|---|
+| [data/README.md](data/README.md) | Composition, provenance, reviews, leakage controls and freeze |
+| [results/README.md](results/README.md) | Locked evaluation, metric definitions, results, uncertainty and hashes |
+| [pipeline.py](src/returnguard/pipeline.py) | Connect extraction, validation, policy and acceptance |
+| [extractor.py](src/returnguard/extractor.py), [schemas.py](src/returnguard/schemas.py) | Model adapter and structured contracts |
+| [validation.py](src/returnguard/validation.py), [policy.py](src/returnguard/policy.py), [acceptance.py](src/returnguard/acceptance.py) | Evidence checks, derived facts, ordered rules and support gate |
+| [keyword_baseline.py](src/returnguard/keyword_baseline.py), [baselines/](baselines/) | Locked conservative comparator |
+| [eval_metrics.py](src/returnguard/eval_metrics.py), [formal_eval.py](src/returnguard/formal_eval.py), [heldout_scoring.py](src/returnguard/heldout_scoring.py) | Metrics, historical inference guards and separate scoring |
+| [scripts/](scripts/), [tests/](tests/) | Offline checks, historical experiment tools and fixture tests |
+| [policies/](policies/), [prompts/](prompts/) | Versioned policy and extraction/generation instructions |
+| [docs/](docs/) | Historical handoffs, formal specification and publication notes |
+
+Start with the current data/results explainers. Older handoffs retain phase-time pending-approval statements as provenance; the frozen dataset and closed evaluation supersede those statuses. The course report and demo script are separate deliverables awaiting the next review.
