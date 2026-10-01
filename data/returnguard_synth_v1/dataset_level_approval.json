@@ -1,0 +1,12 @@
+{
+  "decision": "approved_for_freeze",
+  "dataset_snapshot_sha256": "6bc97f310cffef6b62c32e473455bb7c60766479521d6d1d96758db94681977a",
+  "approved_at": "2026-10-01T15:02:38+08:00",
+  "approval_source": "Explicit user dataset-level approval in this conversation on 2026-10-01; freeze only the named reviewed Phase 2B snapshot.",
+  "scope": "Dataset freeze only; formal GPT-5.6 Luna evaluation and threshold selection remain unauthorized pending returned manifest verification.",
+  "constraints": [
+    "No reviewed case changes during freeze",
+    "Preserve raw DeepSeek generation artifacts and structured review provenance",
+    "Dedicated data commit, committed-byte verification, then a separate freeze manifest"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "gateway_provider": "OpenRouter",
+  "model_id": "deepseek/deepseek-v4-pro-0813",
+  "prompt_version": "dataset_generation_v1",
+  "actual_settings": {
+    "temperature": 0.7,
+    "top_p": 0.9
+  },
+  "parameter_fallbacks": [],
+  "seed": null,
+  "batch_id": "dev_generation_v1_36690532439_1",
+  "split": "dev",
+  "source_blueprint_commit": "c2af09ffb1346c91a8d6cb4783d827c24c6704bd",
+  "source_matrix_sha256": "a5d38bcd9f8a7c496d5cad8a843d2026d7f136b1642a0933b307265db27d45c8",
+  "source_blueprint_sha256": "00c67b86bb87988a3e028f07c64cdef3e9ddd0b203612d963ef0e52a33034832",
+  "execution_commit": "244cd39dd9f2a3022fecb09a5b17328fc55af824",
+  "started_from_separate_run": true,
+  "completed_at": "2026-09-30T08:37:57.202554+00:00",
+  "n": 90,
+  "status_counts": {
+    "generated": 87,
+    "needs_revision": 3,
+    "api_failure": 0
+  },
+  "upstream_providers": [
+    "Alibaba",
+    "Baidu",
+    "CoreWeave",
+    "Ionstream",
+    "NextBit",
+    "Parasail",
+    "Wafer"
+  ],
+  "raw_sha256": "b36d65f81e1f8d76d5a377b15df48527b16aa247b305bfe7bd2011c0b580128b",
+  "human_review_status": "pending",
+  "structured_review_status": "approved",
+  "review_approved": 90
+}
