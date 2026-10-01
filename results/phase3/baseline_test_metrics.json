@@ -1,0 +1,159 @@
+{
+  "abstentions": {
+    "execution_failure": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "low_confidence": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "policy_required": {
+      "n": 64,
+      "rate": 0.7111111111111111
+    },
+    "validation_failure": {
+      "n": 0,
+      "rate": 0.0
+    }
+  },
+  "auto_routed_n": 26,
+  "confusion_matrix_gold_rows_final_columns": {
+    "eligible": {
+      "eligible": 4,
+      "ineligible": 0,
+      "manual_review": 26
+    },
+    "ineligible": {
+      "eligible": 0,
+      "ineligible": 21,
+      "manual_review": 9
+    },
+    "manual_review": {
+      "eligible": 0,
+      "ineligible": 1,
+      "manual_review": 29
+    }
+  },
+  "correct_auto_n": 25,
+  "coverage": {
+    "denominator": 90,
+    "numerator": 26,
+    "value": 0.28888888888888886,
+    "wilson_95": [
+      0.20542127259162143,
+      0.3896404359799831
+    ]
+  },
+  "coverage_target_60_percent_met": false,
+  "diagnostics": {
+    "all_four_value_exact_accuracy": {
+      "denominator": 90,
+      "numerator": 13,
+      "value": 0.14444444444444443,
+      "wilson_95": [
+        0.08639988786660784,
+        0.23159877920135785
+      ]
+    },
+    "candidate_auto_route_n": 26,
+    "candidate_policy_required_manual_n": 64,
+    "candidate_route_accuracy": {
+      "denominator": 90,
+      "numerator": 54,
+      "value": 0.6,
+      "wilson_95": [
+        0.4967030736405094,
+        0.6951098012466252
+      ]
+    },
+    "candidate_rule_accuracy": {
+      "denominator": 90,
+      "numerator": 49,
+      "value": 0.5444444444444444,
+      "wilson_95": [
+        0.44184633569208204,
+        0.6434038309244221
+      ]
+    },
+    "evidence_valid_case_n": 90,
+    "execution_failure_n": 0,
+    "field_value_accuracy": {
+      "damage_or_stain": {
+        "denominator": 90,
+        "numerator": 42,
+        "value": 0.4666666666666667,
+        "wilson_95": [
+          0.3670842495769752,
+          0.5689781254606465
+        ]
+      },
+      "return_reason": {
+        "denominator": 90,
+        "numerator": 73,
+        "value": 0.8111111111111111,
+        "wilson_95": [
+          0.7181637647568584,
+          0.8785874015586717
+        ]
+      },
+      "tag_status": {
+        "denominator": 90,
+        "numerator": 59,
+        "value": 0.6555555555555556,
+        "wilson_95": [
+          0.5528347234071513,
+          0.7455408597506137
+        ]
+      },
+      "use_beyond_inspection": {
+        "denominator": 90,
+        "numerator": 63,
+        "value": 0.7,
+        "wilson_95": [
+          0.598734894751539,
+          0.7848908550227303
+        ]
+      }
+    },
+    "hard_validation_failure_n": 0,
+    "n": 90
+  },
+  "error_capture": {
+    "display": "N/A: deterministic baseline has no confidence threshold",
+    "value": null
+  },
+  "gold_manual_auto_routed_n": 1,
+  "interval_note": "Descriptive Wilson 95% intervals.",
+  "manual_review_recall": {
+    "denominator": 30,
+    "numerator": 29,
+    "value": 0.9666666666666667,
+    "wilson_95": [
+      0.8332960900859082,
+      0.9940914096183874
+    ]
+  },
+  "n": 90,
+  "route_accuracy": {
+    "denominator": 90,
+    "numerator": 54,
+    "value": 0.6,
+    "wilson_95": [
+      0.4967030736405094,
+      0.6951098012466252
+    ]
+  },
+  "scorer_version": "heldout_scoring_v1.0",
+  "selective_accuracy": {
+    "denominator": 26,
+    "numerator": 25,
+    "value": 0.9615384615384616,
+    "wilson_95": [
+      0.8110722109696524,
+      0.9931780150064564
+    ]
+  },
+  "selective_accuracy_constraint_met": true,
+  "split": "test"
+}

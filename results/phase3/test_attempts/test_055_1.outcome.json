@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_055",
+  "completed_at": "2026-10-01T09:23:14.982914+00:00",
+  "latency_seconds": 4.919285179000042,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"颜色不太合适\"],\"support_score\":0.97},\"tag_status\":{\"value\":\"removed\",\"evidence\":[\"吊牌已经剪了\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"没污渍没破\"],\"support_score\":0.98},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"只试过没穿出去\"],\"support_score\":0.96}}",
+  "request_binding_sha256": "62db4bc7cdabb1e95117e6fe2ed517ead197b3ad684160d4bb6d050a1b7b9651",
+  "response": {
+    "completed_at": 1790846594.0,
+    "created_at": 1790846590.0,
+    "id": "sha256:c627d836c1cd6fcb527e7480df3457950c80bb162073373226c2404d3d51651f",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.0004216,
+      "cost_details": {
+        "upstream_inference_cost": 0.0004216,
+        "upstream_inference_input_cost": 0.0001996,
+        "upstream_inference_output_cost": 0.000222
+      },
+      "input_tokens": 998,
+      "input_tokens_details": {
+        "cache_write_tokens": null,
+        "cached_tokens": 0
+      },
+      "output_tokens": 185,
+      "output_tokens_details": {
+        "reasoning_tokens": 65
+      },
+      "total_tokens": 1183
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:23:10.063042+00:00"
+}

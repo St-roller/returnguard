@@ -1,0 +1,20 @@
+{
+  "content_response_cost_complete": true,
+  "content_response_n": 90,
+  "cost_available_n": 90,
+  "cost_complete": true,
+  "cost_note": "Only directly returned response costs; infrastructure attempts without usage metadata have unknown cost; no price estimate substituted.",
+  "execution_failure_n": 0,
+  "infrastructure_retry_n": 0,
+  "input_tokens": 91731,
+  "latency_seconds_total": 200.68635520599992,
+  "model_request_attempts": 90,
+  "output_tokens": 16864,
+  "reported_api_cost_usd": 0.04014795000000001,
+  "returned_model_ids": [
+    "openai/gpt-5.6-luna"
+  ],
+  "token_usage_available_n": 90,
+  "upstream_providers": [],
+  "validation_failure_n": 0
+}

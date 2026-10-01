@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_031",
+  "completed_at": "2026-10-01T09:22:23.598334+00:00",
+  "latency_seconds": 3.238072845999966,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"肩宽实在不合适\",\"紧得难受\"],\"support_score\":0.98},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌还完整挂在衣服上\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"衣服没有污渍也没有破损\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"只在家试了一下\",\"没穿出去过\"],\"support_score\":0.98}}",
+  "request_binding_sha256": "f3014ec622872715ef0579b6223a6177bfb8fdc67abd4bb971ef5c1ec296a02e",
+  "response": {
+    "completed_at": 1790846543.0,
+    "created_at": 1790846540.0,
+    "id": "sha256:39562f569c6a4899a009e0fb3c44a7ea199386d7335c2cecc1f0e469e6eca8a3",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.00042745,
+      "cost_details": {
+        "upstream_inference_cost": 0.00042745,
+        "upstream_inference_input_cost": 0.00026185,
+        "upstream_inference_output_cost": 0.0001656
+      },
+      "input_tokens": 1048,
+      "input_tokens_details": {
+        "cache_write_tokens": 1045,
+        "cached_tokens": 0
+      },
+      "output_tokens": 138,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1186
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:22:20.359690+00:00"
+}

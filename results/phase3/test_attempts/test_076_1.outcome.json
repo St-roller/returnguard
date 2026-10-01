@@ -1,0 +1,35 @@
+{
+  "attempt": 1,
+  "case_id": "test_076",
+  "completed_at": "2026-10-01T09:23:59.330518+00:00",
+  "latency_seconds": 2.1734269660000223,
+  "output_text": "{\"return_reason\":{\"value\":\"not_stated\",\"evidence\":[],\"support_score\":0.95},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌还在衣服上\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"衣服上没有任何污渍或者破损\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"没实际穿用，就只是试了一下\"],\"support_score\":0.98}}",
+  "request_binding_sha256": "606cd6be797838f03be57c2bacb89023a8b43d75aa4e1194d8e5550fb9deb665",
+  "response": {
+    "completed_at": 1790846639.0,
+    "created_at": 1790846637.0,
+    "id": "sha256:a38ef1aad0a30deba3aa5ca774f93eaf364958838c9338ce080558fab693b8b6",
+    "model": "openai/gpt-5.6-luna",
+    "status": "completed",
+    "usage": {
+      "cost": 0.0005397,
+      "cost_details": {
+        "upstream_inference_cost": 0.0005397,
+        "upstream_inference_input_cost": 0.0002601,
+        "upstream_inference_output_cost": 0.0002796
+      },
+      "input_tokens": 1041,
+      "input_tokens_details": {
+        "cache_write_tokens": 1038,
+        "cached_tokens": 0
+      },
+      "output_tokens": 233,
+      "output_tokens_details": {
+        "reasoning_tokens": 108
+      },
+      "total_tokens": 1274
+    }
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T09:23:57.154372+00:00"
+}

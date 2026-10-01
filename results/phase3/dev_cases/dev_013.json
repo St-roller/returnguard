@@ -73,7 +73,7 @@
   },
   "reported_usage_cost_usd": 0.0003394,
   "request_attempts": 1,
-  "response_id": "gen-1790843355-3vxgFeKwAhh0jn4VXCaS",
+  "response_id": "sha256:ed468aff236afe1d8c25ef8aea7e887b405447973b354a13e3a20cdc31f91b93",
   "review_reason": null,
   "sampling_parameters": {
     "seed": "omitted",
