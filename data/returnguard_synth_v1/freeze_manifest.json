@@ -1,0 +1,39 @@
+{
+  "dataset_version": "ReturnGuard-Synth-v1",
+  "dev_n": 90,
+  "test_n": 90,
+  "schema_version": "case_v1.0",
+  "policy_version": "policy_v1.0",
+  "audit_status": "passed",
+  "frozen_at": "2026-10-01T07:07:44.235236+00:00",
+  "git_commit": "28095bd3c9f407d15eca4fe28a4d6e2775b9fffb",
+  "source_blueprint_commit": "c2af09ffb1346c91a8d6cb4783d827c24c6704bd",
+  "sha256": {
+    "dev.jsonl": "39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70",
+    "provenance_dev.json": "632ea4f680c6c5a29e8455688b6b493b607c44ec3e1ab186e9615d8d94a707d9",
+    "test.jsonl": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+    "provenance_test.json": "62278ab8811f126ccdf2ae06a7bdae30ace07b1ed4b0dc7f25fc35131fabd432",
+    "audit_report.json": "b165c3cd2ede28034e4d7e1de37ef14f973ff650f49b8c74e06d1a1ea6464ed0",
+    "structured_reviews.json": "7978dd2938d7d97075dce9353af9644e54c0e34177ae5b68c5aa4dcbba016d69",
+    "blueprints_dev.jsonl": "00c67b86bb87988a3e028f07c64cdef3e9ddd0b203612d963ef0e52a33034832",
+    "blueprints_test.jsonl": "27c02b91f81f0416bb6d1bdd4846f4ace19acaef560b94f9001a13077a955c88",
+    "matrix_report.json": "a5d38bcd9f8a7c496d5cad8a843d2026d7f136b1642a0933b307265db27d45c8",
+    "overlap_report.json": "fb9ebd21fa060819d2d480814cbf4ee5a24192f1bae9113596f89991c35101c7"
+  },
+  "dev_sha256": "39943bdf053298dc3a9e6c45b58d6b6d06fb136fc1e5c30519b5de62e6c14c70",
+  "test_sha256": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+  "project_level_approval": {
+    "decision": "approved_for_freeze",
+    "dataset_snapshot_sha256": "6bc97f310cffef6b62c32e473455bb7c60766479521d6d1d96758db94681977a",
+    "approved_at": "2026-10-01T15:02:38+08:00",
+    "approval_source": "Explicit user dataset-level approval in this conversation on 2026-10-01; freeze only the named reviewed Phase 2B snapshot.",
+    "scope": "Dataset freeze only; formal GPT-5.6 Luna evaluation and threshold selection remain unauthorized pending returned manifest verification.",
+    "constraints": [
+      "No reviewed case changes during freeze",
+      "Preserve raw DeepSeek generation artifacts and structured review provenance",
+      "Dedicated data commit, committed-byte verification, then a separate freeze manifest"
+    ]
+  },
+  "evaluated_model_formal_calls": 0,
+  "acceptance_threshold_selected": false
+}
