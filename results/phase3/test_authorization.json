@@ -1,0 +1,16 @@
+{
+  "authorization_source": "Direct user instruction in this conversation: Gate 3A approved. Authorize Phase 3B locked held-out evaluation. Proceed with the 90 frozen held-out test cases exactly once; persist raw predictions before gold scoring; no retuning or report/README/dataset-documentation/demo updates.",
+  "authorized_at": "2026-10-01T17:00:52+08:00",
+  "baseline_lock_sha256": "63aacdbd263cae2c8a597401c60189d9c3e7b66b87faf01976e8c33f104bb2cf",
+  "case_n": 90,
+  "decision": "approved_for_locked_test",
+  "eval_config_sha256": "164ad582216ccb7a571f179eb7622e8274ff2e2506f9aefff668a4992ac5eddf",
+  "locked_threshold_value": 0.86,
+  "no_test_based_retuning": true,
+  "phase3a_data_commit": "36b50edd7fbb7c9f50b9f195b04e960e5534e68d",
+  "recorded_at": "2026-10-01T09:18:43.915316+00:00",
+  "scorer_lock_sha256": "cbbdc8f8f367dc422cb6ae7decd433a0c998c9e70aebddcd1470c897c1e38a1f",
+  "test_dataset_sha256": "9b3fe0451253d089923c42ca5071684ad3c9d1d5ce3ab6814a0af9bc9a511933",
+  "test_inputs_sha256": "d68d5b0ad0a0a59fd4b2f4cb657d685086285777844df850422974a6a91c90ef",
+  "threshold_lock_sha256": "8be8a8084d288561c2e939631e03edfd78dd7fd3a05373a92d36ec6ce18b9e93"
+}
