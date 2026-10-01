@@ -56,7 +56,7 @@ The test split uses a separate fixed construction seed to independently recombin
 
 Separate clean jobs produced 90 dev and 90 test records using `deepseek/deepseek-v4-pro-0813`, temperature 0.7 and top_p 0.9. The test job received only dev settings, never dev messages. Full raw responses, provenance and the original draft audit remain unchanged. Six generation responses were truncated and were completed against their frozen blueprints during structured case review, with no generation retries.
 
-All 180 cases now have explicit `structured_case_review_v1.1` records: findings, repairs, exact evidence, source/content hashes and timestamps. Case-specific semantic review includes every unflagged case. No author-wide personal manual-review claim or fabricated reviewer identity is made. The project author owns the final dataset-level approval.
+All 180 cases now have explicit `structured_case_review_v1.1` records: findings, repairs, exact evidence, source/content hashes and timestamps. Case-specific semantic review includes every unflagged case.
 
 Validate the concrete reviewed snapshot without API calls:
 
