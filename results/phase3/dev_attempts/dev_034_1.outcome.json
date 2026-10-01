@@ -1,0 +1,273 @@
+{
+  "attempt": 1,
+  "case_id": "dev_034",
+  "completed_at": "2026-10-01T08:29:54.240139+00:00",
+  "latency_seconds": 2.8774614410000083,
+  "output_text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"颜色不是我喜欢的配色\",\"实在不想要\",\"现在再看还是不喜欢\"],\"support_score\":0.98},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌还在\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"没污渍没破损\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"就只试了一下\",\"没拿出去穿过\"],\"support_score\":0.98}}",
+  "request_binding_sha256": "dbff7de176f65919e5f6eb3af82b667384891dee1910c51db864a37f57d58dc1",
+  "response": {
+    "background": false,
+    "completed_at": 1790843394.0,
+    "conversation": null,
+    "created_at": 1790843391.0,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "gen-1790843391-p1pD0hn0jaCv8viR3Ure",
+    "incomplete_details": null,
+    "instructions": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "metadata": {},
+    "model": "openai/gpt-5.6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": null,
+        "encrypted_content": "gAAAAABqvhoBtagRGjAmi1viClzBsHN6At2KPm6bK3Ocu4Bk7cVTny7kcvkkmOucu0XnsET0OLaKSGzI60FYTQ9VTKBcnZCDE0FF2F_5REIeTYvrOpmaHAC33YBuMPZlTED4MUAkVCwiHvWK4VmB7jS-83n_LDXibY1h6OIW8bUF3PkO8M14SdBuj9K52CtrIoUNUHEfXAptCDvoUDhZ9C8LntEpl3NlMRZvGOiaN0yzi7xBup6hopO84og8sCSynqjT2-MMiPJFaL-5MYvKHl6D_vMia_0N9dW3fMxquV51QOHX_iTARYxiQX8VSaG2bKiusIHlEKnznX1u7USgc3ibdOM6X5AlbVjGm0FMHDAJ5Y7c-XrinsesV2vXXrei059tGBDFnSQazJNiVSZAiO3T9lSJcpFchu5uUQoRlrLVDWccau7-LuOckDB0hEm8o5IUUUe7lJWPQMeHpKZhKYSUSfGUJeWvKJCu-RmQUxVSqGgubwHVaxQu9SA9DcxP1-xnG45SkFj_i_XdVxEdOmvgQBqZiSyEXUCfVEec5BZ2zzPmF9Otc_lw84og-4bT8qbZKJCE_iXftgz-2XZ9zANDHFPLIcufNuHAIv-dpQitDdvnujQLJLCaNTjHcGDAo-I_iaooF4O9P9NSktpDhJA8KvG9KChjP6PeanlNsnKPE7WWHF19q7orn4gqCweuL-09dppmXIrgKkO_39WuypLnWQpxk9KjUvZvFpRH0_7Ou1nrnUikhbOwydxKf3BTquFFwuIfR4KtIkFNn18G4dAVEn46KxzkW0Xqb4WR3XIuxQSoobjmgETT_mIBIph3463F1GDFRzWlWK1lx7lEG_hsKzGVMLrDCpKxOas2Bp0qxYRw_K2cnlZVFbdnwLPUPBuhqEPAHM8U9p83_CcUDa8QAdUcuLtFLd7l5Td2-NKN7OSzFVPrzHUOBGVNtWijZmeK63Qjof_l1Q4lRiAyCozHr5jY1B1Bnh8-txthsHVAWRoBzqMK-Y2YmNng3_rPmvnIM45yPS0fwZblv1HnV3GKL8XpFChYHV2N-Wl1rbISxESdW0JcCzAa_vACZoajs2GwiDolV4tHiQ1R3nbXhr8Zg8bwET9iTmrXd-yLuHn0I1vpErcuzKIVI_HXRJfrY4Qki8ycdizZHBLj6E2OyELa6mUfmGlQ2E21G1rHFtNfdVIUVYEDcqhTP2GY96HmLeXR27J0vLNSy_6Tziqe4usv7PPvMaiYiYNDS3LEJL2EmSAO9R_VbrvByvLtqHWGGB5fMfkYhRGhKDDDevPBY7vPA7hX79lmJ_7KjlKhiQkpS3xJvQDY186jXOUFrB1ArFkGGTkXw8Ofc8eV6M910wWZ5LjT2xgyxEdE8Jwov-v1BzgtC8zRQbLlOEszdo9zy_P22QmUvvAbv6L9uQU-r_X3N3VXJkmMeTDgt9pqROMhi9N60sQSUhJ7Eaiw4RR0vBPdxGzycRGGR0mAR3eqFDXSD7KS4eLKzQSBiZVL5Rj6VecY29qZG8BOOkUA480GRnf7B2u94fGqtjfrYG_vAMjS1-EBM8uyoAFF9CdUpSxzqt5VJn7q54UBJkIgqtI-PghRRsj-Btsnyh7D7WKaBAVH3pLMgcP6-aVsCcd0mIM-5SAZYmMujUfJlfLyJgMMvkNqsaZOyhhvTcWiUQAhcGFlFrGh1wJk1QMI4t5sXxW1vXF8wT7tXYtX7zv_3TjVGzs547ScAukcnZgZG1juCzRRPn7JKzYppk6jyNCbA-2wNPoyqdROSYhcNRipTexxqbJ-iqfZ5LWT5_rQCP0W5sKkRXfpkHv2ZtBamlRxuNITFXz0l9r5QtBQxpP28aKgsKD3LFQenVCy.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC01LjYtbHVuYS0yMDI2MDcwOXxvcGVuYWkifQ",
+        "format": "openai-responses-v1",
+        "id": "rs_0107e1b836a8fd0f016abe1a009bf487d18309ad2dadc8a55e",
+        "status": "completed",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"return_reason\":{\"value\":\"ordinary_return\",\"evidence\":[\"颜色不是我喜欢的配色\",\"实在不想要\",\"现在再看还是不喜欢\"],\"support_score\":0.98},\"tag_status\":{\"value\":\"attached\",\"evidence\":[\"吊牌还在\"],\"support_score\":0.99},\"damage_or_stain\":{\"value\":\"absent\",\"evidence\":[\"没污渍没破损\"],\"support_score\":0.99},\"use_beyond_inspection\":{\"value\":\"no\",\"evidence\":[\"就只试了一下\",\"没拿出去穿过\"],\"support_score\":0.98}}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_tmp_owsslh45j9d",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_options": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "medium",
+      "generate_summary": null,
+      "mode": "standard",
+      "summary": "detailed"
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1.0,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "returnguard_extraction_v1",
+        "schema_": {
+          "$defs": {
+            "DamageStatusField": {
+              "additionalProperties": false,
+              "properties": {
+                "evidence": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                },
+                "support_score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Support Score",
+                  "type": "number"
+                },
+                "value": {
+                  "enum": [
+                    "absent",
+                    "present",
+                    "unknown",
+                    "conflicting"
+                  ],
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "evidence",
+                "support_score"
+              ],
+              "title": "DamageStatusField",
+              "type": "object"
+            },
+            "ReturnReasonField": {
+              "additionalProperties": false,
+              "properties": {
+                "evidence": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                },
+                "support_score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Support Score",
+                  "type": "number"
+                },
+                "value": {
+                  "enum": [
+                    "ordinary_return",
+                    "quality_or_fulfillment_issue",
+                    "not_stated",
+                    "conflicting"
+                  ],
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "evidence",
+                "support_score"
+              ],
+              "title": "ReturnReasonField",
+              "type": "object"
+            },
+            "TagStatusField": {
+              "additionalProperties": false,
+              "properties": {
+                "evidence": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                },
+                "support_score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Support Score",
+                  "type": "number"
+                },
+                "value": {
+                  "enum": [
+                    "attached",
+                    "removed",
+                    "unknown",
+                    "conflicting"
+                  ],
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "evidence",
+                "support_score"
+              ],
+              "title": "TagStatusField",
+              "type": "object"
+            },
+            "UseStatusField": {
+              "additionalProperties": false,
+              "properties": {
+                "evidence": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                },
+                "support_score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "title": "Support Score",
+                  "type": "number"
+                },
+                "value": {
+                  "enum": [
+                    "no",
+                    "yes",
+                    "unknown",
+                    "conflicting"
+                  ],
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "evidence",
+                "support_score"
+              ],
+              "title": "UseStatusField",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "damage_or_stain": {
+              "$ref": "#/$defs/DamageStatusField"
+            },
+            "return_reason": {
+              "$ref": "#/$defs/ReturnReasonField"
+            },
+            "tag_status": {
+              "$ref": "#/$defs/TagStatusField"
+            },
+            "use_beyond_inspection": {
+              "$ref": "#/$defs/UseStatusField"
+            }
+          },
+          "required": [
+            "return_reason",
+            "tag_status",
+            "damage_or_stain",
+            "use_beyond_inspection"
+          ],
+          "title": "Extraction",
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": null
+    },
+    "tool_choice": "auto",
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 1.0,
+    "truncation": "disabled",
+    "usage": {
+      "cost": 0.0005347,
+      "cost_details": {
+        "upstream_inference_cost": 0.0005347,
+        "upstream_inference_input_cost": 0.0002611,
+        "upstream_inference_output_cost": 0.0002736
+      },
+      "input_tokens": 1045,
+      "input_tokens_details": {
+        "cache_write_tokens": 1042,
+        "cached_tokens": 0
+      },
+      "is_byok": false,
+      "output_tokens": 228,
+      "output_tokens_details": {
+        "reasoning_tokens": 88
+      },
+      "total_tokens": 1273
+    },
+    "user": null
+  },
+  "status": "content_response",
+  "timestamp": "2026-10-01T08:29:51.362308+00:00"
+}

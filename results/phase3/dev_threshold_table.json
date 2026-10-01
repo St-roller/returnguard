@@ -1,0 +1,97 @@
+{
+  "acceptance_rule": "score >= threshold",
+  "dev_n": 90,
+  "points": [
+    {
+      "accepted_n": 57,
+      "correct_accepted_n": 57,
+      "coverage": 0.6333333333333333,
+      "feasible": true,
+      "low_confidence_abstain_n": 0,
+      "selective_accuracy": 1.0,
+      "threshold": 0.86
+    },
+    {
+      "accepted_n": 56,
+      "correct_accepted_n": 56,
+      "coverage": 0.6222222222222222,
+      "feasible": true,
+      "low_confidence_abstain_n": 1,
+      "selective_accuracy": 1.0,
+      "threshold": 0.9
+    },
+    {
+      "accepted_n": 55,
+      "correct_accepted_n": 55,
+      "coverage": 0.6111111111111112,
+      "feasible": true,
+      "low_confidence_abstain_n": 2,
+      "selective_accuracy": 1.0,
+      "threshold": 0.92
+    },
+    {
+      "accepted_n": 54,
+      "correct_accepted_n": 54,
+      "coverage": 0.6,
+      "feasible": true,
+      "low_confidence_abstain_n": 3,
+      "selective_accuracy": 1.0,
+      "threshold": 0.93
+    },
+    {
+      "accepted_n": 52,
+      "correct_accepted_n": 52,
+      "coverage": 0.5777777777777777,
+      "feasible": true,
+      "low_confidence_abstain_n": 5,
+      "selective_accuracy": 1.0,
+      "threshold": 0.94
+    },
+    {
+      "accepted_n": 45,
+      "correct_accepted_n": 45,
+      "coverage": 0.5,
+      "feasible": true,
+      "low_confidence_abstain_n": 12,
+      "selective_accuracy": 1.0,
+      "threshold": 0.95
+    },
+    {
+      "accepted_n": 42,
+      "correct_accepted_n": 42,
+      "coverage": 0.4666666666666667,
+      "feasible": true,
+      "low_confidence_abstain_n": 15,
+      "selective_accuracy": 1.0,
+      "threshold": 0.96
+    },
+    {
+      "accepted_n": 26,
+      "correct_accepted_n": 26,
+      "coverage": 0.28888888888888886,
+      "feasible": true,
+      "low_confidence_abstain_n": 31,
+      "selective_accuracy": 1.0,
+      "threshold": 0.97
+    },
+    {
+      "accepted_n": 25,
+      "correct_accepted_n": 25,
+      "coverage": 0.2777777777777778,
+      "feasible": true,
+      "low_confidence_abstain_n": 32,
+      "selective_accuracy": 1.0,
+      "threshold": 0.98
+    },
+    {
+      "accepted_n": 2,
+      "correct_accepted_n": 2,
+      "coverage": 0.022222222222222223,
+      "feasible": true,
+      "low_confidence_abstain_n": 55,
+      "selective_accuracy": 1.0,
+      "threshold": 0.99
+    }
+  ],
+  "selector_version": "threshold_selector_v1.0"
+}

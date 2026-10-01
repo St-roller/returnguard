@@ -1,0 +1,157 @@
+{
+  "abstentions": {
+    "execution_failure": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "low_confidence": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "policy_required": {
+      "n": 66,
+      "rate": 0.7333333333333333
+    },
+    "validation_failure": {
+      "n": 0,
+      "rate": 0.0
+    }
+  },
+  "auto_routed_n": 24,
+  "confusion_matrix_gold_rows_final_columns": {
+    "eligible": {
+      "eligible": 6,
+      "ineligible": 0,
+      "manual_review": 24
+    },
+    "ineligible": {
+      "eligible": 0,
+      "ineligible": 18,
+      "manual_review": 12
+    },
+    "manual_review": {
+      "eligible": 0,
+      "ineligible": 0,
+      "manual_review": 30
+    }
+  },
+  "correct_auto_n": 24,
+  "coverage": {
+    "denominator": 90,
+    "numerator": 24,
+    "value": 0.26666666666666666,
+    "wilson_95": [
+      0.18623818738233572,
+      0.36619843788101675
+    ]
+  },
+  "dev_coverage_target_60_percent_met": false,
+  "diagnostics": {
+    "all_four_value_exact_accuracy": {
+      "denominator": 90,
+      "numerator": 10,
+      "value": 0.1111111111111111,
+      "wilson_95": [
+        0.06148319189297713,
+        0.19257785021261037
+      ]
+    },
+    "candidate_auto_route_n": 24,
+    "candidate_policy_required_manual_n": 66,
+    "candidate_route_accuracy": {
+      "denominator": 90,
+      "numerator": 54,
+      "value": 0.6,
+      "wilson_95": [
+        0.4967030736405094,
+        0.6951098012466252
+      ]
+    },
+    "candidate_rule_accuracy": {
+      "denominator": 90,
+      "numerator": 45,
+      "value": 0.5,
+      "wilson_95": [
+        0.3988372282354734,
+        0.6011627717645266
+      ]
+    },
+    "evidence_valid_case_n": 90,
+    "execution_failure_n": 0,
+    "field_value_accuracy": {
+      "damage_or_stain": {
+        "denominator": 90,
+        "numerator": 36,
+        "value": 0.4,
+        "wilson_95": [
+          0.3048901987533748,
+          0.5032969263594906
+        ]
+      },
+      "return_reason": {
+        "denominator": 90,
+        "numerator": 67,
+        "value": 0.7444444444444445,
+        "wilson_95": [
+          0.6456235101244654,
+          0.8232524062663082
+        ]
+      },
+      "tag_status": {
+        "denominator": 90,
+        "numerator": 68,
+        "value": 0.7555555555555555,
+        "wilson_95": [
+          0.6575162887069911,
+          0.8326721693379086
+        ]
+      },
+      "use_beyond_inspection": {
+        "denominator": 90,
+        "numerator": 49,
+        "value": 0.5444444444444444,
+        "wilson_95": [
+          0.44184633569208204,
+          0.6434038309244221
+        ]
+      }
+    },
+    "hard_validation_failure_n": 0,
+    "n": 90
+  },
+  "error_capture": {
+    "display": "N/A: deterministic baseline has no confidence threshold",
+    "value": null
+  },
+  "gold_manual_auto_routed_n": 0,
+  "interval_note": "Descriptive Wilson 95% intervals.",
+  "manual_review_recall": {
+    "denominator": 30,
+    "numerator": 30,
+    "value": 1.0,
+    "wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ]
+  },
+  "n": 90,
+  "route_accuracy": {
+    "denominator": 90,
+    "numerator": 54,
+    "value": 0.6,
+    "wilson_95": [
+      0.4967030736405094,
+      0.6951098012466252
+    ]
+  },
+  "selective_accuracy": {
+    "denominator": 24,
+    "numerator": 24,
+    "value": 1.0,
+    "wilson_95": [
+      0.8620237953250198,
+      1.0
+    ]
+  },
+  "selective_accuracy_constraint_met": true
+}

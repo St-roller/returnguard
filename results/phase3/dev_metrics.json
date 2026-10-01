@@ -1,0 +1,161 @@
+{
+  "abstentions": {
+    "execution_failure": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "low_confidence": {
+      "n": 0,
+      "rate": 0.0
+    },
+    "policy_required": {
+      "n": 33,
+      "rate": 0.36666666666666664
+    },
+    "validation_failure": {
+      "n": 0,
+      "rate": 0.0
+    }
+  },
+  "auto_routed_n": 57,
+  "confusion_matrix_gold_rows_final_columns": {
+    "eligible": {
+      "eligible": 29,
+      "ineligible": 0,
+      "manual_review": 1
+    },
+    "ineligible": {
+      "eligible": 0,
+      "ineligible": 28,
+      "manual_review": 2
+    },
+    "manual_review": {
+      "eligible": 0,
+      "ineligible": 0,
+      "manual_review": 30
+    }
+  },
+  "correct_auto_n": 57,
+  "coverage": {
+    "denominator": 90,
+    "numerator": 57,
+    "value": 0.6333333333333333,
+    "wilson_95": [
+      0.5302230476398118,
+      0.725527452209701
+    ]
+  },
+  "dev_coverage_target_60_percent_met": true,
+  "diagnostics": {
+    "all_four_value_exact_accuracy": {
+      "denominator": 90,
+      "numerator": 86,
+      "value": 0.9555555555555556,
+      "wilson_95": [
+        0.8912314496718777,
+        0.9825827581472913
+      ]
+    },
+    "candidate_auto_route_n": 57,
+    "candidate_policy_required_manual_n": 33,
+    "candidate_route_accuracy": {
+      "denominator": 90,
+      "numerator": 87,
+      "value": 0.9666666666666667,
+      "wilson_95": [
+        0.9065271396961013,
+        0.9885996097771937
+      ]
+    },
+    "candidate_rule_accuracy": {
+      "denominator": 90,
+      "numerator": 87,
+      "value": 0.9666666666666667,
+      "wilson_95": [
+        0.9065271396961013,
+        0.9885996097771937
+      ]
+    },
+    "evidence_valid_case_n": 90,
+    "execution_failure_n": 0,
+    "field_value_accuracy": {
+      "damage_or_stain": {
+        "denominator": 90,
+        "numerator": 90,
+        "value": 1.0,
+        "wilson_95": [
+          0.9590643744356734,
+          1.0
+        ]
+      },
+      "return_reason": {
+        "denominator": 90,
+        "numerator": 88,
+        "value": 0.9777777777777777,
+        "wilson_95": [
+          0.9225547331137463,
+          0.9938845580136748
+        ]
+      },
+      "tag_status": {
+        "denominator": 90,
+        "numerator": 90,
+        "value": 1.0,
+        "wilson_95": [
+          0.9590643744356734,
+          1.0
+        ]
+      },
+      "use_beyond_inspection": {
+        "denominator": 90,
+        "numerator": 88,
+        "value": 0.9777777777777777,
+        "wilson_95": [
+          0.9225547331137463,
+          0.9938845580136748
+        ]
+      }
+    },
+    "hard_validation_failure_n": 0,
+    "n": 90
+  },
+  "error_capture": {
+    "captured_n": 0,
+    "display": "N/A",
+    "error_candidate_n": 0,
+    "value": null
+  },
+  "gold_manual_auto_routed_n": 0,
+  "interval_note": "Descriptive Wilson 95%; threshold selected on these same dev data; optimistic with respect to selection.",
+  "manual_review_recall": {
+    "denominator": 30,
+    "numerator": 30,
+    "value": 1.0,
+    "wilson_95": [
+      0.8864866068260312,
+      0.9999999999999999
+    ]
+  },
+  "n": 90,
+  "provisional_threshold": 0.86,
+  "route_accuracy": {
+    "denominator": 90,
+    "numerator": 87,
+    "value": 0.9666666666666667,
+    "wilson_95": [
+      0.9065271396961013,
+      0.9885996097771937
+    ]
+  },
+  "selective_accuracy": {
+    "denominator": 57,
+    "numerator": 57,
+    "value": 1.0,
+    "wilson_95": [
+      0.9368611651470209,
+      0.9999999999999998
+    ]
+  },
+  "selective_accuracy_constraint_met": true,
+  "status": "DEV_COMPLETE_PENDING_GATE_3A_APPROVAL"
+}

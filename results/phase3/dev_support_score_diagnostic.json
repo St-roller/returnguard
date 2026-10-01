@@ -1,0 +1,36 @@
+{
+  "auroc_correctness": null,
+  "auto_candidate_n": 57,
+  "bins": [
+    {
+      "bin": "<0.50",
+      "candidate_route_errors": 0,
+      "error_rate": null,
+      "n": 0
+    },
+    {
+      "bin": "0.50–0.69",
+      "candidate_route_errors": 0,
+      "error_rate": null,
+      "n": 0
+    },
+    {
+      "bin": "0.70–0.89",
+      "candidate_route_errors": 0,
+      "error_rate": 0.0,
+      "n": 1
+    },
+    {
+      "bin": "0.90–1.00",
+      "candidate_route_errors": 0,
+      "error_rate": 0.0,
+      "n": 56
+    }
+  ],
+  "max_score": 0.99,
+  "median_correct": 0.96,
+  "median_incorrect": null,
+  "min_score": 0.86,
+  "scope": "dev auto-route candidates only; descriptive ranking, not calibration",
+  "unique_scores_n": 10
+}
