@@ -1,0 +1,36 @@
+name: Phase 3B authorized locked test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Refuse un-restored reruns
+        if: github.run_attempt != 1
+        run: exit 1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip install -r results/phase3/requirements_lock.txt
+      - run: python -m pytest -q
+      - name: Require explicit matching held-out authorization
+        run: test -f results/phase3/test_authorization.json
+      - name: Collect under locked config and threshold
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python scripts/run_formal_eval.py test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase3-test-${{ github.run_id }}-${{ github.run_attempt }}
+          path: results/phase3/
