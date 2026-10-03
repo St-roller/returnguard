@@ -23,6 +23,7 @@ def no_model_client(monkeypatch):
     ("Eligible — test_001", "test_001", "eligible", "EL01_7DAY", "0.96", "None"),
     ("Ineligible — test_031", "test_031", "ineligible", "IN01_CUSTOM", "0.98", "None"),
     ("Manual review — test_061", "test_061", "manual_review", "MR01_QUALITY", "N/A", "policy_required"),
+    ("Manual review (low confidence) — test_079", "test_079", "manual_review", "EL01_7DAY", "0.82", "low_confidence"),
 ])
 def test_recorded_routes_and_evidence(no_model_client, label, case_id, route, rule, score, reason):
     artifacts = ROOT / "results" / "phase3"

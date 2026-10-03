@@ -18,6 +18,7 @@ EXAMPLES = {
     "Eligible — test_001": "test_001",
     "Ineligible — test_031": "test_031",
     "Manual review — test_061": "test_061",
+    "Manual review (low confidence) — test_079": "test_079",
 }
 FIELDS = ("return_reason", "tag_status", "damage_or_stain", "use_beyond_inspection")
 
