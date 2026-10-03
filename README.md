@@ -59,7 +59,19 @@ python scripts/sanitize_phase3_public.py verify-public
 python scripts/generate_blueprints.py --check
 ```
 
-On Windows, activate with `.venv\Scripts\activate`. These checks use fixtures or stored artifacts, make no model calls, and do not rewrite the benchmark or results. The suite currently has 101 passing tests. `verify-public` validates published evaluation hashes; `--check` verifies existing blueprints without generating replacements.
+On Windows, activate with `.venv\Scripts\activate`. These checks use fixtures or stored artifacts, make no model calls, and do not rewrite the benchmark or results. The suite includes deterministic pipeline and recorded UI tests. `verify-public` validates published evaluation hashes; `--check` verifies existing blueprints without generating replacements.
+
+### Local Streamlit Recorded Demo
+
+With the virtual environment active, start the one-page demo from the repository root:
+
+```bash
+python -m streamlit run demo_app.py --server.address 127.0.0.1 --server.headless true --browser.gatherUsageStats false
+```
+
+Open <http://127.0.0.1:8501>, choose an example, and click **Replay recorded case**. **Recorded Demo** is offline replay, not a new model call. It uses the saved extractions for `test_001` (eligible), `test_031` (ineligible), `test_061` (policy-required manual review) and `test_079` (low-confidence manual review), then calls the existing `run_case` pipeline at the locked threshold **0.86** and checks the replay against the frozen result. Inputs are read-only. The page shows the customer message, order facts, final route, matched rule, four extracted fields with exact Chinese evidence, support score and review reason. Policy-required manual review has an **N/A** support score because it bypasses the threshold.
+
+This minimal version has no Live Mode and makes no model calls, even when an API key is present. It writes no evaluation artifacts. Stop the local server with `Ctrl+C`.
 
 ### Replay one recorded case through the product logic
 
@@ -113,7 +125,7 @@ All three predefined targets were met; safe coverage gain was **+34.44 percentag
 - Threshold **0.86 is provisional**, selected on 90 dev cases. Test support-score error capture is **1/1** erroneous automatic candidate; two correct candidates were also withheld. This is limited evidence for general error ranking or calibration.
 - Four test cases had extraction-value errors; all-four-field exact accuracy was 86/90. A correct final route can coexist with an extraction or rule-ID error.
 - The evaluated alias does not identify an immutable upstream model revision; upstream-provider metadata was unavailable. Recorded API costs are historical returned usage costs, not current price estimates.
-- This is a Python triage prototype with audit records, without a deployed UI, order-system integration or refund action.
+- This is a Python triage prototype with audit records, without a deployed production UI, order-system integration or refund action.
 
 ## Repository map and documentation
 
@@ -121,6 +133,7 @@ All three predefined targets were met; safe coverage gain was **+34.44 percentag
 |---|---|
 | [data/README.md](data/README.md) | Composition, provenance, reviews, leakage controls and freeze |
 | [results/README.md](results/README.md) | Locked evaluation, metric definitions, results, uncertainty and hashes |
+| [demo_app.py](demo_app.py) | One-page local Streamlit Recorded Demo using the existing pipeline |
 | [pipeline.py](src/returnguard/pipeline.py) | Connect extraction, validation, policy and acceptance |
 | [extractor.py](src/returnguard/extractor.py), [schemas.py](src/returnguard/schemas.py) | Model adapter and structured contracts |
 | [validation.py](src/returnguard/validation.py), [policy.py](src/returnguard/policy.py), [acceptance.py](src/returnguard/acceptance.py) | Evidence checks, derived facts, ordered rules and support gate |
