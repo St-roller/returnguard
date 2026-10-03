@@ -21,6 +21,26 @@ EXAMPLES = {
     "Manual review (low confidence) — test_079": "test_079",
 }
 FIELDS = ("return_reason", "tag_status", "damage_or_stain", "use_beyond_inspection")
+# Fixed display-only glosses; never passed to extraction or evidence validation.
+EVIDENCE_GLOSSES = {
+    "不太合我眼缘": "Not to my taste.",
+    "吊牌还在": "The tag is attached.",
+    "没脏没破": "No dirt or damage.",
+    "只试穿没外穿": "Only tried it on; not worn outside.",
+    "肩宽实在不合适": "The shoulder width really does not fit.",
+    "紧得难受": "Uncomfortably tight.",
+    "吊牌还完整挂在衣服上": "The tag is still fully attached to the garment.",
+    "衣服没有污渍也没有破损": "The garment has no stains or damage.",
+    "只在家试了一下": "Only tried it on at home.",
+    "没穿出去过": "Not worn outside.",
+    "收到时袖口就有一处破口": "There was a tear at the cuff on arrival.",
+    "袖口就有一处破口": "There was a tear at the cuff.",
+    "我只试穿检查过": "I only tried it on for inspection.",
+    "申请退货": "Requesting a return.",
+    "吊牌连着": "The tag is attached.",
+    "没污没破": "No stains or damage.",
+    "只在家试过": "Only tried it on at home.",
+}
 
 
 class RecordedExtractor:
@@ -54,6 +74,11 @@ def main():
         )
         saved = json.loads((artifacts / "test_cases" / f"{case_id}.json").read_text(encoding="utf-8"))
         threshold = json.loads((artifacts / "threshold_lock_v1.json").read_text(encoding="utf-8"))["value"]
+        annotation = next(
+            item["review_metadata"]["english_annotation"]
+            for line in (ROOT / "data" / "returnguard_synth_v1" / "test.jsonl").read_text(encoding="utf-8").splitlines()
+            if (item := json.loads(line))["case_id"] == case_id
+        )
         if threshold != 0.86:
             raise ValueError("The demo requires the locked threshold 0.86.")
     except (OSError, ValueError, KeyError, StopIteration) as exc:
@@ -63,6 +88,9 @@ def main():
     data = case["input"]
     facts = data["order_facts"]
     st.text_area("Customer message", data["customer_message"], disabled=True, key=f"message_{case_id}")
+    st.text_area("English translation (display-only)", annotation, disabled=True, key=f"english_{case_id}")
+    st.caption("English text is display-only. The evaluated model received only the original Chinese customer message. Evidence validation uses the exact Chinese spans, not the English glosses.")
+    st.caption("Message translation: frozen English annotation. Evidence glosses: fixed demo-only translations.")
     receipt, request = st.columns(2)
     receipt.date_input("Receipt date", date.fromisoformat(facts["receipt_date"]), disabled=True, key=f"receipt_{case_id}")
     request.date_input("Request date", date.fromisoformat(facts["request_date"]), disabled=True, key=f"request_{case_id}")
@@ -97,8 +125,8 @@ def main():
     extraction = result["validated_extraction"]
     st.table([
         {"Field": field, "Value": extraction[field]["value"],
-         "Exact Chinese evidence": "\n".join(extraction[field]["evidence"])}
-        for field in FIELDS
+         "Exact Chinese evidence": span, "English gloss": EVIDENCE_GLOSSES[span]}
+        for field in FIELDS for span in extraction[field]["evidence"]
     ])
 
 
